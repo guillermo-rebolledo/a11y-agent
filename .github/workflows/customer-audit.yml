@@ -135,6 +135,8 @@ jobs:
           A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
           A11Y_CONTROL_PLANE_PID_PATH: ${{ runner.temp }}/control-plane.pid
           A11Y_REPLAY_STORE_PATH: ${{ runner.temp }}/publication-replay
+          A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA: ${{ vars.A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA }}
+          A11Y_EXPECTED_COMMIT_SHA: ${{ vars.A11Y_EXPECTED_COMMIT_SHA }}
       - name: Validate and publish through GitHub OIDC
         uses: guillermo-rebolledo/a11y-agent/packages/action@3fcbff1d339132b24a637afc9336fb69d33bfe34
         with:

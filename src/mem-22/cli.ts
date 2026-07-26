@@ -17,23 +17,13 @@ import {
   FilePublicationReplayStore,
   acceptPublication,
   type GitHubOidcClaims,
-  type PublicationPolicy,
 } from "./publication.js";
+import { createProofPublicationPolicy } from "./proof-publication-policy.js";
 
 const PLAYWRIGHT_IMAGE =
   "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48";
 const OIDC_ISSUER = "https://token.actions.githubusercontent.com";
 const require = createRequire(import.meta.url);
-const PROOF_REPOSITORY = "guillermo-rebolledo/a11y-demo";
-const PROOF_REPOSITORY_ID = "757824645";
-const PROOF_REPOSITORY_OWNER = "guillermo-rebolledo";
-const PROOF_REPOSITORY_OWNER_ID = "47798232";
-const PROOF_CALLER_WORKFLOW_REF =
-  "guillermo-rebolledo/a11y-demo/.github/workflows/a11y-audit.yml@refs/heads/main";
-const PROOF_TRUSTED_WORKFLOW_PATH =
-  "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml";
-const PROOF_REF = "refs/heads/main";
-const PROOF_ENVIRONMENT = "a11y-publication";
 
 function requiredEnvironment(name: string): string {
   const value = process.env[name];
@@ -273,34 +263,6 @@ function claimsFromPayload(payload: JWTPayload): GitHubOidcClaims {
   return payload as unknown as GitHubOidcClaims;
 }
 
-function proofPublicationPolicy(claims: GitHubOidcClaims): PublicationPolicy {
-  if (!/^[0-9a-f]{40}$/.test(claims.job_workflow_sha)) {
-    throw new Error("OIDC identity does not contain an immutable workflow SHA");
-  }
-  const trustedWorkflowRef = `${PROOF_TRUSTED_WORKFLOW_PATH}@${claims.job_workflow_sha}`;
-  if (claims.job_workflow_ref !== trustedWorkflowRef) {
-    throw new Error("OIDC identity uses an untrusted reusable workflow");
-  }
-
-  return {
-    issuer: OIDC_ISSUER,
-    audience: "https://api.a11y-agent.example/publications",
-    subject: `repo:${PROOF_REPOSITORY}:environment:${PROOF_ENVIRONMENT}`,
-    repository: PROOF_REPOSITORY,
-    repositoryId: PROOF_REPOSITORY_ID,
-    repositoryOwner: PROOF_REPOSITORY_OWNER,
-    repositoryOwnerId: PROOF_REPOSITORY_OWNER_ID,
-    callerWorkflowRef: PROOF_CALLER_WORKFLOW_REF,
-    trustedWorkflowRef,
-    trustedWorkflowSha: claims.job_workflow_sha,
-    ref: PROOF_REF,
-    environment: PROOF_ENVIRONMENT,
-    commit: claims.sha,
-    maxTokenAgeSeconds: 300,
-    revoked: process.env.A11Y_PROOF_SCENARIO === "oidc-revoked",
-  };
-}
-
 async function findBundlePaths(directory: string): Promise<string[]> {
   const paths: string[] = [];
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -402,7 +364,16 @@ async function runControlPlane(): Promise<void> {
       const receipt = await acceptPublication({
         bundle: parseEvidenceBundleText(await readBoundedRequest(request)),
         claims,
-        policy: proofPublicationPolicy(claims),
+        policy: createProofPublicationPolicy(
+          claims,
+          {
+            trustedWorkflowSha: requiredEnvironment(
+              "A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA",
+            ),
+            commit: requiredEnvironment("A11Y_EXPECTED_COMMIT_SHA"),
+          },
+          process.env.A11Y_PROOF_SCENARIO === "oidc-revoked",
+        ),
         replayStore,
       });
       sendJson(response, 201, receipt);

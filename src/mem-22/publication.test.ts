@@ -11,6 +11,7 @@ import {
   type GitHubOidcClaims,
   type PublicationPolicy,
 } from "./publication.js";
+import { createProofPublicationPolicy } from "./proof-publication-policy.js";
 import type { EvidenceBundle } from "./evidence-bundle.js";
 
 const now = new Date("2026-07-26T04:05:00.000Z");
@@ -92,6 +93,35 @@ const policy: PublicationPolicy = {
 };
 
 describe("MEM-22 publication boundary", () => {
+  it("builds proof policy from verifier-owned trust, not token claims", () => {
+    expect(
+      createProofPublicationPolicy(
+        claims,
+        { trustedWorkflowSha: trustedSha, commit },
+        false,
+      ),
+    ).toMatchObject({
+      trustedWorkflowSha: trustedSha,
+      commit,
+    });
+
+    expect(() =>
+      createProofPublicationPolicy(
+        { ...claims, job_workflow_sha: "f".repeat(40) },
+        { trustedWorkflowSha: trustedSha, commit },
+        false,
+      ),
+    ).toThrow("untrusted reusable workflow");
+
+    expect(() =>
+      createProofPublicationPolicy(
+        { ...claims, sha: "f".repeat(40), workflow_sha: "f".repeat(40) },
+        { trustedWorkflowSha: trustedSha, commit },
+        false,
+      ),
+    ).toThrow("untrusted customer commit");
+  });
+
   it("accepts a matching fresh identity exactly once", async () => {
     const replayStore = new InMemoryPublicationReplayStore();
 
