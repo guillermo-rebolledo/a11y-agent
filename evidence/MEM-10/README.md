@@ -16,6 +16,14 @@ checks are partial or unevidenced. These gaps require revision and new
 objective evidence; they are not waivers. MEM-11 and authenticated pilot use
 remain blocked.
 
+## Subsequent gate staging
+
+ADR-0005 resolves the circular dependency discovered after this decision.
+MEM-11 may construct the scaffold with fixtures, synthetic data, and
+non-production providers. This does not change the MEM-10 `revise` result:
+customer credentials, authenticated customer Audit Runs, production execution,
+and pilot tenants remain blocked until their later gates pass.
+
 `proof-report.json` contains:
 
 - one machine-evaluated gate for every MEM-10 qualification concern;
