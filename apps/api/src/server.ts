@@ -4,9 +4,17 @@ import { buildApp } from "./application.js";
 import { NeonProjectStore } from "./project-store.js";
 
 const databaseUrl = process.env.DATABASE_URL;
+const vercelEnvironment = process.env.VERCEL_ENV;
+if (
+  (vercelEnvironment === "production" || vercelEnvironment === "preview") &&
+  !databaseUrl
+) {
+  throw new Error("DATABASE_URL is required for deployed control planes");
+}
 const store = databaseUrl ? new NeonProjectStore(databaseUrl) : undefined;
+const fixtureEnvironments = new Set(["development", "test", "preview"]);
 const fixtureSession =
-  process.env.APP_ENV !== "production" &&
+  fixtureEnvironments.has(process.env.APP_ENV ?? "") &&
   process.env.FIXTURE_GITHUB_SESSION_TOKEN
     ? {
         token: process.env.FIXTURE_GITHUB_SESSION_TOKEN,

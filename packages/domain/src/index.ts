@@ -29,14 +29,7 @@ export type Project = ProjectInput & {
   pilotState: "not-provisioned";
 };
 
-export type PublisherIdentity = {
-  repository: string;
-  workflow: string;
-  ref: string;
-  environment: string;
-  audience: string;
-  commit: string;
-};
+export type PublisherIdentity = TrustedWorkflowIdentity;
 
 export const GITHUB_APP_PERMISSIONS = {
   repository: {
@@ -131,6 +124,25 @@ export function validatePublisherIdentity(
 
 function validateOriginPattern(originPattern: string) {
   if ((originPattern.match(/\*/gu) ?? []).length > 1) {
+    throw new Error("deployment requires a bounded approved HTTPS origin");
+  }
+
+  const [scheme, authorityAndPath] = originPattern.split("://");
+  if (scheme !== "https" || !authorityAndPath) {
+    throw new Error("deployment requires a bounded approved HTTPS origin");
+  }
+  const rawHostname = authorityAndPath.split(/[/:?#]/u)[0] ?? "";
+  const wildcardLabel = rawHostname
+    .split(".")
+    .find((label) => label.includes("*"));
+  const labels = rawHostname.split(".");
+  if (
+    wildcardLabel &&
+    !(wildcardLabel === "*" || /^[a-z0-9-]+-\*$/u.test(wildcardLabel))
+  ) {
+    throw new Error("deployment requires a bounded approved HTTPS origin");
+  }
+  if (wildcardLabel === "*" && labels.length < 4) {
     throw new Error("deployment requires a bounded approved HTTPS origin");
   }
 

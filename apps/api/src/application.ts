@@ -31,6 +31,7 @@ export function buildApp(
   app.get("/health", async () => ({ status: "ok" }));
 
   app.get("/capabilities", async () => ({
+    environmentClass: "construction-nonproduction",
     repositoryContents: "inaccessible",
     githubPermissions: GITHUB_APP_PERMISSIONS,
     ...runtimeGate(),

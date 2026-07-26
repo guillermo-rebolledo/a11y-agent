@@ -53,6 +53,22 @@ describe("Project onboarding contract", () => {
         },
       }),
     ).toThrow("approved HTTPS origin");
+
+    for (const originPattern of [
+      "https://*.com",
+      "https://evil.com*.example.com",
+      "https://example.com/path",
+    ]) {
+      expect(() =>
+        createProject({
+          ...input,
+          previewDeployment: {
+            ...input.previewDeployment,
+            originPattern,
+          },
+        }),
+      ).toThrow("approved HTTPS origin");
+    }
   });
 
   it("rejects Project trust that does not match its repository and environments", () => {

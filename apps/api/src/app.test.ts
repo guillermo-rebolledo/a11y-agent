@@ -42,6 +42,7 @@ describe("control-plane onboarding API", () => {
 
     expect(response.statusCode).toBe(200);
     expect(response.json()).toMatchObject({
+      environmentClass: "construction-nonproduction",
       repositoryContents: "inaccessible",
       authenticatedExecution: false,
       pilotProvisioning: false,

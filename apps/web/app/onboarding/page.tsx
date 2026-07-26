@@ -18,10 +18,7 @@ jobs:
   audit:
     permissions:
       id-token: write
-    uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@<FULL_COMMIT_SHA>
-    secrets:
-      synthetic-login-email: \${{ secrets.A11Y_SYNTHETIC_LOGIN_EMAIL }}
-      synthetic-login-password: \${{ secrets.A11Y_SYNTHETIC_LOGIN_PASSWORD }}`;
+    uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@<FULL_COMMIT_SHA>`;
 
 type OnboardingProps = {
   searchParams: Promise<{ error?: string }>;
@@ -164,9 +161,10 @@ export default async function Onboarding({ searchParams }: OnboardingProps) {
               </pre>
             </li>
             <li>
-              Configure only the two synthetic-login secrets in the protected
-              customer GitHub Environment. Publication uses short-lived OIDC;
-              there is no publisher secret.
+              Configure the two synthetic-login secrets directly in the
+              <code> a11y-synthetic</code> GitHub Environment used only by the
+              browser job. Do not pass them into the reusable workflow.
+              Publication uses a separate environment and short-lived OIDC.
             </li>
           </ol>
         </Card>

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-11",
+  "capturedAt": "2026-07-26T18:55:29.000Z",
+  "result": "passed",
+  "deployments": {
+    "dashboard": {
+      "url": "https://a11y-agent-azure.vercel.app",
+      "id": "dpl_8wMwvHa4v1Jccsqx25ph1Lxmjq8v",
+      "status": "ready"
+    },
+    "controlPlane": {
+      "url": "https://a11y-agent-api.vercel.app",
+      "id": "dpl_8haDDMp34SMDBPz5qW3KxZwLuDNy",
+      "status": "ready"
+    },
+    "persistence": {
+      "provider": "Neon",
+      "resourceName": "a11y-agent-neon",
+      "externalResourceId": "wild-recipe-95077595",
+      "plan": "free_v3",
+      "productEnvironmentClass": "construction-nonproduction",
+      "vercelConnectionTargets": ["production", "preview"],
+      "customerDataPermitted": false,
+      "projectsMigrationVerified": true
+    }
+  },
+  "liveChecks": {
+    "dashboardStatus": 200,
+    "controlPlaneHealth": "ok",
+    "environmentClass": "construction-nonproduction",
+    "repositoryContents": "inaccessible",
+    "authenticatedExecution": false,
+    "pilotProvisioning": false,
+    "productionFixtureAuthenticationStatus": 503
+  },
+  "localChecks": {
+    "command": "pnpm check",
+    "testFiles": 17,
+    "tests": 103,
+    "playwrightJourneys": 2,
+    "format": "passed",
+    "lint": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "accessibility": "passed"
+  },
+  "safetyState": {
+    "authenticatedCustomerAuditRuns": "disabled",
+    "productionExecution": "disabled",
+    "pilotProvisioning": "disabled"
+  }
+}

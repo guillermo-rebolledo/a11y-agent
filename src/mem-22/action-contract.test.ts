@@ -7,7 +7,7 @@ type Workflow = {
   on: {
     workflow_call: {
       inputs: Record<string, unknown>;
-      secrets: Record<string, unknown>;
+      secrets?: Record<string, unknown>;
     };
     workflow_dispatch: unknown;
   };
@@ -106,10 +106,11 @@ describe("MEM-22 trusted GitHub Actions contract", () => {
     expect(serializedInputs).not.toMatch(
       /password|credential|cookie|storage|target-url|deployment-url/i,
     );
-    expect(Object.keys(workflow.on.workflow_call.secrets)).toEqual([
-      "synthetic-login-email",
-      "synthetic-login-password",
-    ]);
+    expect(workflow.on.workflow_call.secrets).toBeUndefined();
+    expect(workflow.jobs.browser?.steps?.[0]?.env).toMatchObject({
+      SYNTHETIC_LOGIN_EMAIL: "${{ secrets.SYNTHETIC_LOGIN_EMAIL }}",
+      SYNTHETIC_LOGIN_PASSWORD: "${{ secrets.SYNTHETIC_LOGIN_PASSWORD }}",
+    });
   });
 
   it("denies fork automation and requires the protected browser environment", async () => {
