@@ -8,9 +8,22 @@ Action
 Qualification result on 2026-07-26: **revise**. The evidence-backed decision
 and the itemized gaps are in
 [`evidence/MEM-10/proof-report.json`](../evidence/MEM-10/proof-report.json).
-Unchecked items remain blocking; they are not silently waived. The MEM-11
-dependency frontier and authenticated customer pilot remain stopped until a
-subsequent qualification report passes every gate.
+Unchecked items remain blocking for the gate assigned below; they are not
+silently waived. ADR-0005 permits MEM-11 scaffold construction while
+authenticated customer execution and the private pilot remain stopped.
+
+## Qualification stages
+
+| Gate | What it permits | Checklist ownership |
+| --- | --- | --- |
+| Construction | Application and Audit Engine construction with fixtures, synthetic data, and non-production providers | Sections 1–4 architecture contracts |
+| Authenticated enablement | Customer-controlled authentication only after the implemented trust boundary passes | Remaining items in sections 1–4, plus sections 6–8 |
+| Private pilot | Invite-only customer use after complete end-to-end approval | Sections 5 and 9–12, plus every incomplete earlier item |
+
+Construction never implies enablement. Before the authenticated-enablement gate
+passes, code must not receive customer login credentials, start authenticated
+customer Audit Runs, provision pilot tenants, or enable production execution.
+MEM-21 owns the final cumulative private-pilot decision.
 
 Phase 0 validates the replacement architecture selected after MEM-7 rejected
 Vercel Sandbox for authenticated Audit Runs. Documentation and provider claims

@@ -14,6 +14,11 @@ validated oracle for pass, fail, inconclusive, and unsupported outcomes.
 - Measure setup time, runtime, concurrency, Action minutes, and control-plane
   cost.
 
+Qualification is cumulative. The construction gate permits scaffold work with
+fixtures and synthetic data. Authenticated execution remains disabled until its
+trust-boundary proof passes, and MEM-21 owns the final private-pilot gate. See
+ADR-0005 and the staged Phase 0 checklist.
+
 ## MVP — Keyboard plus Axe
 
 - GitHub identity and App installation.
@@ -77,4 +82,6 @@ combinations.
 The application scaffold is part of MEM-11. It creates the TypeScript monorepo,
 Next.js App Router dashboard, Tailwind CSS and shadcn/ui foundation, and the
 initial GitHub Project onboarding flow after the Phase 0 architecture is
-qualified by MEM-10.
+qualified for construction by MEM-10 and ADR-0005. MEM-11 must use fixtures,
+synthetic data, and non-production providers until the authenticated-enablement
+gate passes.
