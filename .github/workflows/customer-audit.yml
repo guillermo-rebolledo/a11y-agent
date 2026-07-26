@@ -125,11 +125,11 @@ jobs:
         with:
           pattern: evidence-*
           path: ${{ runner.temp }}/untrusted-evidence
-      - name: Validate and publish through GitHub OIDC
+      - name: Start independent control-plane verifier
         uses: guillermo-rebolledo/a11y-agent/packages/action@3540d6b923398f47d8cbbba2e6aa5d868d482562
         with:
-          mode: publisher
-          output-path: ${{ runner.temp }}/untrusted-evidence
+          mode: control-plane
+          output-path: ${{ runner.temp }}/control-plane-receipts.json
           scenario: ${{ inputs.scenario }}
         env:
           A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
@@ -142,6 +142,16 @@ jobs:
           A11Y_EXPECTED_REF: ${{ github.ref }}
           A11Y_EXPECTED_ENVIRONMENT: a11y-publication
           A11Y_EXPECTED_COMMIT: ${{ inputs.commit-sha }}
+          A11Y_CONTROL_PLANE_PID_PATH: ${{ runner.temp }}/control-plane.pid
+      - name: Validate and publish through GitHub OIDC
+        uses: guillermo-rebolledo/a11y-agent/packages/action@3540d6b923398f47d8cbbba2e6aa5d868d482562
+        with:
+          mode: publisher
+          output-path: ${{ runner.temp }}/untrusted-evidence
+          scenario: ${{ inputs.scenario }}
+        env:
+          A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+          A11Y_PUBLICATION_ENDPOINT: http://127.0.0.1:8787/publications
           A11Y_RECEIPTS_PATH: ${{ runner.temp }}/publication-receipts.json
       - name: Upload content-free proof receipts
         if: ${{ success() }}
@@ -151,3 +161,11 @@ jobs:
           path: ${{ runner.temp }}/publication-receipts.json
           if-no-files-found: error
           retention-days: 1
+      - name: Stop control-plane verifier
+        if: ${{ always() }}
+        env:
+          PID_PATH: ${{ runner.temp }}/control-plane.pid
+        run: |
+          if [[ -f "$PID_PATH" ]]; then
+            kill "$(cat "$PID_PATH")" 2>/dev/null || true
+          fi

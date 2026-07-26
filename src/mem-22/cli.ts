@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { dirname, join } from "node:path";
 
 import { AxeBuilder } from "@axe-core/playwright";
@@ -203,6 +204,26 @@ function claimsFromPayload(payload: JWTPayload): GitHubOidcClaims {
   return payload as unknown as GitHubOidcClaims;
 }
 
+function publicationPolicyFromEnvironment(): PublicationPolicy {
+  return {
+    issuer: OIDC_ISSUER,
+    audience: requiredEnvironment("A11Y_OIDC_AUDIENCE"),
+    repository: requiredEnvironment("A11Y_EXPECTED_REPOSITORY"),
+    repositoryId: requiredEnvironment("A11Y_EXPECTED_REPOSITORY_ID"),
+    repositoryOwnerId: requiredEnvironment("A11Y_EXPECTED_OWNER_ID"),
+    callerWorkflowRef: requiredEnvironment(
+      "A11Y_EXPECTED_CALLER_WORKFLOW_REF",
+    ),
+    trustedWorkflowRef: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_REF"),
+    trustedWorkflowSha: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_SHA"),
+    ref: requiredEnvironment("A11Y_EXPECTED_REF"),
+    environment: requiredEnvironment("A11Y_EXPECTED_ENVIRONMENT"),
+    commit: requiredEnvironment("A11Y_EXPECTED_COMMIT"),
+    maxTokenAgeSeconds: 300,
+    revoked: process.env.A11Y_PROOF_SCENARIO === "oidc-revoked",
+  };
+}
+
 async function findBundlePaths(directory: string): Promise<string[]> {
   const paths: string[] = [];
   for (const entry of await readdir(directory, { withFileTypes: true })) {
@@ -216,48 +237,30 @@ async function findBundlePaths(directory: string): Promise<string[]> {
 async function runPublisher(): Promise<void> {
   const audience = requiredEnvironment("A11Y_OIDC_AUDIENCE");
   const scenario = process.env.A11Y_PROOF_SCENARIO ?? "success";
-  const policy: PublicationPolicy = {
-    issuer: OIDC_ISSUER,
-    audience,
-    repository: requiredEnvironment("A11Y_EXPECTED_REPOSITORY"),
-    repositoryId: requiredEnvironment("A11Y_EXPECTED_REPOSITORY_ID"),
-    repositoryOwnerId: requiredEnvironment("A11Y_EXPECTED_OWNER_ID"),
-    callerWorkflowRef: requiredEnvironment(
-      "A11Y_EXPECTED_CALLER_WORKFLOW_REF",
-    ),
-    trustedWorkflowRef: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_REF"),
-    trustedWorkflowSha: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_SHA"),
-    ref: requiredEnvironment("A11Y_EXPECTED_REF"),
-    environment: requiredEnvironment("A11Y_EXPECTED_ENVIRONMENT"),
-    commit: requiredEnvironment("A11Y_EXPECTED_COMMIT"),
-    maxTokenAgeSeconds: 300,
-    revoked: scenario === "oidc-revoked",
-  };
-  const replayStore = new InMemoryPublicationReplayStore();
   const receipts = [];
   const bundlePaths = await findBundlePaths(
     requiredEnvironment("A11Y_OUTPUT_PATH"),
   );
   if (bundlePaths.length === 0) throw new Error("No Evidence Bundles found");
 
-  const jwks = createRemoteJWKSet(
-    new URL(`${OIDC_ISSUER}/.well-known/jwks`),
-  );
   for (const path of bundlePaths) {
-    const bundle = parseEvidenceBundleText(await readFile(path, "utf8"));
+    const source = await readFile(path, "utf8");
+    parseEvidenceBundleText(source);
     const token = await requestOidcToken(audience);
-    const { payload } = await jwtVerify(token, jwks, {
-      issuer: OIDC_ISSUER,
-      audience,
+    const response = await fetch(requiredEnvironment("A11Y_PUBLICATION_ENDPOINT"), {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${token}`,
+        "content-type": "application/json",
+      },
+      body: source,
     });
-    receipts.push(
-      await acceptPublication({
-        bundle,
-        claims: claimsFromPayload(payload),
-        policy,
-        replayStore,
-      }),
-    );
+    if (!response.ok) {
+      throw new Error(
+        `Control plane rejected publication with HTTP ${response.status}: ${await response.text()}`,
+      );
+    }
+    receipts.push((await response.json()) as unknown);
   }
 
   if (scenario === "publisher-failure") {
@@ -270,9 +273,77 @@ async function runPublisher(): Promise<void> {
   });
 }
 
+async function readBoundedRequest(request: IncomingMessage): Promise<string> {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of request) {
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+    size += buffer.length;
+    if (size > 64 * 1_024) throw new Error("Evidence Bundle exceeds 64 KiB");
+    chunks.push(buffer);
+  }
+  return Buffer.concat(chunks).toString("utf8");
+}
+
+function sendJson(
+  response: ServerResponse,
+  status: number,
+  body: unknown,
+): void {
+  response.writeHead(status, { "content-type": "application/json" });
+  response.end(`${JSON.stringify(body)}\n`);
+}
+
+async function runControlPlane(): Promise<void> {
+  const policy = publicationPolicyFromEnvironment();
+  const replayStore = new InMemoryPublicationReplayStore();
+  const jwks = createRemoteJWKSet(
+    new URL(`${OIDC_ISSUER}/.well-known/jwks`),
+  );
+  const server = createServer((request, response) => {
+    void (async () => {
+      if (request.method === "GET" && request.url === "/health") {
+        sendJson(response, 200, { status: "ready" });
+        return;
+      }
+      if (request.method !== "POST" || request.url !== "/publications") {
+        sendJson(response, 404, { error: "not found" });
+        return;
+      }
+
+      const authorization = request.headers.authorization;
+      if (!authorization?.startsWith("Bearer ")) {
+        sendJson(response, 401, { error: "missing OIDC bearer token" });
+        return;
+      }
+      const { payload } = await jwtVerify(authorization.slice(7), jwks, {
+        issuer: OIDC_ISSUER,
+        audience: policy.audience,
+      });
+      const receipt = await acceptPublication({
+        bundle: parseEvidenceBundleText(await readBoundedRequest(request)),
+        claims: claimsFromPayload(payload),
+        policy,
+        replayStore,
+      });
+      sendJson(response, 201, receipt);
+    })().catch((error: unknown) => {
+      const message = error instanceof Error ? error.message : "publication failed";
+      sendJson(response, 403, { error: message });
+    });
+  });
+
+  await new Promise<void>((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(8_787, "127.0.0.1", resolve);
+  });
+}
+
 const mode = requiredEnvironment("A11Y_ACTION_MODE");
 if (mode === "browser") {
   await runBrowser();
+} else if (mode === "control-plane") {
+  await runControlPlane();
 } else if (mode === "publisher") {
   await runPublisher();
 } else {

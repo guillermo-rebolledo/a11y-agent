@@ -2,7 +2,7 @@ name: A11y Agent trusted audit
 description: Runs a browser Journey or publishes redacted Evidence Bundles.
 inputs:
   mode:
-    description: browser or publisher
+    description: browser, control-plane, or publisher
     required: true
   output-path:
     description: Browser output file or publisher artifact directory
@@ -25,4 +25,19 @@ runs:
         A11Y_ACTION_MODE: ${{ inputs.mode }}
         A11Y_OUTPUT_PATH: ${{ inputs.output-path }}
         A11Y_PROOF_SCENARIO: ${{ inputs.scenario }}
-      run: corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts
+      run: |
+        set -euo pipefail
+        if [[ "$A11Y_ACTION_MODE" == "control-plane" ]]; then
+          nohup corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts \
+            > "$RUNNER_TEMP/mem22-control-plane.log" 2>&1 &
+          echo "$!" > "$A11Y_CONTROL_PLANE_PID_PATH"
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then
+              exit 0
+            fi
+            sleep 0.25
+          done
+          echo "Control-plane verifier did not become ready" >&2
+          exit 1
+        fi
+        corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts
