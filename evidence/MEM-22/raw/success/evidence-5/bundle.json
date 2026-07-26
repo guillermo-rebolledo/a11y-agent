@@ -1,28 +1,32 @@
 {
   "schemaVersion": 1,
-  "auditRunId": "audit-30187062811",
+  "auditRunId": "audit-30187979088",
   "journeyId": "journey-invite-member-5",
   "status": "passed",
   "terminalReason": "completed",
-  "createdAt": "2026-07-26T04:02:02.398Z",
-  "expiresAt": "2026-07-26T04:17:02.398Z",
-  "publicationNonce": "pub-e471c12f-2eff-4ef1-96c2-e9240fbc150e",
+  "createdAt": "2026-07-26T04:34:26.642Z",
+  "expiresAt": "2026-07-26T04:49:26.642Z",
+  "publicationNonce": "pub-c4ff673c-137e-448e-bb44-5cddfe362f5c",
   "provenance": {
     "auditEngine": "0.0.0+mem22",
     "playwright": "1.61.1",
     "chromium": "149.0.7827.55",
     "axe": "4.12.1",
     "image": "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48",
-    "action": "guillermo-rebolledo/a11y-agent/packages/action@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18",
-    "workflow": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
+    "action": "guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76",
+    "workflow": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
     "repository": "guillermo-rebolledo/a11y-demo",
-    "commit": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-    "runId": "30187062811",
+    "commit": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+    "runId": "30187979088",
     "runAttempt": 1,
     "runnerEnvironment": "github-hosted",
     "runnerArchitecture": "X64"
   },
   "assertions": [
+    {
+      "id": "invalid-authentication-rejected",
+      "status": "passed"
+    },
     {
       "id": "synthetic-authentication-established",
       "status": "passed"
@@ -38,8 +42,8 @@
   ],
   "findings": [],
   "measurements": {
-    "startupMs": 163,
-    "runtimeMs": 1115,
-    "actionMinutes": 0.0186
+    "startupMs": 169,
+    "runtimeMs": 1284,
+    "actionMinutes": 0.0214
   }
 }

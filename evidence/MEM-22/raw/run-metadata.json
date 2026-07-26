@@ -1,29 +1,28 @@
 {
-  "capturedAt": "2026-07-26T04:05:00.000Z",
-  "repository": "guillermo-rebolledo/a11y-demo",
+  "capturedAt": "2026-07-26T04:37:37Z",
   "runs": [
     {
       "scenario": "success",
       "run": {
-        "id": 30187062811,
+        "id": 30187979088,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0oGGw",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1gBUA",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 9,
+        "run_number": 23,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "success",
         "workflow_id": 320573479,
-        "check_suite_id": 81806023478,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDATbNg",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
+        "check_suite_id": 81808387157,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCjsVQ",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:00:11Z",
-        "updated_at": "2026-07-26T04:02:26Z",
+        "created_at": "2026-07-26T04:33:41Z",
+        "updated_at": "2026-07-26T04:34:54Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -48,11 +47,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:00:11Z",
+        "run_started_at": "2026-07-26T04:33:41Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -74,19 +73,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806023478",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808387157",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -235,21 +234,21 @@
       },
       "jobs": [
         {
-          "id": 89753546358,
-          "run_id": 30187062811,
+          "id": 89755972243,
+          "run_id": 30187979088,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bpudg",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753546358",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753546358",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d9ykw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755972243",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755972243",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:00:14Z",
-          "started_at": "2026-07-26T04:01:21Z",
-          "completed_at": "2026-07-26T04:01:24Z",
+          "created_at": "2026-07-26T04:33:42Z",
+          "started_at": "2026-07-26T04:33:45Z",
+          "completed_at": "2026-07-26T04:33:47Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -257,127 +256,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:01:22Z",
-              "completed_at": "2026-07-26T04:01:22Z"
+              "started_at": "2026-07-26T04:33:45Z",
+              "completed_at": "2026-07-26T04:33:45Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:01:22Z",
-              "completed_at": "2026-07-26T04:01:22Z"
+              "started_at": "2026-07-26T04:33:45Z",
+              "completed_at": "2026-07-26T04:33:46Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:01:22Z",
-              "completed_at": "2026-07-26T04:01:22Z"
+              "started_at": "2026-07-26T04:33:46Z",
+              "completed_at": "2026-07-26T04:33:46Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753546358",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755972243",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000556,
-          "runner_name": "GitHub Actions 1000000556",
+          "runner_id": 1000000604,
+          "runner_name": "GitHub Actions 1000000604",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753639831,
-          "run_id": 30187062811,
+          "id": 89755978001,
+          "run_id": 30187979088,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bvblw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753639831",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753639831",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d-JEQ",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755978001",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755978001",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:01:25Z",
-          "started_at": "2026-07-26T04:01:30Z",
-          "completed_at": "2026-07-26T04:02:07Z",
-          "name": "audit / Browser Journey 4",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-07-26T04:01:31Z",
-              "completed_at": "2026-07-26T04:01:33Z"
-            },
-            {
-              "name": "Initialize containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-07-26T04:01:33Z",
-              "completed_at": "2026-07-26T04:02:00Z"
-            },
-            {
-              "name": "Run trusted browser Action",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-07-26T04:02:00Z",
-              "completed_at": "2026-07-26T04:02:04Z"
-            },
-            {
-              "name": "Upload bounded Evidence Bundle",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-07-26T04:02:04Z",
-              "completed_at": "2026-07-26T04:02:05Z"
-            },
-            {
-              "name": "Stop containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 8,
-              "started_at": "2026-07-26T04:02:05Z",
-              "completed_at": "2026-07-26T04:02:06Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9,
-              "started_at": "2026-07-26T04:02:06Z",
-              "completed_at": "2026-07-26T04:02:06Z"
-            }
-          ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753639831",
-          "labels": [
-            "ubuntu-24.04"
-          ],
-          "runner_id": 1000000557,
-          "runner_name": "GitHub Actions 1000000557",
-          "runner_group_id": 0,
-          "runner_group_name": "GitHub Actions"
-        },
-        {
-          "id": 89753639833,
-          "run_id": 30187062811,
-          "workflow_name": "Customer accessibility audit",
-          "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
-          "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bvbmQ",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753639833",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753639833",
-          "status": "completed",
-          "conclusion": "success",
-          "created_at": "2026-07-26T04:01:25Z",
-          "started_at": "2026-07-26T04:01:31Z",
-          "completed_at": "2026-07-26T04:02:08Z",
+          "created_at": "2026-07-26T04:33:47Z",
+          "started_at": "2026-07-26T04:33:53Z",
+          "completed_at": "2026-07-26T04:34:29Z",
           "name": "audit / Browser Journey 3",
           "steps": [
             {
@@ -385,227 +308,75 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:01:32Z",
-              "completed_at": "2026-07-26T04:01:33Z"
+              "started_at": "2026-07-26T04:33:54Z",
+              "completed_at": "2026-07-26T04:33:55Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:01:33Z",
-              "completed_at": "2026-07-26T04:01:59Z"
+              "started_at": "2026-07-26T04:33:55Z",
+              "completed_at": "2026-07-26T04:34:22Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:01:59Z",
-              "completed_at": "2026-07-26T04:02:04Z"
+              "started_at": "2026-07-26T04:34:22Z",
+              "completed_at": "2026-07-26T04:34:27Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:02:04Z",
-              "completed_at": "2026-07-26T04:02:06Z"
+              "started_at": "2026-07-26T04:34:27Z",
+              "completed_at": "2026-07-26T04:34:28Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:02:06Z",
-              "completed_at": "2026-07-26T04:02:06Z"
+              "started_at": "2026-07-26T04:34:28Z",
+              "completed_at": "2026-07-26T04:34:28Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:02:06Z",
-              "completed_at": "2026-07-26T04:02:06Z"
+              "started_at": "2026-07-26T04:34:28Z",
+              "completed_at": "2026-07-26T04:34:28Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753639833",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755978001",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000558,
-          "runner_name": "GitHub Actions 1000000558",
+          "runner_id": 1000000605,
+          "runner_name": "GitHub Actions 1000000605",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753639840,
-          "run_id": 30187062811,
+          "id": 89755978004,
+          "run_id": 30187979088,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bvboA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753639840",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753639840",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d-JFA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755978004",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755978004",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:01:25Z",
-          "started_at": "2026-07-26T04:01:31Z",
-          "completed_at": "2026-07-26T04:02:05Z",
-          "name": "audit / Browser Journey 5",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-07-26T04:01:31Z",
-              "completed_at": "2026-07-26T04:01:32Z"
-            },
-            {
-              "name": "Initialize containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-07-26T04:01:32Z",
-              "completed_at": "2026-07-26T04:01:57Z"
-            },
-            {
-              "name": "Run trusted browser Action",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-07-26T04:01:57Z",
-              "completed_at": "2026-07-26T04:02:02Z"
-            },
-            {
-              "name": "Upload bounded Evidence Bundle",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-07-26T04:02:02Z",
-              "completed_at": "2026-07-26T04:02:03Z"
-            },
-            {
-              "name": "Stop containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 8,
-              "started_at": "2026-07-26T04:02:03Z",
-              "completed_at": "2026-07-26T04:02:03Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9,
-              "started_at": "2026-07-26T04:02:03Z",
-              "completed_at": "2026-07-26T04:02:03Z"
-            }
-          ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753639840",
-          "labels": [
-            "ubuntu-24.04"
-          ],
-          "runner_id": 1000000559,
-          "runner_name": "GitHub Actions 1000000559",
-          "runner_group_id": 0,
-          "runner_group_name": "GitHub Actions"
-        },
-        {
-          "id": 89753639852,
-          "run_id": 30187062811,
-          "workflow_name": "Customer accessibility audit",
-          "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
-          "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bvbrA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753639852",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753639852",
-          "status": "completed",
-          "conclusion": "success",
-          "created_at": "2026-07-26T04:01:25Z",
-          "started_at": "2026-07-26T04:01:32Z",
-          "completed_at": "2026-07-26T04:02:10Z",
-          "name": "audit / Browser Journey 1",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-07-26T04:01:33Z",
-              "completed_at": "2026-07-26T04:01:34Z"
-            },
-            {
-              "name": "Initialize containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-07-26T04:01:34Z",
-              "completed_at": "2026-07-26T04:02:01Z"
-            },
-            {
-              "name": "Run trusted browser Action",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-07-26T04:02:01Z",
-              "completed_at": "2026-07-26T04:02:06Z"
-            },
-            {
-              "name": "Upload bounded Evidence Bundle",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-07-26T04:02:06Z",
-              "completed_at": "2026-07-26T04:02:07Z"
-            },
-            {
-              "name": "Stop containers",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 8,
-              "started_at": "2026-07-26T04:02:07Z",
-              "completed_at": "2026-07-26T04:02:07Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9,
-              "started_at": "2026-07-26T04:02:07Z",
-              "completed_at": "2026-07-26T04:02:07Z"
-            }
-          ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753639852",
-          "labels": [
-            "ubuntu-24.04"
-          ],
-          "runner_id": 1000000560,
-          "runner_name": "GitHub Actions 1000000560",
-          "runner_group_id": 0,
-          "runner_group_name": "GitHub Actions"
-        },
-        {
-          "id": 89753639856,
-          "run_id": 30187062811,
-          "workflow_name": "Customer accessibility audit",
-          "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
-          "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5bvbsA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753639856",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753639856",
-          "status": "completed",
-          "conclusion": "success",
-          "created_at": "2026-07-26T04:01:25Z",
-          "started_at": "2026-07-26T04:01:31Z",
-          "completed_at": "2026-07-26T04:02:06Z",
+          "created_at": "2026-07-26T04:33:47Z",
+          "started_at": "2026-07-26T04:33:54Z",
+          "completed_at": "2026-07-26T04:34:34Z",
           "name": "audit / Browser Journey 2",
           "steps": [
             {
@@ -613,75 +384,303 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:01:31Z",
-              "completed_at": "2026-07-26T04:01:32Z"
+              "started_at": "2026-07-26T04:33:54Z",
+              "completed_at": "2026-07-26T04:33:55Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:01:32Z",
-              "completed_at": "2026-07-26T04:01:57Z"
+              "started_at": "2026-07-26T04:33:55Z",
+              "completed_at": "2026-07-26T04:34:20Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:01:57Z",
-              "completed_at": "2026-07-26T04:02:03Z"
+              "started_at": "2026-07-26T04:34:20Z",
+              "completed_at": "2026-07-26T04:34:31Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:02:03Z",
-              "completed_at": "2026-07-26T04:02:04Z"
+              "started_at": "2026-07-26T04:34:31Z",
+              "completed_at": "2026-07-26T04:34:32Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:02:04Z",
-              "completed_at": "2026-07-26T04:02:04Z"
+              "started_at": "2026-07-26T04:34:32Z",
+              "completed_at": "2026-07-26T04:34:32Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:02:04Z",
-              "completed_at": "2026-07-26T04:02:04Z"
+              "started_at": "2026-07-26T04:34:32Z",
+              "completed_at": "2026-07-26T04:34:32Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753639856",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755978004",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000561,
-          "runner_name": "GitHub Actions 1000000561",
+          "runner_id": 1000000606,
+          "runner_name": "GitHub Actions 1000000606",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753694704,
-          "run_id": 30187062811,
+          "id": 89755978006,
+          "run_id": 30187979088,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187062811",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5byx8A",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753694704",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187062811/job/89753694704",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d-JFg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755978006",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755978006",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:02:10Z",
-          "started_at": "2026-07-26T04:02:13Z",
-          "completed_at": "2026-07-26T04:02:25Z",
+          "created_at": "2026-07-26T04:33:47Z",
+          "started_at": "2026-07-26T04:33:54Z",
+          "completed_at": "2026-07-26T04:34:32Z",
+          "name": "audit / Browser Journey 1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:33:55Z",
+              "completed_at": "2026-07-26T04:33:56Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-07-26T04:33:56Z",
+              "completed_at": "2026-07-26T04:34:23Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-07-26T04:34:23Z",
+              "completed_at": "2026-07-26T04:34:28Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-07-26T04:34:28Z",
+              "completed_at": "2026-07-26T04:34:29Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:34:29Z",
+              "completed_at": "2026-07-26T04:34:30Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:34:30Z",
+              "completed_at": "2026-07-26T04:34:30Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755978006",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000607,
+          "runner_name": "GitHub Actions 1000000607",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89755978022,
+          "run_id": 30187979088,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d-JJg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755978022",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755978022",
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-07-26T04:33:47Z",
+          "started_at": "2026-07-26T04:33:54Z",
+          "completed_at": "2026-07-26T04:34:27Z",
+          "name": "audit / Browser Journey 4",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:33:54Z",
+              "completed_at": "2026-07-26T04:33:56Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-07-26T04:33:56Z",
+              "completed_at": "2026-07-26T04:34:19Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-07-26T04:34:19Z",
+              "completed_at": "2026-07-26T04:34:24Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-07-26T04:34:24Z",
+              "completed_at": "2026-07-26T04:34:25Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:34:25Z",
+              "completed_at": "2026-07-26T04:34:25Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:34:25Z",
+              "completed_at": "2026-07-26T04:34:25Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755978022",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000608,
+          "runner_name": "GitHub Actions 1000000608",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89755978026,
+          "run_id": 30187979088,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5d-JKg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89755978026",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89755978026",
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-07-26T04:33:47Z",
+          "started_at": "2026-07-26T04:33:54Z",
+          "completed_at": "2026-07-26T04:34:29Z",
+          "name": "audit / Browser Journey 5",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:33:54Z",
+              "completed_at": "2026-07-26T04:33:55Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-07-26T04:33:55Z",
+              "completed_at": "2026-07-26T04:34:20Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-07-26T04:34:20Z",
+              "completed_at": "2026-07-26T04:34:26Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-07-26T04:34:26Z",
+              "completed_at": "2026-07-26T04:34:27Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:34:27Z",
+              "completed_at": "2026-07-26T04:34:27Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:34:27Z",
+              "completed_at": "2026-07-26T04:34:27Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89755978026",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000609,
+          "runner_name": "GitHub Actions 1000000609",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756030024,
+          "run_id": 30187979088,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187979088",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eBUSA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756030024",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/job/89756030024",
+          "status": "completed",
+          "conclusion": "success",
+          "created_at": "2026-07-26T04:34:34Z",
+          "started_at": "2026-07-26T04:34:38Z",
+          "completed_at": "2026-07-26T04:34:53Z",
           "name": "audit / Validate and publish",
           "steps": [
             {
@@ -689,64 +688,64 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:02:14Z",
-              "completed_at": "2026-07-26T04:02:16Z"
+              "started_at": "2026-07-26T04:34:39Z",
+              "completed_at": "2026-07-26T04:34:40Z"
             },
             {
               "name": "Download untrusted browser artifacts",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:02:16Z",
-              "completed_at": "2026-07-26T04:02:17Z"
+              "started_at": "2026-07-26T04:34:40Z",
+              "completed_at": "2026-07-26T04:34:42Z"
             },
             {
               "name": "Start independent control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:02:17Z",
-              "completed_at": "2026-07-26T04:02:21Z"
+              "started_at": "2026-07-26T04:34:42Z",
+              "completed_at": "2026-07-26T04:34:47Z"
             },
             {
               "name": "Validate and publish through GitHub OIDC",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:02:21Z",
-              "completed_at": "2026-07-26T04:02:23Z"
+              "started_at": "2026-07-26T04:34:47Z",
+              "completed_at": "2026-07-26T04:34:50Z"
             },
             {
               "name": "Upload content-free proof receipts",
               "status": "completed",
               "conclusion": "success",
               "number": 5,
-              "started_at": "2026-07-26T04:02:23Z",
-              "completed_at": "2026-07-26T04:02:24Z"
+              "started_at": "2026-07-26T04:34:50Z",
+              "completed_at": "2026-07-26T04:34:51Z"
             },
             {
               "name": "Stop control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 6,
-              "started_at": "2026-07-26T04:02:24Z",
-              "completed_at": "2026-07-26T04:02:24Z"
+              "started_at": "2026-07-26T04:34:51Z",
+              "completed_at": "2026-07-26T04:34:51Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 7,
-              "started_at": "2026-07-26T04:02:24Z",
-              "completed_at": "2026-07-26T04:02:24Z"
+              "started_at": "2026-07-26T04:34:51Z",
+              "completed_at": "2026-07-26T04:34:51Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753694704",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756030024",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000562,
-          "runner_name": "GitHub Actions 1000000562",
+          "runner_id": 1000000610,
+          "runner_name": "GitHub Actions 1000000610",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         }
@@ -755,25 +754,25 @@
     {
       "scenario": "runner-failure",
       "run": {
-        "id": 30187141670,
+        "id": 30188021307,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0s6Jg",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1imOw",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 10,
+        "run_number": 24,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "failure",
         "workflow_id": 320573479,
-        "check_suite_id": 81806258276,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAhwZA",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187141670",
+        "check_suite_id": 81808497220,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCqaRA",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188021307",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:02:49Z",
-        "updated_at": "2026-07-26T04:04:07Z",
+        "created_at": "2026-07-26T04:35:17Z",
+        "updated_at": "2026-07-26T04:36:23Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -798,11 +797,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:02:49Z",
+        "run_started_at": "2026-07-26T04:35:17Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -824,19 +823,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806258276",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808497220",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -985,21 +984,21 @@
       },
       "jobs": [
         {
-          "id": 89753743350,
-          "run_id": 30187141670,
+          "id": 89756077364,
+          "run_id": 30188021307,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b1v9g",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753743350",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/job/89753743350",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eENNA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756077364",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/job/89756077364",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:02:51Z",
-          "started_at": "2026-07-26T04:02:53Z",
-          "completed_at": "2026-07-26T04:02:55Z",
+          "created_at": "2026-07-26T04:35:19Z",
+          "started_at": "2026-07-26T04:35:22Z",
+          "completed_at": "2026-07-26T04:35:25Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -1007,51 +1006,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:02:54Z",
-              "completed_at": "2026-07-26T04:02:54Z"
+              "started_at": "2026-07-26T04:35:23Z",
+              "completed_at": "2026-07-26T04:35:23Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:02:54Z",
-              "completed_at": "2026-07-26T04:02:54Z"
+              "started_at": "2026-07-26T04:35:23Z",
+              "completed_at": "2026-07-26T04:35:23Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:02:54Z",
-              "completed_at": "2026-07-26T04:02:54Z"
+              "started_at": "2026-07-26T04:35:23Z",
+              "completed_at": "2026-07-26T04:35:23Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753743350",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756077364",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000563,
-          "runner_name": "GitHub Actions 1000000563",
+          "runner_id": 1000000611,
+          "runner_name": "GitHub Actions 1000000611",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753749336,
-          "run_id": 30187141670,
+          "id": 89756084158,
+          "run_id": 30188021307,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b2HWA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753749336",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/job/89753749336",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eEnvg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756084158",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/job/89756084158",
           "status": "completed",
           "conclusion": "failure",
-          "created_at": "2026-07-26T04:02:55Z",
-          "started_at": "2026-07-26T04:03:30Z",
-          "completed_at": "2026-07-26T04:04:06Z",
+          "created_at": "2026-07-26T04:35:25Z",
+          "started_at": "2026-07-26T04:35:48Z",
+          "completed_at": "2026-07-26T04:36:23Z",
           "name": "audit / Browser Journey 1",
           "steps": [
             {
@@ -1059,78 +1058,78 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:31Z",
-              "completed_at": "2026-07-26T04:03:32Z"
+              "started_at": "2026-07-26T04:35:49Z",
+              "completed_at": "2026-07-26T04:35:50Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:32Z",
-              "completed_at": "2026-07-26T04:03:57Z"
+              "started_at": "2026-07-26T04:35:50Z",
+              "completed_at": "2026-07-26T04:36:16Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "failure",
               "number": 3,
-              "started_at": "2026-07-26T04:03:57Z",
-              "completed_at": "2026-07-26T04:04:04Z"
+              "started_at": "2026-07-26T04:36:16Z",
+              "completed_at": "2026-07-26T04:36:20Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "skipped",
               "number": 4,
-              "started_at": "2026-07-26T04:04:04Z",
-              "completed_at": "2026-07-26T04:04:04Z"
+              "started_at": "2026-07-26T04:36:20Z",
+              "completed_at": "2026-07-26T04:36:20Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:04:04Z",
-              "completed_at": "2026-07-26T04:04:04Z"
+              "started_at": "2026-07-26T04:36:20Z",
+              "completed_at": "2026-07-26T04:36:21Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:04:04Z",
-              "completed_at": "2026-07-26T04:04:04Z"
+              "started_at": "2026-07-26T04:36:21Z",
+              "completed_at": "2026-07-26T04:36:21Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753749336",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756084158",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000569,
-          "runner_name": "GitHub Actions 1000000569",
+          "runner_id": 1000000616,
+          "runner_name": "GitHub Actions 1000000616",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753839246,
-          "run_id": 30187141670,
+          "id": 89756145724,
+          "run_id": 30188021307,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187141670",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188021307",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b7mjg",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753839246",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187141670/job/89753839246",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eIYPA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756145724",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188021307/job/89756145724",
           "status": "completed",
           "conclusion": "skipped",
-          "created_at": "2026-07-26T04:04:06Z",
-          "started_at": "2026-07-26T04:04:06Z",
-          "completed_at": "2026-07-26T04:04:06Z",
+          "created_at": "2026-07-26T04:36:23Z",
+          "started_at": "2026-07-26T04:36:23Z",
+          "completed_at": "2026-07-26T04:36:23Z",
           "name": "audit / Validate and publish",
           "steps": [],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753839246",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756145724",
           "labels": [
             "ubuntu-24.04"
           ],
@@ -1144,25 +1143,25 @@
     {
       "scenario": "timeout",
       "run": {
-        "id": 30187144112,
+        "id": 30188022838,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0tDsA",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1isNg",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 11,
+        "run_number": 25,
         "event": "workflow_dispatch",
         "status": "completed",
-        "conclusion": "success",
+        "conclusion": "cancelled",
         "workflow_id": 320573479,
-        "check_suite_id": 81806264309,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAiH9Q",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187144112",
+        "check_suite_id": 81808501347,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCqqYw",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188022838",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:02:54Z",
-        "updated_at": "2026-07-26T04:04:34Z",
+        "created_at": "2026-07-26T04:35:21Z",
+        "updated_at": "2026-07-26T04:36:52Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -1187,11 +1186,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:02:54Z",
+        "run_started_at": "2026-07-26T04:35:21Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -1213,19 +1212,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806264309",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808501347",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -1374,21 +1373,21 @@
       },
       "jobs": [
         {
-          "id": 89753749177,
-          "run_id": 30187144112,
+          "id": 89756081166,
+          "run_id": 30188022838,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b2GuQ",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753749177",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/job/89753749177",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eEcDg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756081166",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/job/89756081166",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:02:55Z",
-          "started_at": "2026-07-26T04:02:59Z",
-          "completed_at": "2026-07-26T04:03:03Z",
+          "created_at": "2026-07-26T04:35:22Z",
+          "started_at": "2026-07-26T04:35:25Z",
+          "completed_at": "2026-07-26T04:35:27Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -1396,51 +1395,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:00Z",
-              "completed_at": "2026-07-26T04:03:00Z"
+              "started_at": "2026-07-26T04:35:26Z",
+              "completed_at": "2026-07-26T04:35:26Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:00Z",
-              "completed_at": "2026-07-26T04:03:00Z"
+              "started_at": "2026-07-26T04:35:26Z",
+              "completed_at": "2026-07-26T04:35:26Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:03:00Z",
-              "completed_at": "2026-07-26T04:03:01Z"
+              "started_at": "2026-07-26T04:35:26Z",
+              "completed_at": "2026-07-26T04:35:26Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753749177",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756081166",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000564,
-          "runner_name": "GitHub Actions 1000000564",
+          "runner_id": 1000000612,
+          "runner_name": "GitHub Actions 1000000612",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753759633,
-          "run_id": 30187144112,
+          "id": 89756086391,
+          "run_id": 30188022838,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b2vkQ",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753759633",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/job/89753759633",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eEwdw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756086391",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/job/89756086391",
           "status": "completed",
-          "conclusion": "success",
-          "created_at": "2026-07-26T04:03:03Z",
-          "started_at": "2026-07-26T04:03:31Z",
-          "completed_at": "2026-07-26T04:04:18Z",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:35:28Z",
+          "started_at": "2026-07-26T04:35:49Z",
+          "completed_at": "2026-07-26T04:36:51Z",
           "name": "audit / Browser Journey 1",
           "steps": [
             {
@@ -1448,167 +1447,110 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:32Z",
-              "completed_at": "2026-07-26T04:03:33Z"
+              "started_at": "2026-07-26T04:35:49Z",
+              "completed_at": "2026-07-26T04:35:50Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:33Z",
-              "completed_at": "2026-07-26T04:04:09Z"
+              "started_at": "2026-07-26T04:35:50Z",
+              "completed_at": "2026-07-26T04:36:16Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
-              "conclusion": "success",
+              "conclusion": "cancelled",
               "number": 3,
-              "started_at": "2026-07-26T04:04:09Z",
-              "completed_at": "2026-07-26T04:04:14Z"
+              "started_at": "2026-07-26T04:36:16Z",
+              "completed_at": "2026-07-26T04:36:49Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
-              "conclusion": "success",
+              "conclusion": "skipped",
               "number": 4,
-              "started_at": "2026-07-26T04:04:14Z",
-              "completed_at": "2026-07-26T04:04:15Z"
+              "started_at": "2026-07-26T04:36:49Z",
+              "completed_at": "2026-07-26T04:36:49Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:04:15Z",
-              "completed_at": "2026-07-26T04:04:16Z"
+              "started_at": "2026-07-26T04:36:49Z",
+              "completed_at": "2026-07-26T04:36:49Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:04:16Z",
-              "completed_at": "2026-07-26T04:04:16Z"
+              "started_at": "2026-07-26T04:36:49Z",
+              "completed_at": "2026-07-26T04:36:49Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753759633",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756086391",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000570,
-          "runner_name": "GitHub Actions 1000000570",
+          "runner_id": 1000000617,
+          "runner_name": "GitHub Actions 1000000617",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753855263,
-          "run_id": 30187144112,
+          "id": 89756175327,
+          "run_id": 30188022838,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187144112",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188022838",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b8lHw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753855263",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187144112/job/89753855263",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eKL3w",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756175327",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188022838/job/89756175327",
           "status": "completed",
-          "conclusion": "success",
-          "created_at": "2026-07-26T04:04:18Z",
-          "started_at": "2026-07-26T04:04:21Z",
-          "completed_at": "2026-07-26T04:04:34Z",
+          "conclusion": "skipped",
+          "created_at": "2026-07-26T04:36:51Z",
+          "started_at": "2026-07-26T04:36:51Z",
+          "completed_at": "2026-07-26T04:36:51Z",
           "name": "audit / Validate and publish",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-07-26T04:04:22Z",
-              "completed_at": "2026-07-26T04:04:23Z"
-            },
-            {
-              "name": "Download untrusted browser artifacts",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-07-26T04:04:23Z",
-              "completed_at": "2026-07-26T04:04:23Z"
-            },
-            {
-              "name": "Start independent control-plane verifier",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-07-26T04:04:23Z",
-              "completed_at": "2026-07-26T04:04:30Z"
-            },
-            {
-              "name": "Validate and publish through GitHub OIDC",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-07-26T04:04:30Z",
-              "completed_at": "2026-07-26T04:04:32Z"
-            },
-            {
-              "name": "Upload content-free proof receipts",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 5,
-              "started_at": "2026-07-26T04:04:32Z",
-              "completed_at": "2026-07-26T04:04:32Z"
-            },
-            {
-              "name": "Stop control-plane verifier",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 6,
-              "started_at": "2026-07-26T04:04:32Z",
-              "completed_at": "2026-07-26T04:04:32Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 7,
-              "started_at": "2026-07-26T04:04:32Z",
-              "completed_at": "2026-07-26T04:04:32Z"
-            }
-          ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753855263",
+          "steps": [],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756175327",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000577,
-          "runner_name": "GitHub Actions 1000000577",
-          "runner_group_id": 0,
-          "runner_group_name": "GitHub Actions"
+          "runner_id": null,
+          "runner_name": null,
+          "runner_group_id": null,
+          "runner_group_name": null
         }
       ]
     },
     {
       "scenario": "malformed-artifact",
       "run": {
-        "id": 30187146558,
+        "id": 30188024075,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0tNPg",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1ixCw",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 12,
+        "run_number": 26,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "failure",
         "workflow_id": 320573479,
-        "check_suite_id": 81806270371,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAifow",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187146558",
+        "check_suite_id": 81808504793,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCq32Q",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188024075",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:02:58Z",
-        "updated_at": "2026-07-26T04:04:25Z",
+        "created_at": "2026-07-26T04:35:24Z",
+        "updated_at": "2026-07-26T04:36:38Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -1633,11 +1575,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:02:58Z",
+        "run_started_at": "2026-07-26T04:35:24Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -1659,19 +1601,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806270371",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808504793",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -1820,21 +1762,21 @@
       },
       "jobs": [
         {
-          "id": 89753755208,
-          "run_id": 30187146558,
+          "id": 89756084442,
+          "run_id": 30188024075,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b2eSA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753755208",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/job/89753755208",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eEo2g",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756084442",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/job/89756084442",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:00Z",
-          "started_at": "2026-07-26T04:03:03Z",
-          "completed_at": "2026-07-26T04:03:05Z",
+          "created_at": "2026-07-26T04:35:26Z",
+          "started_at": "2026-07-26T04:35:28Z",
+          "completed_at": "2026-07-26T04:35:31Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -1842,51 +1784,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:03Z",
-              "completed_at": "2026-07-26T04:03:03Z"
+              "started_at": "2026-07-26T04:35:29Z",
+              "completed_at": "2026-07-26T04:35:29Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:03Z",
-              "completed_at": "2026-07-26T04:03:04Z"
+              "started_at": "2026-07-26T04:35:29Z",
+              "completed_at": "2026-07-26T04:35:29Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:03:04Z",
-              "completed_at": "2026-07-26T04:03:04Z"
+              "started_at": "2026-07-26T04:35:29Z",
+              "completed_at": "2026-07-26T04:35:29Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753755208",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756084442",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000565,
-          "runner_name": "GitHub Actions 1000000565",
+          "runner_id": 1000000613,
+          "runner_name": "GitHub Actions 1000000613",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753762863,
-          "run_id": 30187146558,
+          "id": 89756089743,
+          "run_id": 30188024075,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b28Lw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753762863",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/job/89753762863",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eE9jw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756089743",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/job/89756089743",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:06Z",
-          "started_at": "2026-07-26T04:03:32Z",
-          "completed_at": "2026-07-26T04:04:07Z",
+          "created_at": "2026-07-26T04:35:31Z",
+          "started_at": "2026-07-26T04:35:49Z",
+          "completed_at": "2026-07-26T04:36:24Z",
           "name": "audit / Browser Journey 1",
           "steps": [
             {
@@ -1894,75 +1836,75 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:32Z",
-              "completed_at": "2026-07-26T04:03:33Z"
+              "started_at": "2026-07-26T04:35:50Z",
+              "completed_at": "2026-07-26T04:35:51Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:33Z",
-              "completed_at": "2026-07-26T04:03:59Z"
+              "started_at": "2026-07-26T04:35:51Z",
+              "completed_at": "2026-07-26T04:36:16Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:03:59Z",
-              "completed_at": "2026-07-26T04:04:04Z"
+              "started_at": "2026-07-26T04:36:16Z",
+              "completed_at": "2026-07-26T04:36:21Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:04:04Z",
-              "completed_at": "2026-07-26T04:04:05Z"
+              "started_at": "2026-07-26T04:36:21Z",
+              "completed_at": "2026-07-26T04:36:21Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:04:05Z",
-              "completed_at": "2026-07-26T04:04:06Z"
+              "started_at": "2026-07-26T04:36:21Z",
+              "completed_at": "2026-07-26T04:36:22Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:04:06Z",
-              "completed_at": "2026-07-26T04:04:06Z"
+              "started_at": "2026-07-26T04:36:22Z",
+              "completed_at": "2026-07-26T04:36:22Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753762863",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756089743",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000571,
-          "runner_name": "GitHub Actions 1000000571",
+          "runner_id": 1000000618,
+          "runner_name": "GitHub Actions 1000000618",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753840240,
-          "run_id": 30187146558,
+          "id": 89756146418,
+          "run_id": 30188024075,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187146558",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188024075",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b7qcA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753840240",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187146558/job/89753840240",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eIa8g",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756146418",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188024075/job/89756146418",
           "status": "completed",
           "conclusion": "failure",
-          "created_at": "2026-07-26T04:04:07Z",
-          "started_at": "2026-07-26T04:04:10Z",
-          "completed_at": "2026-07-26T04:04:23Z",
+          "created_at": "2026-07-26T04:36:24Z",
+          "started_at": "2026-07-26T04:36:27Z",
+          "completed_at": "2026-07-26T04:36:37Z",
           "name": "audit / Validate and publish",
           "steps": [
             {
@@ -1970,64 +1912,64 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:04:11Z",
-              "completed_at": "2026-07-26T04:04:14Z"
+              "started_at": "2026-07-26T04:36:27Z",
+              "completed_at": "2026-07-26T04:36:29Z"
             },
             {
               "name": "Download untrusted browser artifacts",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:04:14Z",
-              "completed_at": "2026-07-26T04:04:15Z"
+              "started_at": "2026-07-26T04:36:29Z",
+              "completed_at": "2026-07-26T04:36:30Z"
             },
             {
               "name": "Start independent control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:04:15Z",
-              "completed_at": "2026-07-26T04:04:20Z"
+              "started_at": "2026-07-26T04:36:30Z",
+              "completed_at": "2026-07-26T04:36:34Z"
             },
             {
               "name": "Validate and publish through GitHub OIDC",
               "status": "completed",
               "conclusion": "failure",
               "number": 4,
-              "started_at": "2026-07-26T04:04:20Z",
-              "completed_at": "2026-07-26T04:04:22Z"
+              "started_at": "2026-07-26T04:36:34Z",
+              "completed_at": "2026-07-26T04:36:35Z"
             },
             {
               "name": "Upload content-free proof receipts",
               "status": "completed",
               "conclusion": "skipped",
               "number": 5,
-              "started_at": "2026-07-26T04:04:22Z",
-              "completed_at": "2026-07-26T04:04:22Z"
+              "started_at": "2026-07-26T04:36:35Z",
+              "completed_at": "2026-07-26T04:36:35Z"
             },
             {
               "name": "Stop control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 6,
-              "started_at": "2026-07-26T04:04:22Z",
-              "completed_at": "2026-07-26T04:04:22Z"
+              "started_at": "2026-07-26T04:36:35Z",
+              "completed_at": "2026-07-26T04:36:35Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 7,
-              "started_at": "2026-07-26T04:04:22Z",
-              "completed_at": "2026-07-26T04:04:22Z"
+              "started_at": "2026-07-26T04:36:35Z",
+              "completed_at": "2026-07-26T04:36:35Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753840240",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756146418",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000574,
-          "runner_name": "GitHub Actions 1000000574",
+          "runner_id": 1000000627,
+          "runner_name": "GitHub Actions 1000000627",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         }
@@ -2036,25 +1978,25 @@
     {
       "scenario": "publisher-failure",
       "run": {
-        "id": 30187149044,
+        "id": 30188025305,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0tW9A",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1i12Q",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 13,
+        "run_number": 27,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "failure",
         "workflow_id": 320573479,
-        "check_suite_id": 81806276259,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAi2ow",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187149044",
+        "check_suite_id": 81808508024,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCrEeA",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188025305",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:03:03Z",
-        "updated_at": "2026-07-26T04:04:23Z",
+        "created_at": "2026-07-26T04:35:27Z",
+        "updated_at": "2026-07-26T04:36:43Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2079,11 +2021,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:03:03Z",
+        "run_started_at": "2026-07-26T04:35:27Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2105,19 +2047,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806276259",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808508024",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -2266,21 +2208,21 @@
       },
       "jobs": [
         {
-          "id": 89753761309,
-          "run_id": 30187149044,
+          "id": 89756087350,
+          "run_id": 30188025305,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b22HQ",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753761309",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/job/89753761309",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eE0Ng",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756087350",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/job/89756087350",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:04Z",
-          "started_at": "2026-07-26T04:03:07Z",
-          "completed_at": "2026-07-26T04:03:12Z",
+          "created_at": "2026-07-26T04:35:29Z",
+          "started_at": "2026-07-26T04:35:31Z",
+          "completed_at": "2026-07-26T04:35:33Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -2288,51 +2230,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:08Z",
-              "completed_at": "2026-07-26T04:03:08Z"
+              "started_at": "2026-07-26T04:35:32Z",
+              "completed_at": "2026-07-26T04:35:32Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:09Z",
-              "completed_at": "2026-07-26T04:03:09Z"
+              "started_at": "2026-07-26T04:35:32Z",
+              "completed_at": "2026-07-26T04:35:32Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:03:09Z",
-              "completed_at": "2026-07-26T04:03:09Z"
+              "started_at": "2026-07-26T04:35:32Z",
+              "completed_at": "2026-07-26T04:35:32Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753761309",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756087350",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000566,
-          "runner_name": "GitHub Actions 1000000566",
+          "runner_id": 1000000614,
+          "runner_name": "GitHub Actions 1000000614",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753771011,
-          "run_id": 30187149044,
+          "id": 89756092392,
+          "run_id": 30188025305,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3cAw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753771011",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/job/89753771011",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eFH6A",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756092392",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/job/89756092392",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:12Z",
-          "started_at": "2026-07-26T04:03:34Z",
-          "completed_at": "2026-07-26T04:04:08Z",
+          "created_at": "2026-07-26T04:35:33Z",
+          "started_at": "2026-07-26T04:35:51Z",
+          "completed_at": "2026-07-26T04:36:27Z",
           "name": "audit / Browser Journey 1",
           "steps": [
             {
@@ -2340,75 +2282,75 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:34Z",
-              "completed_at": "2026-07-26T04:03:35Z"
+              "started_at": "2026-07-26T04:35:52Z",
+              "completed_at": "2026-07-26T04:35:52Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:35Z",
-              "completed_at": "2026-07-26T04:04:00Z"
+              "started_at": "2026-07-26T04:35:52Z",
+              "completed_at": "2026-07-26T04:36:17Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:04:00Z",
-              "completed_at": "2026-07-26T04:04:05Z"
+              "started_at": "2026-07-26T04:36:17Z",
+              "completed_at": "2026-07-26T04:36:23Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:04:05Z",
-              "completed_at": "2026-07-26T04:04:06Z"
+              "started_at": "2026-07-26T04:36:23Z",
+              "completed_at": "2026-07-26T04:36:24Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:04:06Z",
-              "completed_at": "2026-07-26T04:04:06Z"
+              "started_at": "2026-07-26T04:36:24Z",
+              "completed_at": "2026-07-26T04:36:25Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:04:06Z",
-              "completed_at": "2026-07-26T04:04:06Z"
+              "started_at": "2026-07-26T04:36:25Z",
+              "completed_at": "2026-07-26T04:36:25Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753771011",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756092392",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000572,
-          "runner_name": "GitHub Actions 1000000572",
+          "runner_id": 1000000619,
+          "runner_name": "GitHub Actions 1000000619",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753841463,
-          "run_id": 30187149044,
+          "id": 89756150316,
+          "run_id": 30188025305,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187149044",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188025305",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b7vNw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753841463",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187149044/job/89753841463",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eIqLA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756150316",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188025305/job/89756150316",
           "status": "completed",
           "conclusion": "failure",
-          "created_at": "2026-07-26T04:04:08Z",
-          "started_at": "2026-07-26T04:04:11Z",
-          "completed_at": "2026-07-26T04:04:22Z",
+          "created_at": "2026-07-26T04:36:27Z",
+          "started_at": "2026-07-26T04:36:30Z",
+          "completed_at": "2026-07-26T04:36:42Z",
           "name": "audit / Validate and publish",
           "steps": [
             {
@@ -2416,64 +2358,64 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:04:12Z",
-              "completed_at": "2026-07-26T04:04:13Z"
+              "started_at": "2026-07-26T04:36:31Z",
+              "completed_at": "2026-07-26T04:36:32Z"
             },
             {
               "name": "Download untrusted browser artifacts",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:04:13Z",
-              "completed_at": "2026-07-26T04:04:13Z"
+              "started_at": "2026-07-26T04:36:32Z",
+              "completed_at": "2026-07-26T04:36:32Z"
             },
             {
               "name": "Start independent control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:04:13Z",
-              "completed_at": "2026-07-26T04:04:19Z"
+              "started_at": "2026-07-26T04:36:32Z",
+              "completed_at": "2026-07-26T04:36:39Z"
             },
             {
               "name": "Validate and publish through GitHub OIDC",
               "status": "completed",
               "conclusion": "failure",
               "number": 4,
-              "started_at": "2026-07-26T04:04:19Z",
-              "completed_at": "2026-07-26T04:04:21Z"
+              "started_at": "2026-07-26T04:36:39Z",
+              "completed_at": "2026-07-26T04:36:41Z"
             },
             {
               "name": "Upload content-free proof receipts",
               "status": "completed",
               "conclusion": "skipped",
               "number": 5,
-              "started_at": "2026-07-26T04:04:21Z",
-              "completed_at": "2026-07-26T04:04:21Z"
+              "started_at": "2026-07-26T04:36:41Z",
+              "completed_at": "2026-07-26T04:36:41Z"
             },
             {
               "name": "Stop control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 6,
-              "started_at": "2026-07-26T04:04:21Z",
-              "completed_at": "2026-07-26T04:04:21Z"
+              "started_at": "2026-07-26T04:36:41Z",
+              "completed_at": "2026-07-26T04:36:41Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 7,
-              "started_at": "2026-07-26T04:04:21Z",
-              "completed_at": "2026-07-26T04:04:21Z"
+              "started_at": "2026-07-26T04:36:41Z",
+              "completed_at": "2026-07-26T04:36:41Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753841463",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756150316",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000575,
-          "runner_name": "GitHub Actions 1000000575",
+          "runner_id": 1000000628,
+          "runner_name": "GitHub Actions 1000000628",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         }
@@ -2482,25 +2424,25 @@
     {
       "scenario": "oidc-revoked",
       "run": {
-        "id": 30187151487,
+        "id": 30188026590,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0tgfw",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1i63g",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 14,
+        "run_number": 28,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "failure",
         "workflow_id": 320573479,
-        "check_suite_id": 81806282060,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAjNTA",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187151487",
+        "check_suite_id": 81808511577,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCrSWQ",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188026590",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:03:07Z",
-        "updated_at": "2026-07-26T04:04:31Z",
+        "created_at": "2026-07-26T04:35:30Z",
+        "updated_at": "2026-07-26T04:36:44Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2525,11 +2467,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:03:07Z",
+        "run_started_at": "2026-07-26T04:35:30Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2551,19 +2493,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806282060",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808511577",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -2712,21 +2654,21 @@
       },
       "jobs": [
         {
-          "id": 89753766724,
-          "run_id": 30187151487,
+          "id": 89756090930,
+          "run_id": 30188026590,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3LRA",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753766724",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/job/89753766724",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eFCMg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756090930",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/job/89756090930",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:09Z",
-          "started_at": "2026-07-26T04:03:11Z",
-          "completed_at": "2026-07-26T04:03:14Z",
+          "created_at": "2026-07-26T04:35:32Z",
+          "started_at": "2026-07-26T04:35:36Z",
+          "completed_at": "2026-07-26T04:35:40Z",
           "name": "audit / Gate authenticated execution",
           "steps": [
             {
@@ -2734,51 +2676,51 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:12Z",
-              "completed_at": "2026-07-26T04:03:12Z"
+              "started_at": "2026-07-26T04:35:37Z",
+              "completed_at": "2026-07-26T04:35:37Z"
             },
             {
               "name": "Select isolated Journey jobs",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:12Z",
-              "completed_at": "2026-07-26T04:03:12Z"
+              "started_at": "2026-07-26T04:35:37Z",
+              "completed_at": "2026-07-26T04:35:37Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:03:12Z",
-              "completed_at": "2026-07-26T04:03:12Z"
+              "started_at": "2026-07-26T04:35:37Z",
+              "completed_at": "2026-07-26T04:35:37Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753766724",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756090930",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000567,
-          "runner_name": "GitHub Actions 1000000567",
+          "runner_id": 1000000615,
+          "runner_name": "GitHub Actions 1000000615",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753774194,
-          "run_id": 30187151487,
+          "id": 89756099339,
+          "run_id": 30188026590,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3ocg",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753774194",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/job/89753774194",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eFjCw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756099339",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/job/89756099339",
           "status": "completed",
           "conclusion": "success",
-          "created_at": "2026-07-26T04:03:14Z",
-          "started_at": "2026-07-26T04:03:35Z",
-          "completed_at": "2026-07-26T04:04:11Z",
+          "created_at": "2026-07-26T04:35:40Z",
+          "started_at": "2026-07-26T04:35:51Z",
+          "completed_at": "2026-07-26T04:36:28Z",
           "name": "audit / Browser Journey 1",
           "steps": [
             {
@@ -2786,75 +2728,75 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:03:36Z",
-              "completed_at": "2026-07-26T04:03:37Z"
+              "started_at": "2026-07-26T04:35:52Z",
+              "completed_at": "2026-07-26T04:35:53Z"
             },
             {
               "name": "Initialize containers",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:03:37Z",
-              "completed_at": "2026-07-26T04:04:03Z"
+              "started_at": "2026-07-26T04:35:53Z",
+              "completed_at": "2026-07-26T04:36:19Z"
             },
             {
               "name": "Run trusted browser Action",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:04:03Z",
-              "completed_at": "2026-07-26T04:04:08Z"
+              "started_at": "2026-07-26T04:36:19Z",
+              "completed_at": "2026-07-26T04:36:24Z"
             },
             {
               "name": "Upload bounded Evidence Bundle",
               "status": "completed",
               "conclusion": "success",
               "number": 4,
-              "started_at": "2026-07-26T04:04:08Z",
-              "completed_at": "2026-07-26T04:04:09Z"
+              "started_at": "2026-07-26T04:36:24Z",
+              "completed_at": "2026-07-26T04:36:25Z"
             },
             {
               "name": "Stop containers",
               "status": "completed",
               "conclusion": "success",
               "number": 8,
-              "started_at": "2026-07-26T04:04:09Z",
-              "completed_at": "2026-07-26T04:04:09Z"
+              "started_at": "2026-07-26T04:36:25Z",
+              "completed_at": "2026-07-26T04:36:26Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 9,
-              "started_at": "2026-07-26T04:04:09Z",
-              "completed_at": "2026-07-26T04:04:09Z"
+              "started_at": "2026-07-26T04:36:26Z",
+              "completed_at": "2026-07-26T04:36:26Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753774194",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756099339",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000573,
-          "runner_name": "GitHub Actions 1000000573",
+          "runner_id": 1000000620,
+          "runner_name": "GitHub Actions 1000000620",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753845455,
-          "run_id": 30187151487,
+          "id": 89756151608,
+          "run_id": 30188026590,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187151487",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188026590",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b7-zw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753845455",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187151487/job/89753845455",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eIvOA",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756151608",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188026590/job/89756151608",
           "status": "completed",
           "conclusion": "failure",
-          "created_at": "2026-07-26T04:04:11Z",
-          "started_at": "2026-07-26T04:04:15Z",
-          "completed_at": "2026-07-26T04:04:30Z",
+          "created_at": "2026-07-26T04:36:28Z",
+          "started_at": "2026-07-26T04:36:31Z",
+          "completed_at": "2026-07-26T04:36:43Z",
           "name": "audit / Validate and publish",
           "steps": [
             {
@@ -2862,64 +2804,64 @@
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-07-26T04:04:16Z",
-              "completed_at": "2026-07-26T04:04:18Z"
+              "started_at": "2026-07-26T04:36:32Z",
+              "completed_at": "2026-07-26T04:36:34Z"
             },
             {
               "name": "Download untrusted browser artifacts",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-07-26T04:04:18Z",
-              "completed_at": "2026-07-26T04:04:19Z"
+              "started_at": "2026-07-26T04:36:34Z",
+              "completed_at": "2026-07-26T04:36:34Z"
             },
             {
               "name": "Start independent control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-07-26T04:04:19Z",
-              "completed_at": "2026-07-26T04:04:26Z"
+              "started_at": "2026-07-26T04:36:34Z",
+              "completed_at": "2026-07-26T04:36:39Z"
             },
             {
               "name": "Validate and publish through GitHub OIDC",
               "status": "completed",
               "conclusion": "failure",
               "number": 4,
-              "started_at": "2026-07-26T04:04:26Z",
-              "completed_at": "2026-07-26T04:04:28Z"
+              "started_at": "2026-07-26T04:36:39Z",
+              "completed_at": "2026-07-26T04:36:42Z"
             },
             {
               "name": "Upload content-free proof receipts",
               "status": "completed",
               "conclusion": "skipped",
               "number": 5,
-              "started_at": "2026-07-26T04:04:28Z",
-              "completed_at": "2026-07-26T04:04:28Z"
+              "started_at": "2026-07-26T04:36:42Z",
+              "completed_at": "2026-07-26T04:36:42Z"
             },
             {
               "name": "Stop control-plane verifier",
               "status": "completed",
               "conclusion": "success",
               "number": 6,
-              "started_at": "2026-07-26T04:04:28Z",
-              "completed_at": "2026-07-26T04:04:28Z"
+              "started_at": "2026-07-26T04:36:42Z",
+              "completed_at": "2026-07-26T04:36:42Z"
             },
             {
               "name": "Complete job",
               "status": "completed",
               "conclusion": "success",
               "number": 7,
-              "started_at": "2026-07-26T04:04:28Z",
-              "completed_at": "2026-07-26T04:04:28Z"
+              "started_at": "2026-07-26T04:36:42Z",
+              "completed_at": "2026-07-26T04:36:42Z"
             }
           ],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753845455",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756151608",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 1000000576,
-          "runner_name": "GitHub Actions 1000000576",
+          "runner_id": 1000000629,
+          "runner_name": "GitHub Actions 1000000629",
           "runner_group_id": 0,
           "runner_group_name": "GitHub Actions"
         }
@@ -2928,25 +2870,25 @@
     {
       "scenario": "cancellation",
       "run": {
-        "id": 30187154028,
+        "id": 30188040421,
         "name": "Customer accessibility audit",
-        "node_id": "WFR_kwLOLSt8hc8AAAAHB0tqbA",
+        "node_id": "WFR_kwLOLSt8hc8AAAAHB1jw5Q",
         "head_branch": "main",
-        "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
         "path": ".github/workflows/a11y-audit.yml",
         "display_title": "Customer accessibility audit",
-        "run_number": 15,
+        "run_number": 29,
         "event": "workflow_dispatch",
         "status": "completed",
         "conclusion": "cancelled",
         "workflow_id": 320573479,
-        "check_suite_id": 81806287853,
-        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDAjj7Q",
-        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028",
-        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187154028",
+        "check_suite_id": 81808546847,
+        "check_suite_node_id": "CS_kwDOLSt8hc8AAAATDCtcHw",
+        "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+        "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
         "pull_requests": [],
-        "created_at": "2026-07-26T04:03:11Z",
-        "updated_at": "2026-07-26T04:03:16Z",
+        "created_at": "2026-07-26T04:36:02Z",
+        "updated_at": "2026-07-26T04:36:22Z",
         "actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2971,11 +2913,11 @@
         "run_attempt": 1,
         "referenced_workflows": [
           {
-            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
-            "sha": "c948552040b0226c7eb75795ad24f339bd25bf38"
+            "path": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+            "sha": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52"
           }
         ],
-        "run_started_at": "2026-07-26T04:03:11Z",
+        "run_started_at": "2026-07-26T04:36:02Z",
         "triggering_actor": {
           "login": "guillermo-rebolledo",
           "id": 47798232,
@@ -2997,19 +2939,19 @@
           "user_view_type": "public",
           "site_admin": false
         },
-        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/jobs",
-        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/logs",
-        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81806287853",
-        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/artifacts",
-        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/cancel",
-        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/rerun",
+        "jobs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/jobs",
+        "logs_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/logs",
+        "check_suite_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-suites/81808546847",
+        "artifacts_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/artifacts",
+        "cancel_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/cancel",
+        "rerun_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/rerun",
         "previous_attempt_url": null,
         "workflow_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/workflows/320573479",
         "head_commit": {
-          "id": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "tree_id": "4125492a22394698d406ca70f7df48ad784dc276",
-          "message": "ci: use OIDC handoff audit release",
-          "timestamp": "2026-07-26T04:00:08Z",
+          "id": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "tree_id": "716077024fd9596a183b7fed15f165bf4c9daf42",
+          "message": "Pin verifier-owned trust policy release",
+          "timestamp": "2026-07-26T04:33:17Z",
           "author": {
             "name": "Guillermo Rebolledo",
             "email": "gortiz.dev+dev@gmail.com"
@@ -3158,78 +3100,456 @@
       },
       "jobs": [
         {
-          "id": 89753772701,
-          "run_id": 30187154028,
+          "id": 89756124049,
+          "run_id": 30188040421,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3inQ",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753772701",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/job/89753772701",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHDkQ",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756124049",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756124049",
           "status": "completed",
-          "conclusion": "cancelled",
-          "created_at": "2026-07-26T04:03:13Z",
-          "started_at": "2026-07-26T04:03:13Z",
-          "completed_at": "2026-07-26T04:03:15Z",
+          "conclusion": "success",
+          "created_at": "2026-07-26T04:36:03Z",
+          "started_at": "2026-07-26T04:36:06Z",
+          "completed_at": "2026-07-26T04:36:08Z",
           "name": "audit / Gate authenticated execution",
-          "steps": [],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753772701",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:06Z",
+              "completed_at": "2026-07-26T04:36:06Z"
+            },
+            {
+              "name": "Select isolated Journey jobs",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:06Z",
+              "completed_at": "2026-07-26T04:36:06Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:06Z",
+              "completed_at": "2026-07-26T04:36:07Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756124049",
           "labels": [
             "ubuntu-24.04"
           ],
-          "runner_id": 0,
-          "runner_name": "",
+          "runner_id": 1000000621,
+          "runner_name": "GitHub Actions 1000000621",
           "runner_group_id": 0,
-          "runner_group_name": ""
+          "runner_group_name": "GitHub Actions"
         },
         {
-          "id": 89753775699,
-          "run_id": 30187154028,
+          "id": 89756129610,
+          "run_id": 30188040421,
           "workflow_name": "Customer accessibility audit",
           "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
           "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3uUw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753775699",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/job/89753775699",
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHZSg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756129610",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756129610",
           "status": "completed",
           "conclusion": "cancelled",
-          "created_at": "2026-07-26T04:03:16Z",
-          "started_at": "2026-07-26T04:03:16Z",
-          "completed_at": "2026-07-26T04:03:15Z",
+          "created_at": "2026-07-26T04:36:08Z",
+          "started_at": "2026-07-26T04:36:14Z",
+          "completed_at": "2026-07-26T04:36:20Z",
+          "name": "audit / Browser Journey 2",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:14Z",
+              "completed_at": "2026-07-26T04:36:15Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:15Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 4,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756129610",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000622,
+          "runner_name": "GitHub Actions 1000000622",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756129611,
+          "run_id": 30188040421,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHZSw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756129611",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756129611",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:36:08Z",
+          "started_at": "2026-07-26T04:36:14Z",
+          "completed_at": "2026-07-26T04:36:21Z",
+          "name": "audit / Browser Journey 1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:15Z",
+              "completed_at": "2026-07-26T04:36:16Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:16Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 4,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756129611",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000623,
+          "runner_name": "GitHub Actions 1000000623",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756129617,
+          "run_id": 30188040421,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHZUQ",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756129617",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756129617",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:36:08Z",
+          "started_at": "2026-07-26T04:36:14Z",
+          "completed_at": "2026-07-26T04:36:20Z",
+          "name": "audit / Browser Journey 4",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:14Z",
+              "completed_at": "2026-07-26T04:36:15Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:15Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 4,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756129617",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000624,
+          "runner_name": "GitHub Actions 1000000624",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756129630,
+          "run_id": 30188040421,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHZXg",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756129630",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756129630",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:36:08Z",
+          "started_at": "2026-07-26T04:36:13Z",
+          "completed_at": "2026-07-26T04:36:19Z",
+          "name": "audit / Browser Journey 5",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:14Z",
+              "completed_at": "2026-07-26T04:36:15Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:15Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 4,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:36:19Z",
+              "completed_at": "2026-07-26T04:36:19Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756129630",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000625,
+          "runner_name": "GitHub Actions 1000000625",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756129639,
+          "run_id": 30188040421,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eHZZw",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756129639",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756129639",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:36:08Z",
+          "started_at": "2026-07-26T04:36:14Z",
+          "completed_at": "2026-07-26T04:36:21Z",
+          "name": "audit / Browser Journey 3",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-07-26T04:36:14Z",
+              "completed_at": "2026-07-26T04:36:15Z"
+            },
+            {
+              "name": "Initialize containers",
+              "status": "completed",
+              "conclusion": "cancelled",
+              "number": 2,
+              "started_at": "2026-07-26T04:36:15Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Run trusted browser Action",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 3,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Upload bounded Evidence Bundle",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 4,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:18Z"
+            },
+            {
+              "name": "Stop containers",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-07-26T04:36:18Z",
+              "completed_at": "2026-07-26T04:36:19Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-07-26T04:36:19Z",
+              "completed_at": "2026-07-26T04:36:19Z"
+            }
+          ],
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756129639",
+          "labels": [
+            "ubuntu-24.04"
+          ],
+          "runner_id": 1000000626,
+          "runner_name": "GitHub Actions 1000000626",
+          "runner_group_id": 0,
+          "runner_group_name": "GitHub Actions"
+        },
+        {
+          "id": 89756143705,
+          "run_id": 30188040421,
+          "workflow_name": "Customer accessibility audit",
+          "head_branch": "main",
+          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30188040421",
+          "run_attempt": 1,
+          "node_id": "CR_kwDOLSt8hc8AAAAU5eIQWQ",
+          "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89756143705",
+          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421/job/89756143705",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "created_at": "2026-07-26T04:36:21Z",
+          "started_at": "2026-07-26T04:36:21Z",
+          "completed_at": "2026-07-26T04:36:21Z",
           "name": "audit / Validate and publish",
           "steps": [],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753775699",
-          "labels": [
-            "ubuntu-24.04"
-          ],
-          "runner_id": null,
-          "runner_name": null,
-          "runner_group_id": null,
-          "runner_group_name": null
-        },
-        {
-          "id": 89753775711,
-          "run_id": 30187154028,
-          "workflow_name": "Customer accessibility audit",
-          "head_branch": "main",
-          "run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/runs/30187154028",
-          "run_attempt": 1,
-          "node_id": "CR_kwDOLSt8hc8AAAAU5b3uXw",
-          "head_sha": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
-          "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/jobs/89753775711",
-          "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187154028/job/89753775711",
-          "status": "completed",
-          "conclusion": "cancelled",
-          "created_at": "2026-07-26T04:03:16Z",
-          "started_at": "2026-07-26T04:03:16Z",
-          "completed_at": "2026-07-26T04:03:15Z",
-          "name": "audit / Browser Journey ${{ matrix.journey-index }}",
-          "steps": [],
-          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89753775711",
+          "check_run_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/check-runs/89756143705",
           "labels": [
             "ubuntu-24.04"
           ],

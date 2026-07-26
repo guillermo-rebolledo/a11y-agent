@@ -22,12 +22,12 @@ jobs:
   audit:
     permissions:
       id-token: write
-    uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+    uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
     with:
       audit-run-id: audit-${{ github.run_id }}
       journey-id: journey-invite-member
       commit-sha: ${{ github.sha }}
-      trusted-workflow-sha: c948552040b0226c7eb75795ad24f339bd25bf38
+      trusted-workflow-sha: 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
       scenario: ${{ inputs.scenario }}
     secrets:
       synthetic-login-email: ${{ secrets.SYNTHETIC_LOGIN_EMAIL }}

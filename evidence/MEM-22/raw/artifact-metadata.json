@@ -1,1 +1,125 @@
-{"total_count":6,"artifacts":[{"id":8627364632,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzY0NjMy","name":"publication-receipts","size_in_bytes":569,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627364632","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627364632/zip","expired":false,"digest":"sha256:b6683d81cde955ce1799fcae6065995058abfbf98b1461239f08d9a41b9cb820","created_at":"2026-07-26T04:02:24Z","updated_at":"2026-07-26T04:02:24Z","expires_at":"2026-07-27T04:02:23Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}},{"id":8627362521,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzYyNTIx","name":"evidence-1","size_in_bytes":1566,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362521","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362521/zip","expired":false,"digest":"sha256:456dfc894843d1c8a654ed666ca44bd5706dbfbffd0a19b37980d077b337087b","created_at":"2026-07-26T04:02:07Z","updated_at":"2026-07-26T04:02:07Z","expires_at":"2026-07-27T04:02:06Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}},{"id":8627362330,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzYyMzMw","name":"evidence-3","size_in_bytes":1566,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362330","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362330/zip","expired":false,"digest":"sha256:2dd6a38a0c7523fe07b9a6129f77ace128b7ccd8e49206c15083686233f214ef","created_at":"2026-07-26T04:02:05Z","updated_at":"2026-07-26T04:02:05Z","expires_at":"2026-07-27T04:02:05Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}},{"id":8627362294,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzYyMjk0","name":"evidence-4","size_in_bytes":1566,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362294","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362294/zip","expired":false,"digest":"sha256:15f10e82bbfb9f726939d2ea0c4bc15c809f57388fc37a8c0f88788dbef9d02f","created_at":"2026-07-26T04:02:05Z","updated_at":"2026-07-26T04:02:05Z","expires_at":"2026-07-27T04:02:05Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}},{"id":8627362122,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzYyMTIy","name":"evidence-2","size_in_bytes":1566,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362122","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362122/zip","expired":false,"digest":"sha256:7c373f3786c7cc230047c7d83ee4b0f0c1dab781cd4145ad9a9e5dd9127eada1","created_at":"2026-07-26T04:02:04Z","updated_at":"2026-07-26T04:02:04Z","expires_at":"2026-07-27T04:02:03Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}},{"id":8627362002,"node_id":"MDg6QXJ0aWZhY3Q4NjI3MzYyMDAy","name":"evidence-5","size_in_bytes":1566,"url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362002","archive_download_url":"https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627362002/zip","expired":false,"digest":"sha256:8ca3e8a537d4d4be9bb877d115ba4eea71fcad99b70dd07639c26bdcd05d7bb7","created_at":"2026-07-26T04:02:03Z","updated_at":"2026-07-26T04:02:03Z","expires_at":"2026-07-27T04:02:02Z","workflow_run":{"id":30187062811,"repository_id":757824645,"head_repository_id":757824645,"head_branch":"main","head_sha":"5a04cc51f430392cc2aceb39e7b2c40d3050ad7f"}}]}
+{
+  "capturedAt": "2026-07-26T04:37:37Z",
+  "artifacts": [
+    {
+      "id": 8627627186,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI3MTg2",
+      "name": "publication-receipts",
+      "size_in_bytes": 573,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627627186",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627627186/zip",
+      "expired": false,
+      "digest": "sha256:1e5b44714599ef6297ddf2a3cf69ad188ad45d40aef387fa9af1a10b7a90bf41",
+      "created_at": "2026-07-26T04:34:51Z",
+      "updated_at": "2026-07-26T04:34:51Z",
+      "expires_at": "2026-07-27T04:34:50Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    },
+    {
+      "id": 8627624931,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI0OTMx",
+      "name": "evidence-2",
+      "size_in_bytes": 1651,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624931",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624931/zip",
+      "expired": false,
+      "digest": "sha256:4599519723cb43553bd093b47da3eba2b76a8e4659fafa5cec49862257bbe5b8",
+      "created_at": "2026-07-26T04:34:32Z",
+      "updated_at": "2026-07-26T04:34:32Z",
+      "expires_at": "2026-07-27T04:34:31Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    },
+    {
+      "id": 8627624644,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI0NjQ0",
+      "name": "evidence-1",
+      "size_in_bytes": 1650,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624644",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624644/zip",
+      "expired": false,
+      "digest": "sha256:bbe7db16528343ac0006670b6ed3981272ebc08212a8dc929dea081419287958",
+      "created_at": "2026-07-26T04:34:29Z",
+      "updated_at": "2026-07-26T04:34:29Z",
+      "expires_at": "2026-07-27T04:34:29Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    },
+    {
+      "id": 8627624367,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI0MzY3",
+      "name": "evidence-3",
+      "size_in_bytes": 1651,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624367",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624367/zip",
+      "expired": false,
+      "digest": "sha256:ad711b0e4c8a3ccc5f90b8ffb26bf9fb3692a16a64e5679bf3f73a9a2de73ac6",
+      "created_at": "2026-07-26T04:34:27Z",
+      "updated_at": "2026-07-26T04:34:27Z",
+      "expires_at": "2026-07-27T04:34:27Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    },
+    {
+      "id": 8627624282,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI0Mjgy",
+      "name": "evidence-5",
+      "size_in_bytes": 1651,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624282",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624282/zip",
+      "expired": false,
+      "digest": "sha256:a6f9106c0452a280dd78751f0db9e85fd6444555e9e30aabf416919ea83639c4",
+      "created_at": "2026-07-26T04:34:27Z",
+      "updated_at": "2026-07-26T04:34:27Z",
+      "expires_at": "2026-07-27T04:34:27Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    },
+    {
+      "id": 8627624057,
+      "node_id": "MDg6QXJ0aWZhY3Q4NjI3NjI0MDU3",
+      "name": "evidence-4",
+      "size_in_bytes": 1651,
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624057",
+      "archive_download_url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/actions/artifacts/8627624057/zip",
+      "expired": false,
+      "digest": "sha256:a84e59f4e76a44f08afec21aefecb1d5255e79aa6567f45d10735342fff94b92",
+      "created_at": "2026-07-26T04:34:25Z",
+      "updated_at": "2026-07-26T04:34:25Z",
+      "expires_at": "2026-07-27T04:34:24Z",
+      "workflow_run": {
+        "id": 30187979088,
+        "repository_id": 757824645,
+        "head_repository_id": 757824645,
+        "head_branch": "main",
+        "head_sha": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf"
+      }
+    }
+  ]
+}

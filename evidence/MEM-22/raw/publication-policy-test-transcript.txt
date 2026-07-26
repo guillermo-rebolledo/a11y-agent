@@ -1,0 +1,19 @@
+
+ RUN  v4.1.10 /Users/guillermoortizrebolledo/dev/a11y-agent
+
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > builds proof policy from verifier-owned trust, not token claims 2ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > accepts a matching fresh identity exactly once 2ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong repository identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong workflow identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong ref identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong environment identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong audience identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects the wrong commit identity 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects expired and revoked identities 0ms
+ ✓ src/mem-22/publication.test.ts > MEM-22 publication boundary > rejects a replay after the verifier store is recreated 3ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  22:38:06
+   Duration  255ms (transform 37ms, setup 0ms, import 110ms, tests 9ms, environment 0ms)
+
