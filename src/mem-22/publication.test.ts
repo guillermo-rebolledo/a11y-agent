@@ -146,12 +146,22 @@ describe("MEM-22 publication boundary", () => {
   });
 
   it.each([
+    ["issuer", { iss: "https://issuer.attacker.example" }],
+    ["subject", { sub: "repo:attacker/example:environment:a11y-synthetic" }],
     ["repository", { repository: "attacker/example" }],
+    ["repository id", { repository_id: "111111" }],
+    ["organization", { repository_owner: "attacker" }],
+    ["organization id", { repository_owner_id: "111111" }],
+    ["caller workflow", { workflow_ref: "attacker/example/.github/workflows/a.yml@refs/heads/main" }],
     ["workflow", { job_workflow_ref: "attacker/action/.github/workflows/x.yml@main" }],
+    ["workflow sha", { job_workflow_sha: "f".repeat(40) }],
     ["ref", { ref: "refs/heads/attacker" }],
     ["environment", { environment: "unprotected" }],
     ["audience", { aud: "https://attacker.example" }],
     ["commit", { sha: "f".repeat(40) }],
+    ["caller workflow commit", { workflow_sha: "f".repeat(40) }],
+    ["run", { run_id: "999999999" }],
+    ["run attempt", { run_attempt: "2" }],
   ])("rejects the wrong %s identity", async (_name, claimPatch) => {
     await expect(
       acceptPublication({

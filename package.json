@@ -14,7 +14,8 @@
     "build:extension": "node apps/extension/scripts/clean.mjs && tsc -p apps/extension/tsconfig.json && node apps/extension/scripts/assemble.mjs",
     "package:extension": "pnpm build:extension && node apps/extension/scripts/package.mjs",
     "proof:mem-7": "tsx src/mem-7/cli.ts run",
-    "proof:mem-7:verify": "tsx src/mem-7/cli.ts verify"
+    "proof:mem-7:verify": "tsx src/mem-7/cli.ts verify",
+    "proof:mem-9:verify": "vitest run src/mem-22/evidence-bundle.test.ts src/mem-22/publication.test.ts src/mem-22/action-contract.test.ts src/mem-9"
   },
   "dependencies": {
     "@vercel/sandbox": "2.9.0",
