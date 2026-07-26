@@ -1,0 +1,3 @@
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:04:04.0447677Z     throw new Error("Deliberate MEM-22 runner failure");
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:04:04.0449330Z Error: Deliberate MEM-22 runner failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:04:04.0759846Z ##[error]Process completed with exit code 1.

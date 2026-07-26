@@ -1,0 +1,9 @@
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:13.5012307Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:13.5173281Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:18.3027659Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.6232694Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.6303569Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:20.2016503Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:21.5157639Z     throw new Error("Deliberate MEM-22 publisher failure");
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:21.5158226Z Error: Deliberate MEM-22 publisher failure
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:21.5450851Z ##[error]Process completed with exit code 1.

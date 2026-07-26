@@ -1,0 +1,79 @@
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:01:22.0068518Z ##[group]GITHUB_TOKEN Permissions
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:01:22.0070586Z Metadata: read
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:01:22.0527742Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:31.6530128Z ##[group]GITHUB_TOKEN Permissions
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:31.6532281Z Metadata: read
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:31.9086041Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:32.7900096Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:33.0499732Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:59.4762864Z Digest: sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:01:59.4864575Z ##[command]/usr/bin/docker create --name 83972387eaa24b84a9c2dfbbb796e9e2_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_67f9e5 --label f44ffa --workdir /__w/a11y-demo/a11y-demo --network github_network_b8d794a29bce4b08a87a119fc966cdef --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:00.1590871Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:00.1591322Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:00.1693444Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:00.1693900Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:02.5452082Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:02:02.5452514Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:32.0844333Z ##[group]GITHUB_TOKEN Permissions
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:32.0846726Z Metadata: read
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:32.4274433Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:32.8953252Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:33.1142388Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.2176426Z Digest: sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.2283390Z ##[command]/usr/bin/docker create --name 0f299e1989004c58b61d787d5ca52ce5_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_5d5771 --label b5f45a --workdir /__w/a11y-demo/a11y-demo --network github_network_c856fc8eece045a5849bf7e839bdb36d --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.5152052Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.5152506Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.5266322Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:01:59.5266784Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:02:02.3694495Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:02:02.3694937Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:31.9066947Z ##[group]GITHUB_TOKEN Permissions
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:31.9069375Z Metadata: read
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:32.1717013Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:32.4419972Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:32.6602714Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.3687122Z Digest: sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.3789498Z ##[command]/usr/bin/docker create --name 73c3e30011ef4272986994a1431d9a9a_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_de4528 --label d1418a --workdir /__w/a11y-demo/a11y-demo --network github_network_c8a16cb69bcd4ea98487b06e49f0f739 --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.6328206Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.6328709Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.6430680Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:01:57.6431191Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:02:00.0228581Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:02:00.0229022Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:01:33.3137179Z ##[group]GITHUB_TOKEN Permissions
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:01:33.3139465Z Metadata: read
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:01:33.7020338Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:01:34.2225094Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:01:34.4352124Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:00.8731946Z Digest: sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:00.8833662Z ##[command]/usr/bin/docker create --name c95ea1b45d3b42ad89b68c1f6d0a64c4_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_6eea9e --label 27df4f --workdir /__w/a11y-demo/a11y-demo --network github_network_43f5fb9af49b4db599a46c015ab2edd9 --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:01.1685785Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:01.1686224Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:01.1794270Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:01.1794961Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:03.8431457Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:02:03.8431893Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:31.8449884Z ##[group]GITHUB_TOKEN Permissions
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:31.8452140Z Metadata: read
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:32.1067128Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:32.3305313Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:32.5503314Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.5614935Z Digest: sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.5735609Z ##[command]/usr/bin/docker create --name dd5cb80e985f468e91989bc283fada13_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_6efb24 --label b08b81 --workdir /__w/a11y-demo/a11y-demo --network github_network_0a8f72f1beb74f1b9ba077472865cec4 --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.8587077Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.8587581Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.8706633Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:01:57.8707140Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:02:00.9629634Z   SYNTHETIC_LOGIN_EMAIL: ***
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:02:00.9630104Z   SYNTHETIC_LOGIN_PASSWORD: ***
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:14.1158784Z ##[group]GITHUB_TOKEN Permissions
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:14.1160452Z Metadata: read
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:14.3333437Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:15.2980043Z Download action repository 'guillermo-rebolledo/a11y-agent@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18' (SHA:a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:15.6596809Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.5750930Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.8986799Z - evidence-1 (ID: 8627362521, Size: 1566, Expected Digest: sha256:456dfc894843d1c8a654ed666ca44bd5706dbfbffd0a19b37980d077b337087b)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.8987869Z - evidence-3 (ID: 8627362330, Size: 1566, Expected Digest: sha256:2dd6a38a0c7523fe07b9a6129f77ace128b7ccd8e49206c15083686233f214ef)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.8988491Z - evidence-4 (ID: 8627362294, Size: 1566, Expected Digest: sha256:15f10e82bbfb9f726939d2ea0c4bc15c809f57388fc37a8c0f88788dbef9d02f)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.8989180Z - evidence-2 (ID: 8627362122, Size: 1566, Expected Digest: sha256:7c373f3786c7cc230047c7d83ee4b0f0c1dab781cd4145ad9a9e5dd9127eada1)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:02:16.8989996Z - evidence-5 (ID: 8627362002, Size: 1566, Expected Digest: sha256:8ca3e8a537d4d4be9bb877d115ba4eea71fcad99b70dd07639c26bdcd05d7bb7)

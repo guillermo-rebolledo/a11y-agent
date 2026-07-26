@@ -1,0 +1,34 @@
+name: Customer accessibility audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: Fixed MEM-22 proof scenario
+        type: choice
+        required: true
+        default: success
+        options:
+          - success
+          - runner-failure
+          - timeout
+          - malformed-artifact
+          - publisher-failure
+          - oidc-revoked
+
+permissions: {}
+
+jobs:
+  audit:
+    permissions:
+      id-token: write
+    uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38
+    with:
+      audit-run-id: audit-${{ github.run_id }}
+      journey-id: journey-invite-member
+      commit-sha: ${{ github.sha }}
+      trusted-workflow-sha: c948552040b0226c7eb75795ad24f339bd25bf38
+      scenario: ${{ inputs.scenario }}
+    secrets:
+      synthetic-login-email: ${{ secrets.SYNTHETIC_LOGIN_EMAIL }}
+      synthetic-login-password: ${{ secrets.SYNTHETIC_LOGIN_PASSWORD }}

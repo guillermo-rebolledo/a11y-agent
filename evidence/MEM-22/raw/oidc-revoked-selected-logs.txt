@@ -1,0 +1,13 @@
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:17.9720218Z   scenario: oidc-revoked
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.0364410Z   scenario: oidc-revoked
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.0367008Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.0566630Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:24.7049539Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:24.7055499Z   A11Y_PROOF_SCENARIO: oidc-revoked
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:26.0193199Z   scenario: oidc-revoked
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:26.0193725Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:26.0255309Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:26.5945816Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:26.5948516Z   A11Y_PROOF_SCENARIO: oidc-revoked
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:28.4653161Z Error: Control plane rejected publication with HTTP 403: {"error":"OIDC publication trust is revoked"}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:28.4909087Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,9 @@
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:15.1576576Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:15.2816553Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:19.1453790Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:20.4568629Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:20.4619896Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:21.0134605Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:22.1092834Z     throw new Error(`${path} contains unknown field: ${unknown}`);
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:22.1094250Z Error: Evidence Bundle contains unknown field: unsupportedField
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:04:22.1287751Z ##[error]Process completed with exit code 1.

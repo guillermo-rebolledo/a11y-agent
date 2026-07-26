@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "auditRunId": "audit-30187062811",
+  "journeyId": "journey-invite-member-4",
+  "status": "passed",
+  "terminalReason": "completed",
+  "createdAt": "2026-07-26T04:02:04.869Z",
+  "expiresAt": "2026-07-26T04:17:04.869Z",
+  "publicationNonce": "pub-b0eb06f5-d464-4b6b-b468-61ec525a4e32",
+  "provenance": {
+    "auditEngine": "0.0.0+mem22",
+    "playwright": "1.61.1",
+    "chromium": "149.0.7827.55",
+    "axe": "4.12.1",
+    "image": "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48",
+    "action": "guillermo-rebolledo/a11y-agent/packages/action@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18",
+    "workflow": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@c948552040b0226c7eb75795ad24f339bd25bf38",
+    "repository": "guillermo-rebolledo/a11y-demo",
+    "commit": "5a04cc51f430392cc2aceb39e7b2c40d3050ad7f",
+    "runId": "30187062811",
+    "runAttempt": 1,
+    "runnerEnvironment": "github-hosted",
+    "runnerArchitecture": "X64"
+  },
+  "assertions": [
+    {
+      "id": "synthetic-authentication-established",
+      "status": "passed"
+    },
+    {
+      "id": "invitation-status-visible",
+      "status": "passed"
+    },
+    {
+      "id": "session-material-absent",
+      "status": "passed"
+    }
+  ],
+  "findings": [],
+  "measurements": {
+    "startupMs": 166,
+    "runtimeMs": 1103,
+    "actionMinutes": 0.0184
+  }
+}
