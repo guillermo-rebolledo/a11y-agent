@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Accessibility Journey Recorder</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Journey Recorder</h1>
+
+      <p id="status" class="status" role="status" aria-live="polite">
+        Recorder disconnected
+      </p>
+
+      <form id="origin-form">
+        <label for="approved-origin">Approved Project origin</label>
+        <input
+          id="approved-origin"
+          name="approvedOrigin"
+          type="url"
+          inputmode="url"
+          placeholder="https://pilot.example"
+          required
+        />
+        <button type="submit">Save approved origin</button>
+      </form>
+
+      <section aria-labelledby="controls-heading">
+        <h2 id="controls-heading">Recorder controls</h2>
+        <div class="controls">
+          <button id="start" type="button">Start in selected tab</button>
+          <button id="pause" type="button">Pause</button>
+          <button id="resume" type="button">Resume</button>
+          <button id="disconnect" type="button">Disconnect</button>
+        </div>
+      </section>
+
+      <section aria-labelledby="actions-heading">
+        <h2 id="actions-heading">Action log</h2>
+        <ol id="actions" aria-label="Recorded semantic actions"></ol>
+        <p id="empty-actions">No actions recorded.</p>
+      </section>
+
+      <section aria-labelledby="assertions-heading">
+        <h2 id="assertions-heading">Task-completion assertions</h2>
+        <ul id="assertions"></ul>
+        <p id="empty-assertions">No assertion suggested yet.</p>
+      </section>
+
+      <form id="export-form">
+        <label for="journey-name">Journey name</label>
+        <input id="journey-name" name="journeyName" maxlength="120" required />
+        <button type="submit">Export confirmed Journey draft</button>
+      </form>
+    </main>
+    <script src="dist/popup.js" type="module"></script>
+  </body>
+</html>

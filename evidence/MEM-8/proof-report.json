@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-8",
+  "result": "partial",
+  "observedAt": "2026-07-26T03:15:00.000Z",
+  "environment": {
+    "browser": "Google Chrome",
+    "platform": "macOS",
+    "extensionVersion": "0.1.0",
+    "extensionId": "ccpmglapnacdcimhdfjkimemglbaidgk",
+    "artifactSha256": "909176fceb3f2da39e52e7a685260064df66a78242eb5b77c9d7d4e913afdbc1"
+  },
+  "permissions": {
+    "requested": ["activeTab", "scripting", "storage"],
+    "hostPermissions": [],
+    "confirmedAbsent": [
+      "cookies",
+      "proxy",
+      "history",
+      "downloads",
+      "debugger"
+    ]
+  },
+  "measurements": {
+    "installationDurationMs": 13000,
+    "installationDurationMethod": "Approximate sum of observed automated Chrome UI interaction time; excludes one-time macOS Computer Use permission setup.",
+    "firstActionLatencyMs": 12637,
+    "expectedActionCount": 5,
+    "capturedActionCount": 5,
+    "captureAccuracy": 1,
+    "reconnectAttemptCount": 1,
+    "reconnectOutcome": "passed",
+    "recordingDurationMs": 36158,
+    "timeToFirstPublishedJourneyMs": null
+  },
+  "assertions": [
+    {
+      "id": "integrity-checked-private-pilot-artifact",
+      "status": "passed",
+      "evidence": "Reproducible ZIP packaged with SHA-256 verification."
+    },
+    {
+      "id": "explicit-selected-tab-approved-origin",
+      "status": "passed",
+      "evidence": "Command+Shift+Y user gesture; exact http://localhost:4173 origin; activeTab only."
+    },
+    {
+      "id": "semantic-and-fallback-capture",
+      "status": "passed",
+      "evidence": "Role/name, test ID, and explicitly marked last-resort CSS actions captured in the representative Journey."
+    },
+    {
+      "id": "entered-value-redaction",
+      "status": "passed",
+      "evidence": "The entered synthetic email is absent from the exported draft; only runtime-variable intent and input type remain."
+    },
+    {
+      "id": "accessible-controls-and-status",
+      "status": "passed",
+      "evidence": "macOS Accessibility and VoiceOver exposed named headings, fields, buttons, lists, recording/paused/disconnected/error/export status, and ordered action descriptions."
+    },
+    {
+      "id": "keyboard-only-representative-journey",
+      "status": "passed",
+      "evidence": "Extension action opened with Command+Shift+Y; representative application Journey completed with Tab, typing, and Return."
+    },
+    {
+      "id": "confirmed-assertion-schema-valid-export",
+      "status": "passed",
+      "evidence": "Invitation sent assertion explicitly confirmed; evidence/MEM-8/journey-draft.json exported and validated."
+    },
+    {
+      "id": "pinned-action-replay-and-first-publication",
+      "status": "blocked",
+      "evidence": "Requires MEM-22 customer-executed GitHub Action auditing."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "name": "Invite synthetic teammate",
+  "approvedOrigin": "http://localhost:4173",
+  "steps": [
+    {
+      "kind": "fill",
+      "locator": {
+        "strategy": "role",
+        "role": "textbox",
+        "name": "Email"
+      },
+      "input": {
+        "source": "runtime-variable",
+        "inputType": "email"
+      }
+    },
+    {
+      "kind": "click",
+      "locator": {
+        "strategy": "role",
+        "role": "button",
+        "name": "Invite member"
+      }
+    },
+    {
+      "kind": "click",
+      "locator": {
+        "strategy": "test-id",
+        "testId": "choose-standard-role"
+      }
+    },
+    {
+      "kind": "click",
+      "locator": {
+        "strategy": "css",
+        "selector": "main > div:nth-of-type(2)",
+        "lastResort": true
+      }
+    },
+    {
+      "kind": "click",
+      "locator": {
+        "strategy": "role",
+        "role": "button",
+        "name": "Send invitation"
+      }
+    }
+  ],
+  "expect": [
+    {
+      "kind": "text-visible",
+      "text": "Invitation sent"
+    }
+  ],
+  "measurements": {
+    "firstActionLatencyMs": 12637,
+    "reconnectCount": 0,
+    "recordingDurationMs": 36158
+  }
+}

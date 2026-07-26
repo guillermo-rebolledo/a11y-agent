@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Accessibility Journey Recorder",
+  "description": "Records redacted semantic Journey drafts in an approved Project tab.",
+  "version": "0.1.0",
+  "minimum_chrome_version": "120",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_title": "Open Accessibility Journey Recorder",
+    "default_popup": "popup.html"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open the Accessibility Journey Recorder"
+    }
+  },
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'"
+  }
+}
