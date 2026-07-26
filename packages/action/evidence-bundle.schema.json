@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.a11y-agent.example/evidence-bundle/v1.json",
+  "title": "A11y Agent Evidence Bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "auditRunId",
+    "journeyId",
+    "status",
+    "terminalReason",
+    "createdAt",
+    "expiresAt",
+    "publicationNonce",
+    "provenance",
+    "assertions",
+    "findings",
+    "measurements"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "auditRunId": { "$ref": "#/$defs/opaqueId" },
+    "journeyId": { "$ref": "#/$defs/opaqueId" },
+    "status": {
+      "enum": ["passed", "failed", "crashed", "timed-out", "cancelled"]
+    },
+    "terminalReason": {
+      "enum": [
+        "completed",
+        "assertion-failed",
+        "runner-failure",
+        "timeout",
+        "operator-cancellation"
+      ]
+    },
+    "createdAt": { "type": "string", "format": "date-time", "maxLength": 32 },
+    "expiresAt": { "type": "string", "format": "date-time", "maxLength": 32 },
+    "publicationNonce": { "$ref": "#/$defs/opaqueId" },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "auditEngine",
+        "playwright",
+        "chromium",
+        "axe",
+        "image",
+        "action",
+        "workflow",
+        "repository",
+        "commit",
+        "runId",
+        "runAttempt",
+        "runnerEnvironment",
+        "runnerArchitecture"
+      ],
+      "properties": {
+        "auditEngine": { "$ref": "#/$defs/boundedString" },
+        "playwright": { "$ref": "#/$defs/boundedString" },
+        "chromium": { "$ref": "#/$defs/boundedString" },
+        "axe": { "$ref": "#/$defs/boundedString" },
+        "image": {
+          "type": "string",
+          "maxLength": 320,
+          "pattern": "^.+@sha256:[0-9a-f]{64}$"
+        },
+        "action": { "$ref": "#/$defs/immutableRef" },
+        "workflow": { "$ref": "#/$defs/immutableRef" },
+        "repository": { "$ref": "#/$defs/boundedString" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "runId": { "$ref": "#/$defs/boundedString" },
+        "runAttempt": { "type": "integer", "minimum": 1 },
+        "runnerEnvironment": { "const": "github-hosted" },
+        "runnerArchitecture": { "enum": ["X64", "ARM64"] }
+      }
+    },
+    "assertions": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "status"],
+        "properties": {
+          "id": { "$ref": "#/$defs/opaqueId" },
+          "status": { "enum": ["passed", "failed"] }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["ruleId", "impact", "checkpoint"],
+        "properties": {
+          "ruleId": { "$ref": "#/$defs/opaqueId" },
+          "impact": {
+            "type": ["string", "null"],
+            "enum": ["minor", "moderate", "serious", "critical", null]
+          },
+          "checkpoint": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startupMs", "runtimeMs", "actionMinutes"],
+      "properties": {
+        "startupMs": { "type": "number", "minimum": 0 },
+        "runtimeMs": { "type": "number", "minimum": 0 },
+        "actionMinutes": { "type": "number", "minimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "opaqueId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{2,127}$"
+    },
+    "boundedString": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "immutableRef": {
+      "type": "string",
+      "maxLength": 320,
+      "pattern": "^[^@\\\\s]+@[0-9a-f]{40}$"
+    }
+  }
+}

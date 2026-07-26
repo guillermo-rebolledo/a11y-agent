@@ -1,0 +1,28 @@
+name: A11y Agent trusted audit
+description: Runs a browser Journey or publishes redacted Evidence Bundles.
+inputs:
+  mode:
+    description: browser or publisher
+    required: true
+  output-path:
+    description: Browser output file or publisher artifact directory
+    required: true
+  scenario:
+    description: Fixed proof scenario
+    required: false
+    default: success
+runs:
+  using: composite
+  steps:
+    - name: Install immutable Action dependencies
+      shell: bash
+      run: |
+        set -euo pipefail
+        corepack pnpm --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile
+    - name: Execute trusted Action mode
+      shell: bash
+      env:
+        A11Y_ACTION_MODE: ${{ inputs.mode }}
+        A11Y_OUTPUT_PATH: ${{ inputs.output-path }}
+        A11Y_PROOF_SCENARIO: ${{ inputs.scenario }}
+      run: corepack pnpm --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts

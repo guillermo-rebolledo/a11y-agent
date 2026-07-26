@@ -20,11 +20,15 @@
     "@vercel/sandbox": "2.9.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
     "@types/async-retry": "1.4.9",
     "@types/chrome": "0.1.32",
     "@types/node": "24.10.1",
+    "jose": "6.1.0",
+    "playwright": "1.61.1",
     "tsx": "4.20.6",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.10",
+    "yaml": "2.8.1"
   }
 }
