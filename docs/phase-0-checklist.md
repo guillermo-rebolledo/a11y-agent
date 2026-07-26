@@ -5,6 +5,13 @@ Status: Blocking prerequisite to MVP feature construction
 Architecture: ADR-0004 — local Extension Recorder plus customer-executed GitHub
 Action
 
+Qualification result on 2026-07-26: **revise**. The evidence-backed decision
+and the itemized gaps are in
+[`evidence/MEM-10/proof-report.json`](../evidence/MEM-10/proof-report.json).
+Unchecked items remain blocking; they are not silently waived. The MEM-11
+dependency frontier and authenticated customer pilot remain stopped until a
+subsequent qualification report passes every gate.
+
 Phase 0 validates the replacement architecture selected after MEM-7 rejected
 Vercel Sandbox for authenticated Audit Runs. Documentation and provider claims
 are not proof: every item below requires captured output, measurement, or

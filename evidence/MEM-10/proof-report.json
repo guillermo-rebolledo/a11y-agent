@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-10",
+  "capturedAt": "2026-07-26T17:45:00.000Z",
+  "sourceProofs": [
+    {
+      "issue": "MEM-8",
+      "result": "partial",
+      "report": "evidence/MEM-8/proof-report.json",
+      "integrity": "Extension package SHA-256 is recorded; the recorder proof was inspected but not repeated from a newly reset Chrome profile."
+    },
+    {
+      "issue": "MEM-9",
+      "result": "passed",
+      "report": "evidence/MEM-9/proof-report.json",
+      "integrity": "evidence/MEM-9/CHECKSUMS.sha256 verified on 2026-07-26."
+    },
+    {
+      "issue": "MEM-22",
+      "result": "passed",
+      "report": "evidence/MEM-22/proof-report.json",
+      "integrity": "evidence/MEM-22/CHECKSUMS.sha256 verified on 2026-07-26."
+    }
+  ],
+  "gates": [
+    {
+      "id": "clean-proof-reruns",
+      "consequence": "review",
+      "status": "partial",
+      "evidence": [
+        "evidence/MEM-8/proof-report.json",
+        "evidence/MEM-9/CHECKSUMS.sha256",
+        "evidence/MEM-22/CHECKSUMS.sha256"
+      ],
+      "assessment": "MEM-9 and MEM-22 evidence is checksum-reproducible, but MEM-8 was not repeated from a newly reset Chrome profile and its own result remains partial."
+    },
+    {
+      "id": "phase-0-objective-evidence",
+      "consequence": "review",
+      "status": "partial",
+      "evidence": [
+        "docs/phase-0-checklist.md",
+        "evidence/MEM-8/proof-report.json",
+        "evidence/MEM-9/proof-report.json",
+        "evidence/MEM-22/proof-report.json"
+      ],
+      "assessment": "The three proofs cover the recorder, customer Action, publication identity, artifact, redaction, and evidence boundaries. Deterministic auditing, trusted deployment discovery, GitHub App controls, production operations, and product accessibility still lack complete objective evidence."
+    },
+    {
+      "id": "extension-permissions",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        "apps/extension/manifest.json",
+        "src/mem-8/extension-artifact.test.ts",
+        "evidence/MEM-8/proof-report.json"
+      ],
+      "assessment": "The Manifest V3 extension uses activeTab, scripting, and storage without host permissions or cookie, proxy, history, download, or debugger access."
+    },
+    {
+      "id": "customer-ci-credentials",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "src/mem-22/action-contract.test.ts",
+        "evidence/MEM-22/raw/success-selected-logs.txt"
+      ],
+      "assessment": "Synthetic login secrets exist only in the protected browser environment, are not workflow inputs, and are removed before dependency installation."
+    },
+    {
+      "id": "workflow-trust",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/customer-workflow.yml",
+        "src/mem-22/action-contract.test.ts"
+      ],
+      "assessment": "The reusable workflow, composite Action, external Actions, and browser image use immutable commit or digest references; fork automation is denied."
+    },
+    {
+      "id": "browser-job-isolation",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/run-metadata.json",
+        "evidence/MEM-22/raw/success-selected-logs.txt"
+      ],
+      "assessment": "Five overlapping browser jobs used distinct ephemeral GitHub-hosted runners as UID 1001 with no GitHub permissions or OIDC identity. Persistent and shared self-hosted runners are excluded."
+    },
+    {
+      "id": "publisher-separation",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "src/mem-22/action-contract.test.ts",
+        "evidence/MEM-22/raw/success/publication-receipts/publication-receipts.json"
+      ],
+      "assessment": "The publisher is a separate non-browser job with id-token: write, no customer login, no repository checkout, and no pull-request code execution."
+    },
+    {
+      "id": "oidc-claims",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        "src/mem-22/publication.ts",
+        "src/mem-22/publication.test.ts",
+        "evidence/MEM-22/raw/oidc-revoked-selected-logs.txt"
+      ],
+      "assessment": "Publication binds issuer, audience, subject, repository and owner identities, caller and reusable workflow refs, trusted ref, environment, commit, run, freshness, revocation, duplicate, and replay state."
+    },
+    {
+      "id": "artifact-validation",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        "packages/action/evidence-bundle.schema.json",
+        "src/mem-22/evidence-bundle.test.ts",
+        "src/mem-9/publication-service.test.ts",
+        "evidence/MEM-22/raw/malformed-artifact-selected-logs.txt"
+      ],
+      "assessment": "The publisher rejects malformed, oversized, unsupported, duplicate, replayed, executable, browser-session, credential, raw-content, and policy-inconsistent artifacts."
+    },
+    {
+      "id": "security-fail-closed",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/proof-report.json",
+        "src/mem-10/qualification.test.ts"
+      ],
+      "assessment": "Malformed artifact, publisher denial, and OIDC revocation runs terminate unsuccessfully; the qualification evaluator makes any demonstrated reject-class failure force the reject decision."
+    },
+    {
+      "id": "deterministic-audit",
+      "consequence": "review",
+      "status": "not-evidenced",
+      "evidence": [],
+      "assessment": "The proof fixture validates authentication and publication boundaries but does not execute Control Replay, Keyboard Replay, per-step Axe, seeded keyboard failures, Baseline comparison, cleanup, or a confirmation rerun."
+    },
+    {
+      "id": "deployment-gating",
+      "consequence": "reject",
+      "status": "partial",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/environment-policy.json"
+      ],
+      "assessment": "Fork denial, protected environments, and immutable workflow inputs pass. Trusted deployment discovery, exact preview binding, redirect/address validation, first-time-contributor approval, and malicious-preview drills lack complete evidence."
+    },
+    {
+      "id": "github-integration",
+      "consequence": "reject",
+      "status": "partial",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/run-metadata.json"
+      ],
+      "assessment": "Workflow execution and OIDC claims are evidenced. Webhook signatures and replay, GitHub App permissions, advisory check behavior, dispatch authorization, and installation suspension/deletion are not evidenced."
+    },
+    {
+      "id": "performance-targets",
+      "consequence": "review",
+      "status": "partial",
+      "evidence": [
+        "evidence/MEM-8/proof-report.json",
+        "evidence/MEM-22/proof-report.json"
+      ],
+      "assessment": "Recorder installation was 13 seconds, first action 12.637 seconds, recording 36.158 seconds, customer Action setup 2 minutes, five-Journey success 73 seconds, queue delay 12 seconds, Chromium startup 142–169 ms, Journey runtime 1.155–1.284 seconds, allocated runner time 3.32 minutes, and artifacts 8,827 bytes. Time to first published Journey, confirmation and Baseline Action minutes, production control-plane cost, and a representative real Journey runtime were not measured."
+    },
+    {
+      "id": "version-provenance",
+      "consequence": "reject",
+      "status": "partial",
+      "evidence": [
+        "evidence/MEM-8/proof-report.json",
+        "evidence/MEM-22/proof-report.json",
+        "package.json"
+      ],
+      "assessment": "Recorded versions are extension 0.1.0; workflow 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52; Action 76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76; image sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48; Audit Engine 0.0.0+mem22; Playwright 1.61.1; Chromium 149.0.7827.55; Axe 4.12.1; runner ubuntu-24.04 X64; Evidence Bundle schema 1. The exact desktop Chrome version, GitHub plan, base-image digest, OS package set, and named policy versions were not captured."
+    },
+    {
+      "id": "operational-controls",
+      "consequence": "review",
+      "status": "partial",
+      "evidence": [
+        "evidence/MEM-22/raw/cancellation-selected-logs.txt",
+        "evidence/MEM-22/raw/publisher-failure-selected-logs.txt",
+        "evidence/MEM-22/raw/oidc-revoked-selected-logs.txt",
+        "src/mem-9/evidence-lifecycle.test.ts"
+      ],
+      "assessment": "Workflow cancellation, publisher denial, OIDC revocation, timeout, concurrency, and evidence deletion contracts were exercised. Global dispatch stop, tenant and Project suspension, result-intake suspension, queue drain, GitHub installation disablement, live deletion by Run/Project/tenant, and complete spend controls were not exercised."
+    },
+    {
+      "id": "product-accessibility",
+      "consequence": "review",
+      "status": "partial",
+      "evidence": [
+        "evidence/MEM-8/proof-report.json"
+      ],
+      "assessment": "The Extension Recorder was operated by keyboard and inspected with VoiceOver. Application onboarding, Action progress, terminal state, Finding and evidence review, and full Audit Engine dogfood await the application."
+    },
+    {
+      "id": "session-custody",
+      "consequence": "reject",
+      "status": "passed",
+      "evidence": [
+        "apps/extension/journey-draft.schema.json",
+        "packages/action/evidence-bundle.schema.json",
+        "src/mem-8/journey-draft.test.ts",
+        "src/mem-22/evidence-bundle.test.ts",
+        "src/mem-9/control-plane-contracts.test.ts"
+      ],
+      "assessment": "Schemas and sink contracts exclude cookies, storageState, login credentials, request and response bodies, raw DOM, and page content from extension exports, Evidence Bundles, publication, queues, telemetry, storage, logs, and AI inputs."
+    }
+  ],
+  "phase0Sections": [
+    {
+      "section": "Pinned Action runner",
+      "status": "partial",
+      "gap": "Base-image digest, OS package provenance, and cleanup after every terminal outcome are not fully captured."
+    },
+    {
+      "section": "Extension Recorder",
+      "status": "partial",
+      "gap": "Pinned Action replay, exact time to first published Journey, and a clean-profile rerun are missing."
+    },
+    {
+      "section": "Authentication custody",
+      "status": "partial",
+      "gap": "Preview compatibility, expired-credential diagnosis, rotation runbook drill, and malicious-preview exfiltration drill are missing."
+    },
+    {
+      "section": "Browser and publisher job separation",
+      "status": "passed",
+      "gap": null
+    },
+    {
+      "section": "Deterministic audit",
+      "status": "not-evidenced",
+      "gap": "Control Replay, Keyboard Replay, per-step Axe, seeded keyboard failures, Baseline comparison, cleanup, and confirmation rerun are MVP work without Phase 0 run evidence."
+    },
+    {
+      "section": "Deployment and untrusted-PR gating",
+      "status": "partial",
+      "gap": "Trusted deployment discovery and malicious preview navigation, credential, and impersonation drills are missing."
+    },
+    {
+      "section": "Evidence and redaction",
+      "status": "partial",
+      "gap": "The contracts pass, but live private R2 configuration, raw-artifact deletion, and scheduled provider reconciliation are deployment-owned and not run here."
+    },
+    {
+      "section": "GitHub integration",
+      "status": "partial",
+      "gap": "Webhook, GitHub App permission, advisory-check, dispatch authorization, and installation suspension/deletion evidence are missing."
+    },
+    {
+      "section": "Concurrency, runtime, and cost",
+      "status": "partial",
+      "gap": "Five-way concurrency passes; representative runtime breakdown, confirmation/Baseline minutes, control-plane cost, dispatch limits, and the global kill switch remain missing."
+    },
+    {
+      "section": "Operational controls",
+      "status": "partial",
+      "gap": "Cancellation and revocation pass; the remaining service and installation controls are not implemented or drilled."
+    },
+    {
+      "section": "Product accessibility",
+      "status": "partial",
+      "gap": "The recorder has keyboard and VoiceOver evidence; onboarding, progress, Finding, evidence, and full product dogfood await the application."
+    },
+    {
+      "section": "Phase 0 decision record",
+      "status": "passed",
+      "gap": null
+    }
+  ],
+  "versions": {
+    "extension": "0.1.0",
+    "desktopChrome": null,
+    "workflow": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+    "action": "76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76",
+    "runnerImage": "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48",
+    "baseImage": null,
+    "auditEngine": "0.0.0+mem22",
+    "playwright": "1.61.1",
+    "chromium": "149.0.7827.55",
+    "axe": "4.12.1",
+    "runner": "GitHub-hosted ubuntu-24.04 X64",
+    "githubPlan": null,
+    "evidenceBundlePolicy": "schemaVersion 1",
+    "oidcPolicy": null,
+    "redactionPolicy": null
+  },
+  "measurements": {
+    "recorderInstallationMs": 13000,
+    "recorderFirstActionMs": 12637,
+    "recorderCaptureAccuracy": 1,
+    "recorderDurationMs": 36158,
+    "timeToFirstPublishedJourneyMs": null,
+    "successWorkflowElapsedSeconds": 73,
+    "githubQueueDelaySeconds": 12,
+    "chromiumStartupMs": {
+      "minimum": 142,
+      "maximum": 169
+    },
+    "journeyRuntimeMs": {
+      "minimum": 1155,
+      "maximum": 1284
+    },
+    "concurrentJourneys": 5,
+    "journeyActionMinutes": [
+      0.021,
+      0.0203,
+      0.0204,
+      0.0193,
+      0.0214
+    ],
+    "allocatedRunnerMinutes": 3.32,
+    "confirmationRerunMinutes": null,
+    "freshBaselineMinutes": null,
+    "artifactBytes": 8827,
+    "customerSetupMinutes": 2,
+    "controlPlaneCostUsd": null
+  },
+  "targetComparisons": [
+    {
+      "target": "First authenticated Journey published in under 30 minutes",
+      "observed": "Recorder setup and capture were measured, but publication was not completed.",
+      "outcome": "not-evidenced"
+    },
+    {
+      "target": "Representative five-Journey Project completes under 10 minutes median",
+      "observed": "The five-job proof fixture completed in 73 seconds; it was not a representative deterministic Audit Run.",
+      "outcome": "partial"
+    },
+    {
+      "target": "Maximum five active Journeys with bounded parallelism",
+      "observed": "Five distinct browser jobs overlapped successfully.",
+      "outcome": "passed"
+    },
+    {
+      "target": "Hard Project stop at 20 minutes while preserving completed results",
+      "observed": "A GitHub hard job timeout was exercised, but the Project-level 20-minute orchestration contract does not exist yet.",
+      "outcome": "partial"
+    },
+    {
+      "target": "Evidence Bundle maximum 65,536 serialized bytes",
+      "observed": "Six proof artifacts totaled 8,827 bytes and oversized bundles are rejected.",
+      "outcome": "passed"
+    },
+    {
+      "target": "Action minutes and control-plane cost measured separately",
+      "observed": "Per-Journey and allocated runner minutes were recorded; confirmation, fresh Baseline, and production control-plane cost were not.",
+      "outcome": "partial"
+    }
+  ],
+  "decision": "revise",
+  "decisionRationale": "No reject-class security boundary failed, so the current evidence does not require replacement. The architecture is not accepted because multiple blocking gates are partial or unevidenced. MEM-11 and the authenticated-pilot dependency frontier must remain stopped until the unblock requirements have objective evidence.",
+  "unblockRequirements": [
+    "Repeat MEM-8 from a reset Chrome profile and publish its captured Journey through the pinned Action while measuring end-to-end setup time.",
+    "Capture the missing exact Chrome, GitHub plan, base-image, OS package, and policy provenance.",
+    "Run the deterministic Control, Keyboard, Axe, cleanup, Baseline, and confirmation proof with a representative Journey.",
+    "Exercise trusted deployment discovery, untrusted-preview attacks, webhook and GitHub App boundaries, advisory checks, and installation lifecycle.",
+    "Exercise the global dispatch stop, tenant and Project suspension, result-intake suspension, queue drain, CI credential rotation, installation disablement, and live evidence deletion controls.",
+    "Measure representative runtime phases, confirmation and Baseline Action minutes, customer setup effort, artifact size, and production control-plane and storage cost.",
+    "Complete the remaining product accessibility checks before authenticated pilot use."
+  ],
+  "productionConstraints": [],
+  "replacementArchitecture": null
+}
