@@ -73,6 +73,16 @@ async function start(): Promise<RecorderSession> {
     startedAt: new Date().toISOString(),
   });
 
+  const previous = await chrome.storage.local.get(ACTIVE_TAB_KEY);
+  const previousTabId = previous[ACTIVE_TAB_KEY];
+  if (typeof previousTabId === "number" && previousTabId !== tab.id) {
+    try {
+      await setContentEnabled(previousTabId, false);
+    } catch {
+      // Sender validation below still rejects the previous tab.
+    }
+  }
+
   await chrome.scripting.executeScript({
     target: { tabId: tab.id! },
     files: ["dist/content.js"],
@@ -122,7 +132,10 @@ async function reconnectContent(session: RecorderSession): Promise<void> {
   await setContentEnabled(tabId, true);
 }
 
-async function handle(message: RecorderMessage): Promise<unknown> {
+async function handle(
+  message: RecorderMessage,
+  senderTabId: number | undefined,
+): Promise<unknown> {
   if (message.type === "get-state") return readSession();
 
   if (message.type === "configure-origin") {
@@ -133,6 +146,20 @@ async function handle(message: RecorderMessage): Promise<unknown> {
 
   const session = await readSession();
   if (!session) throw new Error("Save an approved Project origin first");
+
+  if (
+    message.type === "captured-action" ||
+    message.type === "assertion-suggested" ||
+    message.type === "recorder-disconnected"
+  ) {
+    const stored = await chrome.storage.local.get(ACTIVE_TAB_KEY);
+    if (
+      typeof senderTabId !== "number" ||
+      stored[ACTIVE_TAB_KEY] !== senderTabId
+    ) {
+      return session;
+    }
+  }
 
   switch (message.type) {
     case "pause": {
@@ -167,8 +194,8 @@ async function handle(message: RecorderMessage): Promise<unknown> {
 }
 
 chrome.runtime.onMessage.addListener(
-  (message: RecorderMessage, _sender, sendResponse) => {
-    const response = requestQueue.then(() => handle(message));
+  (message: RecorderMessage, sender, sendResponse) => {
+    const response = requestQueue.then(() => handle(message, sender.tab?.id));
     requestQueue = response.then(
       () => undefined,
       () => undefined,

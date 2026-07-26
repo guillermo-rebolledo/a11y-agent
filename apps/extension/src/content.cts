@@ -117,6 +117,18 @@ function sendAction(kind: "click" | "fill", element: HTMLElement): void {
   });
 }
 
+const LIVE_REGION_SELECTOR = "[role='status'], [role='alert'], [aria-live]";
+
+function liveRegionFor(node: Node): HTMLElement | null {
+  const element = node instanceof HTMLElement ? node : node.parentElement;
+  if (!element) return null;
+  if (element.matches(LIVE_REGION_SELECTOR)) return element;
+  return (
+    element.closest<HTMLElement>(LIVE_REGION_SELECTOR) ??
+    element.querySelector<HTMLElement>(LIVE_REGION_SELECTOR)
+  );
+}
+
 function install(): void {
   if (recorderWindow.__a11yJourneyRecorderInstalled) return;
   recorderWindow.__a11yJourneyRecorderInstalled = true;
@@ -124,12 +136,16 @@ function install(): void {
   document.addEventListener(
     "click",
     (event) => {
-      const element =
+      const directTarget =
         event.target instanceof HTMLElement
           ? event.target
           : event.target instanceof Element
             ? event.target.parentElement
             : null;
+      const semanticTarget = directTarget?.closest<HTMLElement>(
+        "a[href], button, input, select, textarea, [role], [data-testid], [data-test-id]",
+      );
+      const element = semanticTarget ?? directTarget;
       if (element) sendAction("click", element);
     },
     true,
@@ -152,11 +168,8 @@ function install(): void {
   const observer = new MutationObserver((records) => {
     if (!recorderWindow.__a11yJourneyRecorderEnabled) return;
     for (const record of records) {
-      for (const node of record.addedNodes) {
-        if (!(node instanceof HTMLElement)) continue;
-        const liveElement = node.matches("[role='status'], [role='alert'], [aria-live]")
-          ? node
-          : node.querySelector<HTMLElement>("[role='status'], [role='alert'], [aria-live]");
+      for (const node of [record.target, ...record.addedNodes]) {
+        const liveElement = liveRegionFor(node);
         const text = liveElement ? normalizeText(liveElement.textContent) : null;
         if (text) {
           void chrome.runtime.sendMessage({
@@ -171,7 +184,11 @@ function install(): void {
       }
     }
   });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  observer.observe(document.documentElement, {
+    characterData: true,
+    childList: true,
+    subtree: true,
+  });
 
   window.addEventListener("pagehide", () => {
     if (recorderWindow.__a11yJourneyRecorderEnabled) {
