@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-9",
+  "result": "passed",
+  "capturedAt": "2026-07-26T05:00:00.000Z",
+  "extends": "MEM-22",
+  "assertions": [
+    {
+      "id": "strict-versioned-bounded-schema",
+      "status": "passed",
+      "evidence": [
+        "packages/action/evidence-bundle.schema.json",
+        "src/mem-22/evidence-bundle.test.ts"
+      ]
+    },
+    {
+      "id": "browser-session-and-raw-content-excluded",
+      "status": "passed",
+      "evidence": [
+        "src/mem-22/evidence-bundle.ts",
+        "src/mem-22/evidence-bundle.test.ts"
+      ]
+    },
+    {
+      "id": "email-phone-token-cookie-secret-suppression",
+      "status": "passed",
+      "evidence": [
+        "src/mem-22/browser-canaries.ts",
+        "src/mem-22/cli.ts",
+        "src/mem-9/browser-canary-flow.test.ts",
+        "src/mem-9/publication-service.ts",
+        "src/mem-9/publication-service.test.ts"
+      ]
+    },
+    {
+      "id": "untrusted-artifact-validation-and-replay",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/publication-service.test.ts",
+        "src/mem-22/publication.ts",
+        "src/mem-22/publication.test.ts"
+      ]
+    },
+    {
+      "id": "publisher-only-short-lived-github-oidc",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "src/mem-22/action-contract.test.ts",
+        "evidence/MEM-22/proof-report.json"
+      ]
+    },
+    {
+      "id": "complete-oidc-claim-binding",
+      "status": "passed",
+      "evidence": [
+        "src/mem-22/publication.ts",
+        "src/mem-22/publication.test.ts"
+      ]
+    },
+    {
+      "id": "browser-and-pull-request-code-cannot-use-publisher-identity",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "src/mem-22/action-contract.test.ts"
+      ]
+    },
+    {
+      "id": "private-cloudflare-r2-storage",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/publication-service.ts",
+        "src/mem-9/publication-service.test.ts",
+        "src/mem-9/r2-private-evidence-store.ts",
+        "src/mem-9/r2-private-evidence-store.test.ts",
+        "docs/deployment.md"
+      ]
+    },
+    {
+      "id": "authorized-short-lived-access",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/evidence-lifecycle.ts",
+        "src/mem-9/evidence-lifecycle.test.ts"
+      ]
+    },
+    {
+      "id": "immediate-scheduled-reconciled-and-project-deletion",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/evidence-lifecycle.ts",
+        "src/mem-9/evidence-lifecycle.test.ts"
+      ]
+    },
+    {
+      "id": "metadata-only-telemetry-and-identifiers-only-queues",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/control-plane-contracts.ts",
+        "src/mem-9/control-plane-contracts.test.ts"
+      ]
+    },
+    {
+      "id": "content-free-publication-and-access-audit-events",
+      "status": "passed",
+      "evidence": [
+        "src/mem-9/publication-service.ts",
+        "src/mem-9/publication-service.test.ts",
+        "src/mem-9/evidence-lifecycle.test.ts"
+      ]
+    }
+  ],
+  "limits": {
+    "serializedBundleBytes": 65536,
+    "bundleValiditySeconds": 3600,
+    "oidcFreshnessSeconds": 300,
+    "evidenceAccessSeconds": 300,
+    "retentionDays": 30
+  },
+  "providerBoundary": {
+    "objectStore": "Cloudflare R2 binding with a separately injected R2 S3 signed-read implementation",
+    "publicRead": "not exposed by the application adapter",
+    "liveProviderConfiguration": "deployment-owned; configured and reviewed using docs/deployment.md"
+  }
+}

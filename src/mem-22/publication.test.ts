@@ -145,13 +145,44 @@ describe("MEM-22 publication boundary", () => {
     ).rejects.toThrow("replayed or duplicate publication");
   });
 
+  it("accepts only one bundle for a Journey within an Audit Run", async () => {
+    const replayStore = new InMemoryPublicationReplayStore();
+    await acceptPublication({ bundle, claims, policy, replayStore, now });
+
+    await expect(
+      acceptPublication({
+        bundle: {
+          ...bundle,
+          publicationNonce: "pub-01JZ8F3AJ2RG8NTG2RZ5QH1KZZ",
+        },
+        claims: {
+          ...claims,
+          jti: "token-01JZ8F4KSCX4TKE37WKBNPN4ZZ",
+        },
+        policy,
+        replayStore,
+        now,
+      }),
+    ).rejects.toThrow("replayed or duplicate publication");
+  });
+
   it.each([
+    ["issuer", { iss: "https://issuer.attacker.example" }],
+    ["subject", { sub: "repo:attacker/example:environment:a11y-synthetic" }],
     ["repository", { repository: "attacker/example" }],
+    ["repository id", { repository_id: "111111" }],
+    ["organization", { repository_owner: "attacker" }],
+    ["organization id", { repository_owner_id: "111111" }],
+    ["caller workflow", { workflow_ref: "attacker/example/.github/workflows/a.yml@refs/heads/main" }],
     ["workflow", { job_workflow_ref: "attacker/action/.github/workflows/x.yml@main" }],
+    ["workflow sha", { job_workflow_sha: "f".repeat(40) }],
     ["ref", { ref: "refs/heads/attacker" }],
     ["environment", { environment: "unprotected" }],
     ["audience", { aud: "https://attacker.example" }],
     ["commit", { sha: "f".repeat(40) }],
+    ["caller workflow commit", { workflow_sha: "f".repeat(40) }],
+    ["run", { run_id: "999999999" }],
+    ["run attempt", { run_attempt: "2" }],
   ])("rejects the wrong %s identity", async (_name, claimPatch) => {
     await expect(
       acceptPublication({

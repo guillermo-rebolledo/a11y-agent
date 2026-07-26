@@ -23,6 +23,7 @@ type Workflow = {
       strategy?: { matrix?: Record<string, unknown> };
       steps?: Array<{
         uses?: string;
+        run?: string;
         with?: Record<string, unknown>;
         env?: Record<string, unknown>;
       }>;
@@ -77,6 +78,15 @@ describe("MEM-22 trusted GitHub Actions contract", () => {
     expect(publisher?.container).toBeUndefined();
     expect(JSON.stringify(publisher)).not.toMatch(
       /SYNTHETIC_LOGIN|playwright|chromium/i,
+    );
+    expect(JSON.stringify(publisher?.steps)).not.toContain("actions/checkout");
+    expect(
+      publisher?.steps
+        ?.flatMap((step) => step.run ?? [])
+        .join("\n"),
+    ).not.toMatch(/\$\{\{\s*(?:inputs|github\.)/u);
+    expect(JSON.stringify(browser)).not.toMatch(
+      /ACTIONS_ID_TOKEN_REQUEST|A11Y_PUBLICATION_ENDPOINT/i,
     );
   });
 

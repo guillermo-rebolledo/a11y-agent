@@ -196,6 +196,7 @@ export async function acceptPublication(input: {
   const accepted = await input.replayStore.reserve([
     `oidc:${claims.jti}`,
     `publication:${claims.repository_id}:${claims.run_id}:${claims.run_attempt}:${bundle.auditRunId}:${bundle.publicationNonce}`,
+    `journey-publication:${claims.repository_id}:${bundle.auditRunId}:${bundle.journeyId}`,
     `artifact:${contentSha256}`,
   ]);
   if (!accepted) throw new Error("replayed or duplicate publication");

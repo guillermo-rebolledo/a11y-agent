@@ -56,6 +56,9 @@ describe("MEM-22 Evidence Bundle contract", () => {
     ["loginCredentials", { password: "canary-password" }],
     ["requestBody", "canary-request"],
     ["responseBody", "canary-response"],
+    ["rawDom", "<main>private page</main>"],
+    ["fullScreenshot", "base64-image"],
+    ["trace", "playwright-trace.zip"],
   ])("rejects forbidden browser material in field %s", (key, value) => {
     expect(() =>
       parseEvidenceBundle({ ...validBundle, [key]: value }),
