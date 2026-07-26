@@ -69,10 +69,11 @@ accessible.
 
 | Method | MVP status |
 | --- | --- |
-| User-established `storageState` | Supported |
-| Shared-domain session across previews | Supported after compatibility test |
-| Secret-backed deterministic login | Supported with explicit configuration |
-| Session expiration detection | Supported |
+| Customer-controlled CI login | Supported with explicit configuration |
+| Browser session upload to the service | Prohibited |
+| Extension access to existing local session | Local use only; never exported |
+| Main/preview login compatibility | Supported after onboarding validation |
+| CI credential expiration detection | Supported |
 | Automatic session refresh | Not supported |
 | SSO automation | Not supported |
 | MFA automation | Not supported |
@@ -86,7 +87,7 @@ accessible.
 | Stable public main deployment | Required for regression attribution |
 | Public PR preview deployment | Required for automated PR attribution |
 | Fixed public staging URL | Manual/scheduled audit only |
-| Private network or VPN | Not supported |
+| Private network or VPN | Ephemeral self-hosted runner only; Phase 0 approval required |
 | Production environment | Prohibited |
 | Forked authenticated PR | Prohibited automatically |
 

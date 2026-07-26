@@ -75,15 +75,18 @@ An installation administrator:
 3. Configures the stable main deployment source.
 4. Configures the pull-request preview deployment source and approved origin
    pattern.
-5. Approves the project's browser egress allowlist.
-6. Establishes an authenticated, least-privilege synthetic test session.
+5. Installs the approved Extension Recorder.
+6. Installs the pinned GitHub Actions workflow.
+7. Configures a least-privilege synthetic login in a protected,
+   customer-controlled GitHub Environment.
 
 The GitHub App does not read repository source code.
 
 ### 2. Record a journey
 
-The user launches a disposable hosted Chromium session from the dashboard and
-performs the journey once.
+The user selects an authenticated local Chrome tab through the Extension
+Recorder and performs the Journey once. The user's browser session remains
+local.
 
 The recorder:
 
@@ -93,8 +96,9 @@ The recorder:
 - Suggests success assertions based on observed state changes.
 - Requires the user to confirm at least one success assertion.
 - Produces a human-readable, editable journey definition.
-- Exposes a semantic tree and action log alongside the visual stream.
-- Does not persist raw credentials typed during interactive authentication.
+- Exposes an accessible semantic action log and recorder status.
+- Does not export cookies, `storageState`, local storage, credentials, entered
+  secret values, request bodies, or response bodies.
 
 Each journey has draft and immutable published versions. A published version must
 pass validation against main before it can run on pull requests.
@@ -105,16 +109,18 @@ For every eligible pull request:
 
 1. Wait for the configured preview deployment to become ready.
 2. Verify that the deployment belongs to the exact head commit.
-3. Validate its HTTPS origin, DNS results, application identity, and egress
-   policy.
+3. Validate its HTTPS origin, DNS results, redirects, and application identity.
 4. Establish a compatible main baseline.
-5. Execute a normal control replay.
-6. Execute a complete keyboard-only replay.
-7. Run Axe after every stable user-facing step in both replays.
-8. Compare normalized findings with the compatible main baseline.
-9. Rerun the complete journey once when a new regression appears.
-10. Publish an advisory GitHub check and linked dashboard report.
-11. Attempt cleanup even when the audit fails.
+5. Start the trusted customer GitHub Actions workflow from an immutable ref.
+6. Execute a normal control replay in an unprivileged browser job.
+7. Execute a complete keyboard-only replay.
+8. Run Axe after every stable user-facing step in both replays.
+9. Produce a bounded redacted Evidence Bundle.
+10. Validate and publish the bundle from a separate GitHub OIDC publisher job.
+11. Compare normalized findings with the compatible main baseline.
+12. Rerun the complete Journey once when a new Regression appears.
+13. Publish an advisory GitHub check and linked dashboard report.
+14. Attempt cleanup even when the Audit Run fails.
 
 Every active journey runs on every pull request. The MVP permits at most five
 active journeys per project.
@@ -153,7 +159,7 @@ data:
     generate: uniqueEmail
 
 setup:
-  - useSession: teamAdmin
+  - authenticateWith: teamAdmin
 
 steps:
   - open: /team
@@ -188,8 +194,9 @@ Requirements:
 
 ## Keyboard audit
 
-The keyboard audit replays the complete user-facing journey without pointer input.
-Programmatic setup, cleanup, and authenticated-session restoration are exempt.
+The keyboard audit replays the complete user-facing Journey without pointer
+input. Programmatic setup, cleanup, and customer-controlled authentication setup
+are exempt.
 
 The executor uses a finite, public interaction library:
 
@@ -303,8 +310,8 @@ The MVP is always advisory:
 - `success`: no new confirmed regressions.
 - `neutral — regressions found`: confirmed accessibility regressions exist.
 - `neutral — review recommended`: lower-confidence or intermittent findings.
-- `neutral — audit inconclusive`: missing baseline, expired session, deployment
-  failure, or runner failure.
+- `neutral — audit inconclusive`: missing baseline, expired CI authentication,
+  deployment failure, browser-job failure, or publisher failure.
 
 The product never emits `failure` or `action_required` during the MVP and always
 completes its check so a stuck audit cannot block a pull request.
@@ -341,19 +348,23 @@ Without a preview deployment, teams may run manual or scheduled audits against a
 fixed staging URL, but the product must not attribute findings to a pull request.
 
 Deployment URLs are accepted only from an administrator-selected provider or
-check source, associated with the exact commit, validated against approved origin
-patterns, and verified before authentication material is injected.
+check source, associated with the exact commit, validated against approved
+origin patterns, and verified before the customer-controlled browser job
+authenticates.
 
 ## Authentication
 
-Default onboarding uses a user-established browser session captured during
-recording.
+Authentication is established inside the customer-controlled GitHub Actions
+browser job.
 
-- Session state is encrypted before leaving the recorder sandbox.
-- Sessions are manually reconnected when they expire.
-- Standard secret-backed login steps are supported when explicitly configured.
+- The service never receives cookies, `storageState`, or login credentials.
+- The Extension Recorder uses the user's existing local session without
+  exporting it.
+- Secret-backed deterministic login is configured in a protected GitHub
+  Environment.
+- CI credentials are rotated or repaired by the customer when they expire.
 - Automatic SSO, MFA, CAPTCHA, and token rewriting are not supported.
-- Session portability is tested during onboarding.
+- Main and preview login compatibility is tested during onboarding.
 - Unsupported authentication is disclosed rather than bypassed heuristically.
 
 Authenticated audits:
@@ -380,7 +391,10 @@ Core policies:
 - Content-free finding metadata may be retained for project history.
 - Immediate deletion is available by run and project.
 - Operational telemetry is metadata-only.
-- Every run executes in a fresh isolated microVM with restricted egress.
+- Every automated Journey executes in an isolated ephemeral GitHub Actions
+  browser job using a digest-pinned image.
+- The browser job has no publisher identity; a separate job validates and
+  publishes results through short-lived GitHub OIDC.
 
 The product does not promise that transient processing can never encounter PII.
 It requires synthetic data and uses defense-in-depth to prevent persistence or
@@ -436,7 +450,8 @@ Required validation includes:
 
 - Keyboard-only completion of critical workflows.
 - Manual screen-reader testing.
-- Semantic alternative to the remote browser's visual stream.
+- Keyboard and screen-reader access to the Extension Recorder and Journey
+  editor.
 - Accessible status updates and progress.
 - Accessible finding and evidence presentation.
 - Dogfooding the product against its own critical journeys.
@@ -464,27 +479,31 @@ specification change.
 
 The planned TypeScript monorepo contains:
 
+- Manifest V3 Extension Recorder.
 - Next.js dashboard.
 - Fastify API and GitHub webhook service.
+- Trusted reusable GitHub Actions workflow and publisher.
 - Deterministic audit orchestrator.
 - Shared journey, finding, and evidence schemas.
 - Playwright runner image.
 
-Preferred hosted providers:
+Provider choices:
 
 | Concern | Provider |
 | --- | --- |
 | Web, API, and control plane | Vercel |
-| Isolated browser execution | Vercel Sandbox |
+| Local semantic recording | Chrome Extension |
+| Isolated browser execution | Customer GitHub Actions |
 | Relational storage | Neon PostgreSQL |
-| Job queue | Redis Cloud with BullMQ |
+| Control-plane coordination | Redis Cloud with BullMQ |
 | Redacted evidence | Cloudflare R2 |
-| Key management | Google Cloud KMS |
-| Source integration | GitHub App |
+| Source, execution identity, and checks | GitHub App and GitHub OIDC |
 | Optional AI review | OpenAI Responses API |
 
-Vercel Sandbox is conditional on the Phase 0 infrastructure spike. Failure of a
-security or isolation criterion rejects the architecture.
+ADR-0004 replaces hosted browser execution after MEM-7 rejected Vercel Sandbox
+for authenticated Audit Runs. The Extension Recorder and GitHub Action remain
+conditional on the blocking Phase 0 proof. Failure of an identity, provenance,
+session-custody, artifact, or isolation criterion rejects the architecture.
 
 See [architecture](docs/architecture.md),
 [Phase 0 checklist](docs/phase-0-checklist.md), and
@@ -525,7 +544,9 @@ Before the pilot:
 - Complete the Phase 0 infrastructure spike.
 - Review the written threat model.
 - Test emergency kill switches and deletion controls.
-- Validate session encryption, rotation, and revocation.
+- Validate that browser sessions never enter the service.
+- Validate workflow trust, browser/publisher separation, GitHub OIDC, and
+  artifact replay protection.
 - Publish the capability matrix and limitations.
 - Complete product accessibility testing.
 - Establish incident-response ownership.
@@ -539,7 +560,8 @@ Before the pilot:
 - Repository-aware component attribution.
 - Autonomous journey generation and exploration.
 - WebKit/Safari and Firefox.
-- Customer-hosted runner and full self-hosting.
+- Non-GitHub CI providers, Kubernetes runners, and persistent or shared
+  self-hosted runners.
 - Formal PDF or compliance reports.
 - Historical scores and trend dashboards.
 - Executive and team benchmarking.

@@ -5,16 +5,20 @@ validated oracle for pass, fail, inconclusive, and unsupported outcomes.
 
 ## Phase 0 — Infrastructure proof
 
-- Validate Vercel Sandbox isolation and hosted recording.
-- Validate restricted egress and SSRF defenses.
-- Validate GCP KMS envelope encryption through Vercel OIDC.
+- Validate accessible semantic recording through a local Chrome extension.
+- Validate a digest-pinned Playwright runner in customer-executed GitHub
+  Actions.
+- Validate browser-job and OIDC publisher-job separation.
+- Prove browser sessions never enter the service or Evidence Bundles.
 - Validate private R2 evidence handling.
-- Measure latency, runtime, concurrency, and cost.
+- Measure setup time, runtime, concurrency, Action minutes, and control-plane
+  cost.
 
 ## MVP — Keyboard plus Axe
 
 - GitHub identity and App installation.
-- Hosted semantic recorder.
+- Accessible Extension Recorder.
+- Customer-executed GitHub Action.
 - Versioned editable Journeys.
 - Main and PR preview integration.
 - Control and complete keyboard replays.
@@ -63,15 +67,14 @@ combinations.
 - Repository-aware component attribution.
 - Storybook and design-system awareness.
 - Autonomous non-blocking exploration.
-- Customer-hosted runners.
+- Additional customer-hosted runner platforms.
 - Formal report exports with explicit scope.
 - Public signup, billing, and pricing.
 - GitLab, Azure DevOps, and other CI providers.
 
-## Deferred UI foundation task
+## Application foundation
 
-The application scaffold is intentionally deferred until after this
-specification. It must create a TypeScript Next.js App Router application using
-Tailwind CSS and shadcn/ui, without a competing general-purpose component
-library. Implementation will be tracked as a child of the MVP specification in
-Linear.
+The application scaffold is part of MEM-11. It creates the TypeScript monorepo,
+Next.js App Router dashboard, Tailwind CSS and shadcn/ui foundation, and the
+initial GitHub Project onboarding flow after the Phase 0 architecture is
+qualified by MEM-10.
