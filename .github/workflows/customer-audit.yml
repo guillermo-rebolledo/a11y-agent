@@ -19,11 +19,6 @@ on:
         type: string
         required: false
         default: success
-    secrets:
-      synthetic-login-email:
-        required: true
-      synthetic-login-password:
-        required: true
   workflow_dispatch:
     inputs:
       audit-run-id:
@@ -93,8 +88,8 @@ jobs:
           output-path: ${{ runner.temp }}/evidence/bundle.json
           scenario: ${{ inputs.scenario }}
         env:
-          SYNTHETIC_LOGIN_EMAIL: ${{ secrets['synthetic-login-email'] || secrets.SYNTHETIC_LOGIN_EMAIL }}
-          SYNTHETIC_LOGIN_PASSWORD: ${{ secrets['synthetic-login-password'] || secrets.SYNTHETIC_LOGIN_PASSWORD }}
+          SYNTHETIC_LOGIN_EMAIL: ${{ secrets.SYNTHETIC_LOGIN_EMAIL }}
+          SYNTHETIC_LOGIN_PASSWORD: ${{ secrets.SYNTHETIC_LOGIN_PASSWORD }}
           A11Y_AUDIT_RUN_ID: ${{ inputs.audit-run-id }}
           A11Y_JOURNEY_ID: ${{ inputs.journey-id }}-${{ matrix.journey-index }}
           A11Y_JOURNEY_INDEX: ${{ matrix.journey-index }}
