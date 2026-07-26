@@ -118,6 +118,26 @@ function sendAction(kind: "click" | "fill", element: HTMLElement): void {
 }
 
 const LIVE_REGION_SELECTOR = "[role='status'], [role='alert'], [aria-live]";
+const SEMANTIC_ACTION_SELECTOR = [
+  "a[href]",
+  "button",
+  "input",
+  "select",
+  "textarea",
+  "[role='button']",
+  "[role='link']",
+  "[role='checkbox']",
+  "[role='radio']",
+  "[role='switch']",
+  "[role='tab']",
+  "[role='menuitem']",
+  "[role='option']",
+  "[role='combobox']",
+  "[role='textbox']",
+  "[role='slider']",
+  "[role='spinbutton']",
+].join(", ");
+const TEST_ID_SELECTOR = "[data-testid], [data-test-id]";
 
 function liveRegionFor(node: Node): HTMLElement | null {
   const element = node instanceof HTMLElement ? node : node.parentElement;
@@ -142,10 +162,10 @@ function install(): void {
           : event.target instanceof Element
             ? event.target.parentElement
             : null;
-      const semanticTarget = directTarget?.closest<HTMLElement>(
-        "a[href], button, input, select, textarea, [role], [data-testid], [data-test-id]",
-      );
-      const element = semanticTarget ?? directTarget;
+      const semanticTarget =
+        directTarget?.closest<HTMLElement>(SEMANTIC_ACTION_SELECTOR);
+      const testIdTarget = directTarget?.closest<HTMLElement>(TEST_ID_SELECTOR);
+      const element = semanticTarget ?? testIdTarget ?? directTarget;
       if (element) sendAction("click", element);
     },
     true,

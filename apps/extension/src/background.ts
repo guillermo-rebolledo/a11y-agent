@@ -139,6 +139,8 @@ async function handle(
   if (message.type === "get-state") return readSession();
 
   if (message.type === "configure-origin") {
+    await updateContent(false);
+    await chrome.storage.local.remove(ACTIVE_TAB_KEY);
     return writeSession(createRecorderSession(message.approvedOrigin));
   }
 

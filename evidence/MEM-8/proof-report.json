@@ -8,7 +8,7 @@
     "platform": "macOS",
     "extensionVersion": "0.1.0",
     "extensionId": "ccpmglapnacdcimhdfjkimemglbaidgk",
-    "artifactSha256": "6c9bec980538bee46b1691fdd3bc4a508010ba04646599f57d6107be8556ba64"
+    "artifactSha256": "b34a788137796adc747a855753f172444c5d15bd33f09c53d0ed0c67d60bf4ff"
   },
   "permissions": {
     "requested": ["activeTab", "scripting", "storage"],
