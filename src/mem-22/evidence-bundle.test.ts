@@ -95,6 +95,25 @@ describe("MEM-22 Evidence Bundle contract", () => {
     ).toThrow("must expire within 1 hour");
   });
 
+  it("enforces the published schema's identifier and string bounds exactly", () => {
+    expect(() =>
+      parseEvidenceBundle({
+        ...validBundle,
+        assertions: [{ id: "contains spaces", status: "passed" }],
+      }),
+    ).toThrow("assertion.id");
+
+    expect(() =>
+      parseEvidenceBundle({
+        ...validBundle,
+        provenance: {
+          ...validBundle.provenance,
+          auditEngine: "x".repeat(257),
+        },
+      }),
+    ).toThrow("provenance.auditEngine");
+  });
+
   it("rejects malformed and oversized serialized artifacts before publication", () => {
     expect(() => parseEvidenceBundleText("{not-json")).toThrow(
       "must be valid JSON",

@@ -131,7 +131,7 @@
     "immutableRef": {
       "type": "string",
       "maxLength": 320,
-      "pattern": "^[^@\\\\s]+@[0-9a-f]{40}$"
+      "pattern": "^[^@\\s]+@[0-9a-f]{40}$"
     }
   }
 }

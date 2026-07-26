@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
+import { createRequire } from "node:module";
 import { dirname, join } from "node:path";
 
 import { AxeBuilder } from "@axe-core/playwright";
@@ -13,7 +14,7 @@ import {
   type EvidenceBundle,
 } from "./evidence-bundle.js";
 import {
-  InMemoryPublicationReplayStore,
+  FilePublicationReplayStore,
   acceptPublication,
   type GitHubOidcClaims,
   type PublicationPolicy,
@@ -22,6 +23,17 @@ import {
 const PLAYWRIGHT_IMAGE =
   "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48";
 const OIDC_ISSUER = "https://token.actions.githubusercontent.com";
+const require = createRequire(import.meta.url);
+const PROOF_REPOSITORY = "guillermo-rebolledo/a11y-demo";
+const PROOF_REPOSITORY_ID = "757824645";
+const PROOF_REPOSITORY_OWNER = "guillermo-rebolledo";
+const PROOF_REPOSITORY_OWNER_ID = "47798232";
+const PROOF_CALLER_WORKFLOW_REF =
+  "guillermo-rebolledo/a11y-demo/.github/workflows/a11y-audit.yml@refs/heads/main";
+const PROOF_TRUSTED_WORKFLOW_PATH =
+  "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml";
+const PROOF_REF = "refs/heads/main";
+const PROOF_ENVIRONMENT = "a11y-publication";
 
 function requiredEnvironment(name: string): string {
   const value = process.env[name];
@@ -52,7 +64,35 @@ async function runBrowser(): Promise<void> {
   try {
     const context = await browser.newContext();
     const page = await context.newPage();
+    const loginEmail = requiredEnvironment("SYNTHETIC_LOGIN_EMAIL");
+    const loginPassword = requiredEnvironment("SYNTHETIC_LOGIN_PASSWORD");
     await page.route("https://synthetic.invalid/**", async (route) => {
+      if (
+        route.request().method() === "POST" &&
+        new URL(route.request().url()).pathname === "/login"
+      ) {
+        const credentials = route.request().postDataJSON() as {
+          email?: unknown;
+          password?: unknown;
+        };
+        await route.fulfill({
+          status:
+            credentials.email === loginEmail &&
+            credentials.password === loginPassword
+              ? 204
+              : 401,
+          headers:
+            credentials.email === loginEmail &&
+            credentials.password === loginPassword
+              ? {
+                  "set-cookie":
+                    "synthetic-session=browser-job-only; Secure; HttpOnly; SameSite=Strict",
+                }
+              : {},
+        });
+        return;
+      }
+
       await route.fulfill({
         contentType: "text/html",
         body: `<!doctype html>
@@ -74,10 +114,19 @@ async function runBrowser(): Promise<void> {
             </section>
           </main>
           <script>
-            document.querySelector("#sign-in").addEventListener("click", () => {
-              document.cookie = "synthetic-session=browser-job-only; SameSite=Strict";
-              document.querySelector("#login").hidden = true;
-              document.querySelector("#private").hidden = false;
+            document.querySelector("#sign-in").addEventListener("click", async () => {
+              const response = await fetch("/login", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify({
+                  email: document.querySelector("[name=login-email]").value,
+                  password: document.querySelector("[name=login-password]").value
+                })
+              });
+              if (response.ok) {
+                document.querySelector("#login").hidden = true;
+                document.querySelector("#private").hidden = false;
+              }
             });
             document.querySelector("#invite").addEventListener("click", () => {
               document.querySelector("[role=status]").textContent = "Invitation sent";
@@ -89,11 +138,29 @@ async function runBrowser(): Promise<void> {
     });
     await page.goto("https://synthetic.invalid/private");
 
-    const loginEmail = requiredEnvironment("SYNTHETIC_LOGIN_EMAIL");
-    const loginPassword = requiredEnvironment("SYNTHETIC_LOGIN_PASSWORD");
     await page.getByLabel("Email", { exact: true }).fill(loginEmail);
+    await page.getByLabel("Password").fill("known-invalid-proof-password");
+    await page.getByRole("button", { name: "Sign in" }).click();
+    await page.waitForTimeout(50);
+    if (
+      !(
+        await page
+          .locator("#private")
+          .evaluate((element) => (element as HTMLElement).hidden)
+      )
+    ) {
+      throw new Error("Synthetic target accepted invalid authentication");
+    }
     await page.getByLabel("Password").fill(loginPassword);
     await page.getByRole("button", { name: "Sign in" }).click();
+    await page.locator("#private").waitFor({ state: "visible" });
+
+    if (scenario === "timeout") {
+      await page.locator("#intentional-hard-timeout").waitFor({
+        state: "visible",
+        timeout: 90_000,
+      });
+    }
 
     const findings: EvidenceBundle["findings"] = [];
     const firstCheckpoint = await new AxeBuilder({ page }).analyze();
@@ -122,21 +189,22 @@ async function runBrowser(): Promise<void> {
     );
 
     const finishedAt = new Date();
-    const status = scenario === "timeout" ? "timed-out" : "passed";
     const bundle: EvidenceBundle = {
       schemaVersion: 1,
       auditRunId: requiredEnvironment("A11Y_AUDIT_RUN_ID"),
       journeyId: requiredEnvironment("A11Y_JOURNEY_ID"),
-      status,
-      terminalReason: scenario === "timeout" ? "timeout" : "completed",
+      status: "passed",
+      terminalReason: "completed",
       createdAt: finishedAt.toISOString(),
       expiresAt: new Date(finishedAt.getTime() + 15 * 60 * 1_000).toISOString(),
       publicationNonce: `pub-${randomUUID()}`,
       provenance: {
         auditEngine: "0.0.0+mem22",
-        playwright: "1.61.1",
+        playwright: (
+          require("playwright/package.json") as { version: string }
+        ).version,
         chromium: browser.version(),
-        axe: "4.12.1",
+        axe: (require("axe-core/package.json") as { version: string }).version,
         image: PLAYWRIGHT_IMAGE,
         action: requiredEnvironment("A11Y_ACTION_REF"),
         workflow: requiredEnvironment("A11Y_WORKFLOW_REF"),
@@ -149,6 +217,7 @@ async function runBrowser(): Promise<void> {
           requiredEnvironment("RUNNER_ARCH") === "ARM64" ? "ARM64" : "X64",
       },
       assertions: [
+        { id: "invalid-authentication-rejected", status: "passed" },
         { id: "synthetic-authentication-established", status: "passed" },
         { id: "invitation-status-visible", status: "passed" },
         { id: "session-material-absent", status: "passed" },
@@ -204,21 +273,29 @@ function claimsFromPayload(payload: JWTPayload): GitHubOidcClaims {
   return payload as unknown as GitHubOidcClaims;
 }
 
-function publicationPolicyFromEnvironment(): PublicationPolicy {
+function proofPublicationPolicy(claims: GitHubOidcClaims): PublicationPolicy {
+  if (!/^[0-9a-f]{40}$/.test(claims.job_workflow_sha)) {
+    throw new Error("OIDC identity does not contain an immutable workflow SHA");
+  }
+  const trustedWorkflowRef = `${PROOF_TRUSTED_WORKFLOW_PATH}@${claims.job_workflow_sha}`;
+  if (claims.job_workflow_ref !== trustedWorkflowRef) {
+    throw new Error("OIDC identity uses an untrusted reusable workflow");
+  }
+
   return {
     issuer: OIDC_ISSUER,
-    audience: requiredEnvironment("A11Y_OIDC_AUDIENCE"),
-    repository: requiredEnvironment("A11Y_EXPECTED_REPOSITORY"),
-    repositoryId: requiredEnvironment("A11Y_EXPECTED_REPOSITORY_ID"),
-    repositoryOwnerId: requiredEnvironment("A11Y_EXPECTED_OWNER_ID"),
-    callerWorkflowRef: requiredEnvironment(
-      "A11Y_EXPECTED_CALLER_WORKFLOW_REF",
-    ),
-    trustedWorkflowRef: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_REF"),
-    trustedWorkflowSha: requiredEnvironment("A11Y_EXPECTED_WORKFLOW_SHA"),
-    ref: requiredEnvironment("A11Y_EXPECTED_REF"),
-    environment: requiredEnvironment("A11Y_EXPECTED_ENVIRONMENT"),
-    commit: requiredEnvironment("A11Y_EXPECTED_COMMIT"),
+    audience: "https://api.a11y-agent.example/publications",
+    subject: `repo:${PROOF_REPOSITORY}:environment:${PROOF_ENVIRONMENT}`,
+    repository: PROOF_REPOSITORY,
+    repositoryId: PROOF_REPOSITORY_ID,
+    repositoryOwner: PROOF_REPOSITORY_OWNER,
+    repositoryOwnerId: PROOF_REPOSITORY_OWNER_ID,
+    callerWorkflowRef: PROOF_CALLER_WORKFLOW_REF,
+    trustedWorkflowRef,
+    trustedWorkflowSha: claims.job_workflow_sha,
+    ref: PROOF_REF,
+    environment: PROOF_ENVIRONMENT,
+    commit: claims.sha,
     maxTokenAgeSeconds: 300,
     revoked: process.env.A11Y_PROOF_SCENARIO === "oidc-revoked",
   };
@@ -295,8 +372,9 @@ function sendJson(
 }
 
 async function runControlPlane(): Promise<void> {
-  const policy = publicationPolicyFromEnvironment();
-  const replayStore = new InMemoryPublicationReplayStore();
+  const replayStore = new FilePublicationReplayStore(
+    requiredEnvironment("A11Y_REPLAY_STORE_PATH"),
+  );
   const jwks = createRemoteJWKSet(
     new URL(`${OIDC_ISSUER}/.well-known/jwks`),
   );
@@ -318,12 +396,13 @@ async function runControlPlane(): Promise<void> {
       }
       const { payload } = await jwtVerify(authorization.slice(7), jwks, {
         issuer: OIDC_ISSUER,
-        audience: policy.audience,
+        audience: "https://api.a11y-agent.example/publications",
       });
+      const claims = claimsFromPayload(payload);
       const receipt = await acceptPublication({
         bundle: parseEvidenceBundleText(await readBoundedRequest(request)),
-        claims: claimsFromPayload(payload),
-        policy,
+        claims,
+        policy: proofPublicationPolicy(claims),
         replayStore,
       });
       sendJson(response, 201, receipt);

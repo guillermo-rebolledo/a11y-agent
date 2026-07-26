@@ -76,7 +76,7 @@ jobs:
     name: Browser Journey ${{ matrix.journey-index }}
     needs: gate
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: ${{ inputs.scenario == 'timeout' && 1 || 5 }}
     permissions: {}
     environment: a11y-synthetic
     strategy:
@@ -133,16 +133,8 @@ jobs:
           scenario: ${{ inputs.scenario }}
         env:
           A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
-          A11Y_EXPECTED_REPOSITORY: ${{ github.repository }}
-          A11Y_EXPECTED_REPOSITORY_ID: ${{ github.repository_id }}
-          A11Y_EXPECTED_OWNER_ID: ${{ github.repository_owner_id }}
-          A11Y_EXPECTED_CALLER_WORKFLOW_REF: ${{ github.workflow_ref }}
-          A11Y_EXPECTED_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@${{ inputs.trusted-workflow-sha }}
-          A11Y_EXPECTED_WORKFLOW_SHA: ${{ inputs.trusted-workflow-sha }}
-          A11Y_EXPECTED_REF: ${{ github.ref }}
-          A11Y_EXPECTED_ENVIRONMENT: a11y-publication
-          A11Y_EXPECTED_COMMIT: ${{ inputs.commit-sha }}
           A11Y_CONTROL_PLANE_PID_PATH: ${{ runner.temp }}/control-plane.pid
+          A11Y_REPLAY_STORE_PATH: ${{ runner.temp }}/publication-replay
       - name: Validate and publish through GitHub OIDC
         uses: guillermo-rebolledo/a11y-agent/packages/action@a9ac45cc39c83eaf0d9265cf40dcd0c698eb0a18
         with:

@@ -1,8 +1,27 @@
-const SHA_REF = /^[^@\s]+@[0-9a-f]{40}$/;
-const IMAGE_DIGEST = /^.+@sha256:[0-9a-f]{64}$/;
-const OPAQUE_ID = /^[A-Za-z0-9][A-Za-z0-9_-]{2,127}$/;
-const SHA = /^[0-9a-f]{40}$/;
+import { createRequire } from "node:module";
+
+import type {
+  Ajv2020 as Ajv2020Class,
+  ErrorObject,
+} from "ajv/dist/2020.js";
+import type { FormatsPlugin } from "ajv-formats";
+
+import evidenceBundleSchema from "../../packages/action/evidence-bundle.schema.json" with {
+  type: "json",
+};
+
 const MAX_SERIALIZED_BYTES = 64 * 1_024;
+const require = createRequire(import.meta.url);
+const Ajv2020 = (
+  require("ajv/dist/2020.js") as {
+    default: typeof Ajv2020Class;
+  }
+).default;
+const addFormats = (
+  require("ajv-formats") as {
+    default: FormatsPlugin;
+  }
+).default;
 
 const FORBIDDEN_KEYS = new Set([
   "cookie",
@@ -20,20 +39,11 @@ const FORBIDDEN_KEYS = new Set([
   "token",
 ]);
 
-const ROOT_KEYS = new Set([
-  "schemaVersion",
-  "auditRunId",
-  "journeyId",
-  "status",
-  "terminalReason",
-  "createdAt",
-  "expiresAt",
-  "publicationNonce",
-  "provenance",
-  "assertions",
-  "findings",
-  "measurements",
-]);
+const ajv = new Ajv2020({
+  allErrors: true,
+  strict: true,
+});
+addFormats(ajv);
 
 export type EvidenceTerminalStatus =
   | "passed"
@@ -87,19 +97,11 @@ export type EvidenceBundle = {
   };
 };
 
+const validateEvidenceBundle =
+  ajv.compile<EvidenceBundle>(evidenceBundleSchema);
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function assertExactKeys(
-  value: Record<string, unknown>,
-  allowed: ReadonlySet<string>,
-  path: string,
-): void {
-  const unknown = Object.keys(value).find((key) => !allowed.has(key));
-  if (unknown) {
-    throw new Error(`${path} contains unknown field: ${unknown}`);
-  }
 }
 
 function assertNoForbiddenFields(value: unknown): void {
@@ -119,76 +121,55 @@ function assertNoForbiddenFields(value: unknown): void {
   }
 }
 
-function assertString(
-  value: unknown,
-  path: string,
-  maximumLength = 256,
-): asserts value is string {
-  if (
-    typeof value !== "string" ||
-    value.length === 0 ||
-    value.length > maximumLength
-  ) {
-    throw new Error(`${path} must be a non-empty bounded string`);
-  }
-}
-
-function assertFiniteNonNegative(
-  value: unknown,
-  path: string,
-): asserts value is number {
-  if (typeof value !== "number" || !Number.isFinite(value) || value < 0) {
-    throw new Error(`${path} must be a finite non-negative number`);
-  }
-}
-
 function assertIsoDate(value: unknown, path: string): asserts value is string {
-  assertString(value, path, 32);
-  if (new Date(value).toISOString() !== value) {
+  if (typeof value !== "string" || new Date(value).toISOString() !== value) {
     throw new Error(`${path} must be an ISO-8601 UTC timestamp`);
   }
 }
 
+function schemaErrorMessage(error: ErrorObject): string {
+  if (error.keyword === "additionalProperties") {
+    const field = (error.params as { additionalProperty: string })
+      .additionalProperty;
+    return `Evidence Bundle contains unknown field: ${field}`;
+  }
+  if (error.keyword === "maxItems" && error.instancePath === "/findings") {
+    return "Evidence Bundle must contain at most 50 findings";
+  }
+  if (error.keyword === "maxItems" && error.instancePath === "/assertions") {
+    return "Evidence Bundle must contain at most 50 assertions";
+  }
+  if (
+    error.keyword === "pattern" &&
+    error.instancePath === "/provenance/action"
+  ) {
+    return "action must use an immutable commit SHA";
+  }
+  if (
+    error.keyword === "pattern" &&
+    error.instancePath === "/provenance/workflow"
+  ) {
+    return "workflow must use an immutable commit SHA";
+  }
+
+  const path = error.instancePath
+    .replace(/^\/assertions\/\d+/, "assertion")
+    .replace(/^\/findings\/\d+/, "finding")
+    .replaceAll("/", ".")
+    .replace(/^\./, "");
+  return `Evidence Bundle schema rejected ${path || "root"}: ${error.message ?? error.keyword}`;
+}
+
 export function parseEvidenceBundle(value: unknown): EvidenceBundle {
   assertNoForbiddenFields(value);
-  if (!isRecord(value)) throw new Error("Evidence Bundle must be an object");
-  assertExactKeys(value, ROOT_KEYS, "Evidence Bundle");
-
-  if (value.schemaVersion !== 1) {
-    throw new Error("unsupported Evidence Bundle schemaVersion");
+  if (!validateEvidenceBundle(value)) {
+    const error = validateEvidenceBundle.errors?.[0];
+    throw new Error(
+      error
+        ? schemaErrorMessage(error)
+        : "Evidence Bundle does not match its schema",
+    );
   }
-  assertString(value.auditRunId, "auditRunId", 128);
-  assertString(value.journeyId, "journeyId", 128);
-  assertString(value.publicationNonce, "publicationNonce", 128);
-  if (
-    !OPAQUE_ID.test(value.auditRunId) ||
-    !OPAQUE_ID.test(value.journeyId) ||
-    !OPAQUE_ID.test(value.publicationNonce)
-  ) {
-    throw new Error("Evidence Bundle identifiers must be opaque identifiers");
-  }
-
-  const statuses: EvidenceTerminalStatus[] = [
-    "passed",
-    "failed",
-    "crashed",
-    "timed-out",
-    "cancelled",
-  ];
-  if (!statuses.includes(value.status as EvidenceTerminalStatus)) {
-    throw new Error("invalid terminal status");
-  }
-  const terminalReasons = [
-    "completed",
-    "assertion-failed",
-    "runner-failure",
-    "timeout",
-    "operator-cancellation",
-  ];
-  if (!terminalReasons.includes(value.terminalReason as string)) {
-    throw new Error("invalid terminal reason");
-  }
-
   assertIsoDate(value.createdAt, "createdAt");
   assertIsoDate(value.expiresAt, "expiresAt");
   const validityMs =
@@ -196,120 +177,7 @@ export function parseEvidenceBundle(value: unknown): EvidenceBundle {
   if (validityMs <= 0 || validityMs > 60 * 60 * 1_000) {
     throw new Error("Evidence Bundle must expire within 1 hour");
   }
-
-  if (!isRecord(value.provenance)) {
-    throw new Error("provenance must be an object");
-  }
-  const provenanceKeys = new Set([
-    "auditEngine",
-    "playwright",
-    "chromium",
-    "axe",
-    "image",
-    "action",
-    "workflow",
-    "repository",
-    "commit",
-    "runId",
-    "runAttempt",
-    "runnerEnvironment",
-    "runnerArchitecture",
-  ]);
-  assertExactKeys(value.provenance, provenanceKeys, "provenance");
-  for (const key of [
-    "auditEngine",
-    "playwright",
-    "chromium",
-    "axe",
-    "image",
-    "action",
-    "workflow",
-    "repository",
-    "commit",
-    "runId",
-    "runnerEnvironment",
-    "runnerArchitecture",
-  ]) {
-    assertString(value.provenance[key], `provenance.${key}`, 320);
-  }
-  if (!IMAGE_DIGEST.test(value.provenance.image as string)) {
-    throw new Error("image must use an immutable sha256 digest");
-  }
-  if (!SHA_REF.test(value.provenance.action as string)) {
-    throw new Error("action must use an immutable commit SHA");
-  }
-  if (!SHA_REF.test(value.provenance.workflow as string)) {
-    throw new Error("workflow must use an immutable commit SHA");
-  }
-  if (!SHA.test(value.provenance.commit as string)) {
-    throw new Error("commit must be a full Git commit SHA");
-  }
-  if (
-    !Number.isInteger(value.provenance.runAttempt) ||
-    (value.provenance.runAttempt as number) < 1
-  ) {
-    throw new Error("runAttempt must be a positive integer");
-  }
-  if (value.provenance.runnerEnvironment !== "github-hosted") {
-    throw new Error("only ephemeral GitHub-hosted runners are supported");
-  }
-  if (!["X64", "ARM64"].includes(value.provenance.runnerArchitecture as string)) {
-    throw new Error("unsupported runner architecture");
-  }
-
-  if (!Array.isArray(value.assertions) || value.assertions.length > 50) {
-    throw new Error("Evidence Bundle must contain at most 50 assertions");
-  }
-  const assertionKeys = new Set(["id", "status"]);
-  for (const assertion of value.assertions) {
-    if (!isRecord(assertion)) throw new Error("assertion must be an object");
-    assertExactKeys(assertion, assertionKeys, "assertion");
-    assertString(assertion.id, "assertion.id", 128);
-    if (!["passed", "failed"].includes(assertion.status as string)) {
-      throw new Error("invalid assertion status");
-    }
-  }
-
-  if (!Array.isArray(value.findings) || value.findings.length > 50) {
-    throw new Error("Evidence Bundle must contain at most 50 findings");
-  }
-  const findingKeys = new Set(["ruleId", "impact", "checkpoint"]);
-  for (const finding of value.findings) {
-    if (!isRecord(finding)) throw new Error("finding must be an object");
-    assertExactKeys(finding, findingKeys, "finding");
-    assertString(finding.ruleId, "finding.ruleId", 128);
-    if (
-      finding.impact !== null &&
-      !["minor", "moderate", "serious", "critical"].includes(
-        finding.impact as string,
-      )
-    ) {
-      throw new Error("invalid finding impact");
-    }
-    if (
-      !Number.isInteger(finding.checkpoint) ||
-      (finding.checkpoint as number) < 0
-    ) {
-      throw new Error("finding checkpoint must be a non-negative integer");
-    }
-  }
-
-  if (!isRecord(value.measurements)) {
-    throw new Error("measurements must be an object");
-  }
-  assertExactKeys(
-    value.measurements,
-    new Set(["startupMs", "runtimeMs", "actionMinutes"]),
-    "measurements",
-  );
-  assertFiniteNonNegative(value.measurements.startupMs, "measurements.startupMs");
-  assertFiniteNonNegative(value.measurements.runtimeMs, "measurements.runtimeMs");
-  assertFiniteNonNegative(
-    value.measurements.actionMinutes,
-    "measurements.actionMinutes",
-  );
-
-  return value as EvidenceBundle;
+  return value;
 }
 
 export function parseEvidenceBundleText(source: string): EvidenceBundle {

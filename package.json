@@ -17,7 +17,9 @@
     "proof:mem-7:verify": "tsx src/mem-7/cli.ts verify"
   },
   "dependencies": {
-    "@vercel/sandbox": "2.9.0"
+    "@vercel/sandbox": "2.9.0",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.12.1",

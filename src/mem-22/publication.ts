@@ -1,4 +1,6 @@
 import { createHash } from "node:crypto";
+import { mkdir, unlink, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 
 import {
   parseEvidenceBundle,
@@ -32,8 +34,10 @@ export type GitHubOidcClaims = {
 export type PublicationPolicy = {
   issuer: string;
   audience: string;
+  subject: string;
   repository: string;
   repositoryId: string;
+  repositoryOwner: string;
   repositoryOwnerId: string;
   callerWorkflowRef: string;
   trustedWorkflowRef: string;
@@ -70,6 +74,43 @@ export class InMemoryPublicationReplayStore
   }
 }
 
+export class FilePublicationReplayStore implements PublicationReplayStore {
+  readonly #directory: string;
+
+  constructor(directory: string) {
+    this.#directory = directory;
+  }
+
+  async reserve(keys: readonly string[]): Promise<boolean> {
+    await mkdir(this.#directory, { recursive: true });
+    const created: string[] = [];
+
+    try {
+      for (const key of keys) {
+        const filename = createHash("sha256").update(key).digest("hex");
+        const path = join(this.#directory, filename);
+        await writeFile(path, "", { flag: "wx", mode: 0o600 });
+        created.push(path);
+      }
+      return true;
+    } catch (error) {
+      await Promise.all(
+        created.map(async (path) => {
+          await unlink(path).catch(() => undefined);
+        }),
+      );
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "EEXIST"
+      ) {
+        return false;
+      }
+      throw error;
+    }
+  }
+}
+
 function includesAudience(audience: string | string[], expected: string): boolean {
   return Array.isArray(audience)
     ? audience.includes(expected)
@@ -94,12 +135,16 @@ export async function acceptPublication(input: {
   if (policy.revoked) throw new Error("OIDC publication trust is revoked");
   if (claims.iss !== policy.issuer) rejectIdentity("issuer");
   if (!includesAudience(claims.aud, policy.audience)) rejectIdentity("audience");
+  if (claims.sub !== policy.subject) rejectIdentity("subject");
   if (claims.repository !== policy.repository) rejectIdentity("repository");
   if (claims.repository_id !== policy.repositoryId) {
     rejectIdentity("repository_id");
   }
   if (claims.repository_owner_id !== policy.repositoryOwnerId) {
     rejectIdentity("repository_owner_id");
+  }
+  if (claims.repository_owner !== policy.repositoryOwner) {
+    rejectIdentity("repository_owner");
   }
   if (claims.workflow_ref !== policy.callerWorkflowRef) {
     rejectIdentity("workflow_ref");

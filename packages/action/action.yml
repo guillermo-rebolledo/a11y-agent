@@ -18,6 +18,7 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
+        unset SYNTHETIC_LOGIN_EMAIL SYNTHETIC_LOGIN_PASSWORD
         corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile
     - name: Execute trusted Action mode
       shell: bash

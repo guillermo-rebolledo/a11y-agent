@@ -1,6 +1,11 @@
+import { mkdtemp } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import {
+  FilePublicationReplayStore,
   InMemoryPublicationReplayStore,
   acceptPublication,
   type GitHubOidcClaims,
@@ -70,8 +75,10 @@ const claims: GitHubOidcClaims = {
 const policy: PublicationPolicy = {
   issuer: "https://token.actions.githubusercontent.com",
   audience: "https://api.a11y-agent.example/publications",
+  subject: "repo:guillermo-rebolledo/a11y-demo:environment:a11y-synthetic",
   repository: "guillermo-rebolledo/a11y-demo",
   repositoryId: "987654321",
+  repositoryOwner: "guillermo-rebolledo",
   repositoryOwnerId: "1234567",
   callerWorkflowRef:
     "guillermo-rebolledo/a11y-demo/.github/workflows/a11y-audit.yml@refs/heads/main",
@@ -147,5 +154,28 @@ describe("MEM-22 publication boundary", () => {
         now,
       }),
     ).rejects.toThrow("revoked");
+  });
+
+  it("rejects a replay after the verifier store is recreated", async () => {
+    const directory = await mkdtemp(join(tmpdir(), "mem22-replay-"));
+    const path = join(directory, "publication-keys.json");
+
+    await acceptPublication({
+      bundle,
+      claims,
+      policy,
+      replayStore: new FilePublicationReplayStore(path),
+      now,
+    });
+
+    await expect(
+      acceptPublication({
+        bundle,
+        claims,
+        policy,
+        replayStore: new FilePublicationReplayStore(path),
+        now,
+      }),
+    ).rejects.toThrow("replayed or duplicate publication");
   });
 });

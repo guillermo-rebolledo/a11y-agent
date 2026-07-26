@@ -119,4 +119,27 @@ describe("MEM-22 trusted GitHub Actions contract", () => {
     expect(JSON.stringify(workflow.jobs.gate)).toContain("journey-index");
     expect(workflow.jobs.publisher?.needs).toContain("browser");
   });
+
+  it("uses GitHub's hard job timeout for the timeout proof", async () => {
+    const workflow = await loadWorkflow();
+
+    expect(JSON.stringify(workflow.jobs.browser)).toContain(
+      "inputs.scenario == 'timeout'",
+    );
+    expect(JSON.stringify(workflow.jobs.browser)).toContain("timeout-minutes");
+  });
+
+  it("removes browser credentials before installing Action dependencies", async () => {
+    const source = await readFile(
+      new URL("../../packages/action/action.yml", import.meta.url),
+      "utf8",
+    );
+    const unsetAt = source.indexOf(
+      "unset SYNTHETIC_LOGIN_EMAIL SYNTHETIC_LOGIN_PASSWORD",
+    );
+    const installAt = source.indexOf("install --frozen-lockfile");
+
+    expect(unsetAt).toBeGreaterThan(-1);
+    expect(unsetAt).toBeLessThan(installAt);
+  });
 });
