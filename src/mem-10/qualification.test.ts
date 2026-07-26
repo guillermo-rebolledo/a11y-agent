@@ -6,18 +6,19 @@ import {
   decideArchitecture,
   verifyQualificationReport,
   type QualificationGate,
+  type QualificationGateId,
   type QualificationReport,
 } from "./qualification.js";
 
 const passedGate = (
-  id: string,
+  id: QualificationGateId,
   consequence: QualificationGate["consequence"] = "review",
 ): QualificationGate => ({
   id,
   consequence,
   status: "passed",
   evidence: ["evidence/example.json"],
-  finding: "Observed in the qualification run.",
+  assessment: "Observed in the qualification run.",
 });
 
 describe("MEM-10 architecture qualification", () => {
@@ -28,7 +29,7 @@ describe("MEM-10 architecture qualification", () => {
         {
           ...passedGate("session-custody", "reject"),
           status: "failed",
-          finding: "A cookie entered a published artifact.",
+          assessment: "A cookie entered a published artifact.",
         },
       ]),
     ).toBe("reject");
@@ -42,7 +43,7 @@ describe("MEM-10 architecture qualification", () => {
           ...passedGate("operational-controls"),
           status: "not-evidenced",
           evidence: [],
-          finding: "The global dispatch stop was not exercised.",
+          assessment: "The global dispatch stop was not exercised.",
         },
       ]),
     ).toBe("revise");

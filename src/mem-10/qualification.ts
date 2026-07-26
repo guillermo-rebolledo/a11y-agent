@@ -20,13 +20,15 @@ export const REQUIRED_QUALIFICATION_GATES = [
 ] as const;
 
 export type QualificationDecision = "accept" | "revise" | "reject";
+export type QualificationGateId =
+  (typeof REQUIRED_QUALIFICATION_GATES)[number];
 
 export type QualificationGate = {
-  id: string;
+  id: QualificationGateId;
   consequence: "reject" | "review";
   status: "passed" | "failed" | "partial" | "not-evidenced";
   evidence: string[];
-  finding: string;
+  assessment: string;
 };
 
 export type QualificationReport = {
@@ -63,7 +65,7 @@ export function verifyQualificationReport(
   report: QualificationReport,
 ): string[] {
   const errors: string[] = [];
-  const gateById = new Map<string, QualificationGate>();
+  const gateById = new Map<QualificationGateId, QualificationGate>();
 
   for (const gate of report.gates) {
     if (gateById.has(gate.id)) {
@@ -74,8 +76,8 @@ export function verifyQualificationReport(
     if (gate.status !== "not-evidenced" && gate.evidence.length === 0) {
       errors.push(`${gate.id} has ${gate.status} status without evidence`);
     }
-    if (gate.finding.trim().length === 0) {
-      errors.push(`${gate.id} has no finding`);
+    if (gate.assessment.trim().length === 0) {
+      errors.push(`${gate.id} has no assessment`);
     }
   }
 
