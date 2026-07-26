@@ -1,0 +1,9 @@
+.next
+coverage
+dist
+test-results
+playwright-report
+release
+artifacts
+evidence
+pnpm-lock.yaml

@@ -2,6 +2,9 @@
 .env*
 node_modules/
 dist/
+.next/
+test-results/
+playwright-report/
 coverage/
 .DS_Store
 evidence/MEM-7/runs/

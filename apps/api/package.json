@@ -1,0 +1,29 @@
+{
+  "name": "@a11y-agent/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./app": "./src/application.ts"
+  },
+  "scripts": {
+    "build": "pnpm --filter @a11y-agent/domain build && tsc -p tsconfig.build.json",
+    "dev": "tsx watch src/server.ts",
+    "lint": "oxlint src",
+    "start": "tsx src/server.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@a11y-agent/domain": "workspace:*",
+    "fastify": "5.10.0",
+    "postgres": "3.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "oxlint": "1.41.0",
+    "tsx": "4.20.6",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10"
+  }
+}

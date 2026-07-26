@@ -1,0 +1,31 @@
+{
+  "name": "@a11y-agent/web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm --filter @a11y-agent/domain build && next build",
+    "dev": "next dev",
+    "lint": "oxlint app tests playwright.config.ts next.config.ts",
+    "start": "next start",
+    "test:a11y": "playwright test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@a11y-agent/domain": "workspace:*",
+    "@a11y-agent/ui": "workspace:*",
+    "next": "16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@playwright/test": "1.61.1",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "oxlint": "1.41.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
+  }
+}
