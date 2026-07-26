@@ -1,0 +1,10 @@
+{
+  "name": "@a11y-agent/sandbox-runner",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "playwright": "1.61.1"
+  }
+}

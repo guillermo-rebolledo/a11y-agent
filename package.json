@@ -1,0 +1,27 @@
+{
+  "name": "a11y-agent",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <27"
+  },
+  "packageManager": "pnpm@10.29.2",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "proof:mem-7": "tsx src/mem-7/cli.ts run",
+    "proof:mem-7:verify": "tsx src/mem-7/cli.ts verify"
+  },
+  "dependencies": {
+    "@vercel/sandbox": "2.9.0"
+  },
+  "devDependencies": {
+    "@types/async-retry": "1.4.9",
+    "@types/node": "24.10.1",
+    "tsx": "4.20.6",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10"
+  }
+}

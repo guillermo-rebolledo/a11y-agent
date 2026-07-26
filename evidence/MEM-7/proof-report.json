@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-7",
+  "result": "failed",
+  "startedAt": "2026-07-26T01:52:08.183Z",
+  "finishedAt": "2026-07-26T01:52:26.431Z",
+  "provenance": {
+    "image": "runner@sha256:373dd0f64371aa0bf855020b546b0f63444fe0eef09bc2f09f12d7e9c23f01d3",
+    "baseImage": "node:24.12.0-bookworm-slim@sha256:7326fb2dbdce998edd72140946851be64ef4a643e8715e138ca467e8e9d92c99",
+    "lockfileSha256": "70f3ac62f7d92912707f70f1b5dbdf835f2e5f2f3e8222a125ef93fc8b87d710",
+    "sdkVersion": "2.9.0"
+  },
+  "assertions": [
+    {
+      "id": "image.pinned",
+      "status": "passed",
+      "evidence": [
+        "requested=runner@sha256:373dd0f64371aa0bf855020b546b0f63444fe0eef09bc2f09f12d7e9c23f01d3",
+        "observed=runner@sha256:373dd0f64371aa0bf855020b546b0f63444fe0eef09bc2f09f12d7e9c23f01d3"
+      ]
+    },
+    {
+      "id": "journey.terminal",
+      "status": "passed",
+      "evidence": [
+        "synthetic-invite-1: passed, assertion=\"Invitation sent\"",
+        "synthetic-invite-2: passed, assertion=\"Invitation sent\"",
+        "synthetic-invite-3: passed, assertion=\"Invitation sent\"",
+        "synthetic-invite-4: passed, assertion=\"Invitation sent\"",
+        "synthetic-invite-5: passed, assertion=\"Invitation sent\""
+      ]
+    },
+    {
+      "id": "network.deny-by-default",
+      "status": "passed",
+      "evidence": [
+        "{\"allow\":[\"example.com\",\"httpbin.org\",\"7f000001.01010101.rbndr.us\"],\"subnets\":{\"deny\":[\"10.0.0.0/8\",\"127.0.0.0/8\",\"169.254.0.0/16\",\"172.16.0.0/12\",\"192.168.0.0/16\"]}}"
+      ]
+    },
+    {
+      "id": "network.approved-host",
+      "status": "passed",
+      "evidence": [
+        "approved-host: reachable (HTTP 200)"
+      ]
+    },
+    {
+      "id": "network.unapproved-host",
+      "status": "passed",
+      "evidence": [
+        "unapproved-host: blocked (TypeError:EAI_AGAIN)"
+      ]
+    },
+    {
+      "id": "network.plain-http",
+      "status": "passed",
+      "evidence": [
+        "plain-http: blocked (TypeError:EAI_AGAIN)"
+      ]
+    },
+    {
+      "id": "network.loopback",
+      "status": "passed",
+      "evidence": [
+        "loopback: blocked (TypeError:ECONNREFUSED)"
+      ]
+    },
+    {
+      "id": "network.private",
+      "status": "passed",
+      "evidence": [
+        "private: blocked (TypeError:ECONNRESET)"
+      ]
+    },
+    {
+      "id": "network.link-local",
+      "status": "passed",
+      "evidence": [
+        "link-local: blocked (TypeError:ECONNRESET)"
+      ]
+    },
+    {
+      "id": "network.metadata",
+      "status": "failed",
+      "evidence": [
+        "metadata: reachable (HTTP 401)"
+      ]
+    },
+    {
+      "id": "network.unsafe-ipv6",
+      "status": "passed",
+      "evidence": [
+        "ipv6-loopback: blocked (TypeError:ECONNREFUSED)",
+        "ipv6-private: blocked (TypeError:ENETUNREACH)"
+      ]
+    },
+    {
+      "id": "network.redirect",
+      "status": "failed",
+      "evidence": [
+        "redirect: reachable (HTTP 401)"
+      ]
+    },
+    {
+      "id": "network.dns-rebinding",
+      "status": "failed",
+      "evidence": [
+        "resolved addresses=1.1.1.1",
+        "request=TypeError:ERR_TLS_CERT_ALTNAME_INVALID"
+      ]
+    },
+    {
+      "id": "limits.cpu",
+      "status": "passed",
+      "evidence": [
+        "MicroVM allocation via SDK vCPUs=1",
+        "cgroup cpu.max=max 100000"
+      ]
+    },
+    {
+      "id": "limits.memory",
+      "status": "passed",
+      "evidence": [
+        "MicroVM allocation via SDK memoryMiB=2048",
+        "cgroup memory.max=max"
+      ]
+    },
+    {
+      "id": "limits.disk",
+      "status": "failed",
+      "evidence": [
+        "process RLIMIT_FSIZE probe exit=153",
+        "Vercel Sandbox SDK 2.9.0 exposes no Sandbox-wide disk quota"
+      ]
+    },
+    {
+      "id": "limits.ports",
+      "status": "passed",
+      "evidence": [
+        "exposed routes=0"
+      ]
+    },
+    {
+      "id": "limits.execution-time",
+      "status": "passed",
+      "evidence": [
+        "session timeoutMs=120000"
+      ]
+    },
+    {
+      "id": "lifecycle.success",
+      "status": "passed",
+      "evidence": [
+        "all successful Sandboxes absent after delete=true"
+      ]
+    },
+    {
+      "id": "lifecycle.crash",
+      "status": "passed",
+      "evidence": [
+        "crash terminal condition observed=true",
+        "Sandbox absent after delete=true"
+      ]
+    },
+    {
+      "id": "lifecycle.timeout",
+      "status": "passed",
+      "evidence": [
+        "timeout terminal condition observed=true",
+        "Sandbox absent after delete=true"
+      ]
+    },
+    {
+      "id": "lifecycle.operator-cancellation",
+      "status": "passed",
+      "evidence": [
+        "operator-cancellation terminal condition observed=true",
+        "Sandbox absent after delete=true"
+      ]
+    },
+    {
+      "id": "isolation.filesystem",
+      "status": "passed",
+      "evidence": [
+        "Each Sandbox read only its own same-path filesystem canary"
+      ]
+    },
+    {
+      "id": "isolation.processes",
+      "status": "passed",
+      "evidence": [
+        "Each Sandbox process table contained only its own process canary"
+      ]
+    },
+    {
+      "id": "isolation.environment",
+      "status": "passed",
+      "evidence": [
+        "Each Sandbox observed only its own environment canary"
+      ]
+    },
+    {
+      "id": "concurrency.five-journeys",
+      "status": "passed",
+      "evidence": [
+        "concurrent Journey count=5"
+      ]
+    },
+    {
+      "id": "provenance.dependencies",
+      "status": "passed",
+      "evidence": [
+        "base image=node:24.12.0-bookworm-slim@sha256:7326fb2dbdce998edd72140946851be64ef4a643e8715e138ca467e8e9d92c99",
+        "runner lockfile sha256=70f3ac62f7d92912707f70f1b5dbdf835f2e5f2f3e8222a125ef93fc8b87d710",
+        "Playwright=1.61.1; Chromium=149.0.7827.55; Axe=4.12.1; Sandbox SDK=2.9.0"
+      ]
+    }
+  ],
+  "journeys": [
+    {
+      "journeyId": "synthetic-invite-1",
+      "sandboxId": "mem-7-1785030728184-1-bce3536d",
+      "status": "passed",
+      "assertion": "Invitation sent",
+      "createdAt": "2026-07-26T01:52:08.858Z",
+      "startedAt": "2026-07-26T01:52:14.797Z",
+      "finishedAt": "2026-07-26T01:52:17.033Z",
+      "destroyedAt": "2026-07-26T01:52:19.488Z",
+      "startupMs": 674,
+      "runtimeMs": 2236,
+      "activeCpuMs": 3745
+    },
+    {
+      "journeyId": "synthetic-invite-2",
+      "sandboxId": "mem-7-1785030728858-2-714a7616",
+      "status": "passed",
+      "assertion": "Invitation sent",
+      "createdAt": "2026-07-26T01:52:09.275Z",
+      "startedAt": "2026-07-26T01:52:14.797Z",
+      "finishedAt": "2026-07-26T01:52:17.182Z",
+      "destroyedAt": "2026-07-26T01:52:19.798Z",
+      "startupMs": 417,
+      "runtimeMs": 2385,
+      "activeCpuMs": 2768
+    },
+    {
+      "journeyId": "synthetic-invite-3",
+      "sandboxId": "mem-7-1785030729275-3-55da3fd2",
+      "status": "passed",
+      "assertion": "Invitation sent",
+      "createdAt": "2026-07-26T01:52:09.686Z",
+      "startedAt": "2026-07-26T01:52:14.797Z",
+      "finishedAt": "2026-07-26T01:52:17.557Z",
+      "destroyedAt": "2026-07-26T01:52:20.025Z",
+      "startupMs": 411,
+      "runtimeMs": 2760,
+      "activeCpuMs": 2782
+    },
+    {
+      "journeyId": "synthetic-invite-4",
+      "sandboxId": "mem-7-1785030729686-4-a8e6b71d",
+      "status": "passed",
+      "assertion": "Invitation sent",
+      "createdAt": "2026-07-26T01:52:10.020Z",
+      "startedAt": "2026-07-26T01:52:14.797Z",
+      "finishedAt": "2026-07-26T01:52:17.126Z",
+      "destroyedAt": "2026-07-26T01:52:18.584Z",
+      "startupMs": 334,
+      "runtimeMs": 2329,
+      "activeCpuMs": 2786
+    },
+    {
+      "journeyId": "synthetic-invite-5",
+      "sandboxId": "mem-7-1785030730020-5-3741d0cd",
+      "status": "passed",
+      "assertion": "Invitation sent",
+      "createdAt": "2026-07-26T01:52:10.532Z",
+      "startedAt": "2026-07-26T01:52:14.797Z",
+      "finishedAt": "2026-07-26T01:52:17.199Z",
+      "destroyedAt": "2026-07-26T01:52:19.656Z",
+      "startupMs": 512,
+      "runtimeMs": 2402,
+      "activeCpuMs": 2815
+    }
+  ],
+  "measurements": {
+    "startupMs": [
+      674,
+      417,
+      411,
+      334,
+      512
+    ],
+    "runtimeMs": [
+      2236,
+      2385,
+      2760,
+      2329,
+      2402
+    ],
+    "activeCpuMs": [
+      3745,
+      2768,
+      2782,
+      2786,
+      2815
+    ],
+    "estimatedCostUsd": 0.001109
+  }
+}
