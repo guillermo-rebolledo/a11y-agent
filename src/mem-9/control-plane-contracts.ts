@@ -1,34 +1,37 @@
 const OPAQUE_ID = /^[A-Za-z0-9][A-Za-z0-9_-]{2,127}$/u;
 
-const QUEUE_KINDS = new Set([
+const QUEUE_KIND_VALUES = [
   "finalize-audit-run",
   "delete-run-evidence",
   "delete-project-evidence",
   "reconcile-evidence-retention",
-] as const);
+] as const;
+const QUEUE_KINDS = new Set<string>(QUEUE_KIND_VALUES);
 
-const TELEMETRY_EVENTS = new Set([
+const TELEMETRY_EVENT_VALUES = [
   "evidence-publication",
   "evidence-access",
   "evidence-deletion",
   "retention-reconciliation",
-] as const);
+] as const;
+const TELEMETRY_EVENTS = new Set<string>(TELEMETRY_EVENT_VALUES);
 
-const TELEMETRY_OUTCOMES = new Set([
+const TELEMETRY_OUTCOME_VALUES = [
   "accepted",
   "rejected",
   "suppressed",
   "deleted",
   "failed",
-] as const);
+] as const;
+const TELEMETRY_OUTCOMES = new Set<string>(TELEMETRY_OUTCOME_VALUES);
+
+type QueueKind = (typeof QUEUE_KIND_VALUES)[number];
+type TelemetryEvent = (typeof TELEMETRY_EVENT_VALUES)[number];
+type TelemetryOutcome = (typeof TELEMETRY_OUTCOME_VALUES)[number];
 
 export type ControlPlaneQueuePayload = {
   schemaVersion: 1;
-  kind:
-    | "finalize-audit-run"
-    | "delete-run-evidence"
-    | "delete-project-evidence"
-    | "reconcile-evidence-retention";
+  kind: QueueKind;
   tenantId: string;
   projectId: string;
   auditRunId: string;
@@ -36,15 +39,11 @@ export type ControlPlaneQueuePayload = {
 
 export type OperationalTelemetry = {
   schemaVersion: 1;
-  event:
-    | "evidence-publication"
-    | "evidence-access"
-    | "evidence-deletion"
-    | "retention-reconciliation";
+  event: TelemetryEvent;
   tenantId: string;
   projectId: string;
   auditRunId: string;
-  outcome: "accepted" | "rejected" | "suppressed" | "deleted" | "failed";
+  outcome: TelemetryOutcome;
   durationMs: number;
   retryCount: number;
 };
@@ -94,7 +93,7 @@ export function parseControlPlaneQueuePayload(
   }
   if (
     typeof value.kind !== "string" ||
-    !QUEUE_KINDS.has(value.kind as ControlPlaneQueuePayload["kind"])
+    !QUEUE_KINDS.has(value.kind)
   ) {
     throw new Error("unsupported queue payload kind");
   }
@@ -121,13 +120,13 @@ export function parseOperationalTelemetry(
   }
   if (
     typeof value.event !== "string" ||
-    !TELEMETRY_EVENTS.has(value.event as OperationalTelemetry["event"])
+    !TELEMETRY_EVENTS.has(value.event)
   ) {
     throw new Error("unsupported event");
   }
   if (
     typeof value.outcome !== "string" ||
-    !TELEMETRY_OUTCOMES.has(value.outcome as OperationalTelemetry["outcome"])
+    !TELEMETRY_OUTCOMES.has(value.outcome)
   ) {
     throw new Error("unsupported telemetry outcome");
   }

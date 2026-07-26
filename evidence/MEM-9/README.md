@@ -7,12 +7,17 @@ The separate publisher accepts the browser artifact as bounded untrusted JSON,
 binds it to GitHub's short-lived OIDC identity, suppresses the whole artifact
 when a known or structurally detected sensitive value survives, and writes one
 canonical Evidence Bundle through the private Cloudflare R2 adapter.
+Every remaining string field is checked against server-owned Audit Run,
+Journey, provenance, assertion, and Finding-rule policy before persistence.
+The browser fixture seeds email, phone, token, cookie, and secret canaries
+before artifact creation and fails closed if any survives serialization.
 
 The R2 adapter exposes only service-side writes, deletes, and authorization-
 checked signed reads. Object keys are opaque, responses are marked
 `private, no-store`, and read grants cannot exceed five minutes. The lifecycle
 contract proves immediate Audit Run deletion, Project deletion, scheduled
-30-day expiry, and reconciliation of overdue catalog records.
+30-day expiry, an hourly retention schedule contract, and reconciliation of
+overdue catalog records.
 
 Queue and telemetry parsers accept fixed, versioned, metadata-only shapes.
 Publication, access, deletion, and reconciliation audit events contain

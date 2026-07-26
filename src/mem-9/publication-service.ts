@@ -68,6 +68,18 @@ export type EvidenceRecord = {
   deleteAt: string;
 };
 
+export type EvidenceContentPolicy = {
+  auditRunId: string;
+  journeyId: string;
+  provenance: EvidenceBundleProvenance;
+  assertionIds: readonly string[];
+  findingRuleIds: readonly string[];
+};
+
+type EvidenceBundleProvenance = ReturnType<
+  typeof parseEvidenceBundle
+>["provenance"];
+
 export interface EvidenceCatalog {
   insert(record: EvidenceRecord): Promise<void>;
   find(input: {
@@ -153,12 +165,29 @@ export type EvidenceAuditEvent =
       occurredAt: string;
     }
   | {
+      type: "evidence.publication.rejected";
+      tenantId: string;
+      projectId: string;
+      auditRunId: string;
+      reason: "malformed-artifact" | "content-policy" | "identity-or-replay";
+      occurredAt: string;
+    }
+  | {
       type: "evidence.access.granted";
       tenantId: string;
       projectId: string;
       auditRunId: string;
       actorId: string;
       expiresAt: string;
+      occurredAt: string;
+    }
+  | {
+      type: "evidence.access.denied";
+      tenantId: string;
+      projectId: string;
+      auditRunId: string;
+      actorId: string;
+      reason: "authorization" | "invalid-ttl";
       occurredAt: string;
     }
   | {
@@ -247,10 +276,32 @@ function privateObjectKey(input: {
   return `evidence/${opaqueId}.json`;
 }
 
+function assertMatchesEvidencePolicy(
+  bundle: ReturnType<typeof parseEvidenceBundle>,
+  policy: EvidenceContentPolicy,
+): void {
+  const matches =
+    bundle.auditRunId === policy.auditRunId &&
+    bundle.journeyId === policy.journeyId &&
+    JSON.stringify(bundle.provenance) === JSON.stringify(policy.provenance) &&
+    bundle.assertions.every((assertion) =>
+      policy.assertionIds.includes(assertion.id),
+    ) &&
+    bundle.findings.every((finding) =>
+      policy.findingRuleIds.includes(finding.ruleId),
+    );
+  if (!matches) {
+    throw new Error(
+      "Evidence Bundle does not match the server-owned evidence policy",
+    );
+  }
+}
+
 export async function publishEvidence(input: {
   source: string;
   claims: GitHubOidcClaims;
   policy: PublicationPolicy;
+  evidencePolicy: EvidenceContentPolicy;
   replayStore: PublicationReplayStore;
   objectStore: PrivateEvidenceStore;
   catalog: EvidenceCatalog;
@@ -265,7 +316,20 @@ export async function publishEvidence(input: {
   contentSha256: string;
 }> {
   const now = input.now ?? new Date();
-  const artifact = readBoundedArtifact(input.source);
+  let artifact: ReturnType<typeof readBoundedArtifact>;
+  try {
+    artifact = readBoundedArtifact(input.source);
+  } catch (error) {
+    await input.auditLog.append({
+      type: "evidence.publication.rejected",
+      tenantId: input.tenantId,
+      projectId: input.projectId,
+      auditRunId: "audit-unknown",
+      reason: "malformed-artifact",
+      occurredAt: now.toISOString(),
+    });
+    throw error;
+  }
 
   if (containsSensitiveContent(artifact.normalized, input.sensitiveValues)) {
     await input.auditLog.append({
@@ -279,14 +343,53 @@ export async function publishEvidence(input: {
     throw new EvidenceSuppressedError();
   }
 
-  const bundle = parseEvidenceBundle(artifact.value);
-  const receipt = await acceptPublication({
-    bundle,
-    claims: input.claims,
-    policy: input.policy,
-    replayStore: input.replayStore,
-    now,
-  });
+  let bundle: ReturnType<typeof parseEvidenceBundle>;
+  try {
+    bundle = parseEvidenceBundle(artifact.value);
+  } catch (error) {
+    await input.auditLog.append({
+      type: "evidence.publication.rejected",
+      tenantId: input.tenantId,
+      projectId: input.projectId,
+      auditRunId: artifact.auditRunId,
+      reason: "malformed-artifact",
+      occurredAt: now.toISOString(),
+    });
+    throw error;
+  }
+  try {
+    assertMatchesEvidencePolicy(bundle, input.evidencePolicy);
+  } catch (error) {
+    await input.auditLog.append({
+      type: "evidence.publication.rejected",
+      tenantId: input.tenantId,
+      projectId: input.projectId,
+      auditRunId: bundle.auditRunId,
+      reason: "content-policy",
+      occurredAt: now.toISOString(),
+    });
+    throw error;
+  }
+  let receipt: Awaited<ReturnType<typeof acceptPublication>>;
+  try {
+    receipt = await acceptPublication({
+      bundle,
+      claims: input.claims,
+      policy: input.policy,
+      replayStore: input.replayStore,
+      now,
+    });
+  } catch (error) {
+    await input.auditLog.append({
+      type: "evidence.publication.rejected",
+      tenantId: input.tenantId,
+      projectId: input.projectId,
+      auditRunId: bundle.auditRunId,
+      reason: "identity-or-replay",
+      occurredAt: now.toISOString(),
+    });
+    throw error;
+  }
   const objectKey = privateObjectKey({
     tenantId: input.tenantId,
     projectId: input.projectId,

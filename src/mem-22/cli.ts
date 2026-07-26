@@ -9,6 +9,10 @@ import { createRemoteJWKSet, jwtVerify, type JWTPayload } from "jose";
 import { chromium } from "playwright";
 
 import {
+  assertBrowserCanariesAbsent,
+  createBrowserCanaries,
+} from "./browser-canaries.js";
+import {
   parseEvidenceBundle,
   parseEvidenceBundleText,
   type EvidenceBundle,
@@ -56,6 +60,11 @@ async function runBrowser(): Promise<void> {
     const page = await context.newPage();
     const loginEmail = requiredEnvironment("SYNTHETIC_LOGIN_EMAIL");
     const loginPassword = requiredEnvironment("SYNTHETIC_LOGIN_PASSWORD");
+    const canaries = createBrowserCanaries({
+      loginEmail,
+      loginSecret: loginPassword,
+      journeyIndex: requiredEnvironment("A11Y_JOURNEY_INDEX"),
+    });
     await page.route("https://synthetic.invalid/**", async (route) => {
       if (
         route.request().method() === "POST" &&
@@ -76,7 +85,7 @@ async function runBrowser(): Promise<void> {
             credentials.password === loginPassword
               ? {
                   "set-cookie":
-                    "synthetic-session=browser-job-only; Secure; HttpOnly; SameSite=Strict",
+                    `${canaries.cookie}; Secure; HttpOnly; SameSite=Strict`,
                 }
               : {},
         });
@@ -98,6 +107,10 @@ async function runBrowser(): Promise<void> {
             </form>
             <section id="private" hidden>
               <h2>Invite a teammate</h2>
+              <dl id="sensitive-proof-fixture">
+                <dt>Support phone</dt><dd>${canaries.phone}</dd>
+                <dt>API token</dt><dd>${canaries.token}</dd>
+              </dl>
               <label>Invite email <input name="invite-email" type="email"></label>
               <button id="invite" type="button">Send invitation</button>
               <p role="status" aria-live="polite"></p>
@@ -164,7 +177,7 @@ async function runBrowser(): Promise<void> {
 
     await page
       .getByLabel("Invite email")
-      .fill(`journey-${requiredEnvironment("A11Y_JOURNEY_INDEX")}@example.invalid`);
+      .fill(canaries.email);
     await page.getByRole("button", { name: "Send invitation" }).focus();
     await page.keyboard.press("Enter");
     await page.getByRole("status").getByText("Invitation sent").waitFor();
@@ -228,11 +241,7 @@ async function runBrowser(): Promise<void> {
         ? { ...bundle, unsupportedField: "bounded-malformed-proof" }
         : bundle;
     const serialized = `${JSON.stringify(output, null, 2)}\n`;
-    for (const canary of [loginEmail, loginPassword, "browser-job-only"]) {
-      if (serialized.includes(canary)) {
-        throw new Error("Sensitive browser material reached the Evidence Bundle");
-      }
-    }
+    assertBrowserCanariesAbsent(serialized, canaries);
     if (scenario !== "malformed-artifact") parseEvidenceBundle(output);
     await mkdir(dirname(outputPath), { recursive: true });
     await writeFile(outputPath, serialized, { mode: 0o600 });

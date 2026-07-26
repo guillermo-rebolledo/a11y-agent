@@ -11,6 +11,8 @@ type LifecycleDependencies = {
   auditLog: EvidenceAuditLog;
 };
 
+export const EVIDENCE_RETENTION_CRON = "0 * * * *";
+
 async function deleteRecords(
   records: readonly EvidenceRecord[],
   input: LifecycleDependencies & {
@@ -50,14 +52,33 @@ export async function issueEvidenceAccess(
     now?: Date;
   },
 ): Promise<{ url: string; expiresAt: string }> {
+  const now = input.now ?? new Date();
   if (
     !Number.isInteger(input.requestedTtlSeconds) ||
     input.requestedTtlSeconds < 1 ||
     input.requestedTtlSeconds > 300
   ) {
+    await input.auditLog.append({
+      type: "evidence.access.denied",
+      tenantId: input.actor.tenantId,
+      projectId: input.projectId,
+      auditRunId: input.auditRunId,
+      actorId: input.actor.actorId,
+      reason: "invalid-ttl",
+      occurredAt: now.toISOString(),
+    });
     throw new Error("Evidence access must last at most 300 seconds");
   }
   if (!input.actor.projectIds.includes(input.projectId)) {
+    await input.auditLog.append({
+      type: "evidence.access.denied",
+      tenantId: input.actor.tenantId,
+      projectId: input.projectId,
+      auditRunId: input.auditRunId,
+      actorId: input.actor.actorId,
+      reason: "authorization",
+      occurredAt: now.toISOString(),
+    });
     throw new Error("Evidence access denied");
   }
   const record = await input.catalog.find({
@@ -65,9 +86,19 @@ export async function issueEvidenceAccess(
     projectId: input.projectId,
     auditRunId: input.auditRunId,
   });
-  if (record === undefined) throw new Error("Evidence access denied");
+  if (record === undefined) {
+    await input.auditLog.append({
+      type: "evidence.access.denied",
+      tenantId: input.actor.tenantId,
+      projectId: input.projectId,
+      auditRunId: input.auditRunId,
+      actorId: input.actor.actorId,
+      reason: "authorization",
+      occurredAt: now.toISOString(),
+    });
+    throw new Error("Evidence access denied");
+  }
 
-  const now = input.now ?? new Date();
   const expiresAt = new Date(
     now.getTime() + input.requestedTtlSeconds * 1_000,
   ).toISOString();
@@ -152,4 +183,25 @@ export async function reconcileEvidenceRetention(
     occurredAt: now.toISOString(),
   });
   return result;
+}
+
+export async function runScheduledEvidenceRetention(
+  input: LifecycleDependencies & {
+    schedule: typeof EVIDENCE_RETENTION_CRON;
+    scheduledAt: string;
+  },
+): ReturnType<typeof reconcileEvidenceRetention> {
+  const scheduledAt = new Date(input.scheduledAt);
+  if (
+    Number.isNaN(scheduledAt.getTime()) ||
+    scheduledAt.toISOString() !== input.scheduledAt
+  ) {
+    throw new Error("Retention schedule requires an ISO-8601 timestamp");
+  }
+  return reconcileEvidenceRetention({
+    catalog: input.catalog,
+    objectStore: input.objectStore,
+    auditLog: input.auditLog,
+    now: scheduledAt,
+  });
 }

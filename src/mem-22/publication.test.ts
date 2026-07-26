@@ -145,6 +145,27 @@ describe("MEM-22 publication boundary", () => {
     ).rejects.toThrow("replayed or duplicate publication");
   });
 
+  it("accepts only one bundle for a Journey within an Audit Run", async () => {
+    const replayStore = new InMemoryPublicationReplayStore();
+    await acceptPublication({ bundle, claims, policy, replayStore, now });
+
+    await expect(
+      acceptPublication({
+        bundle: {
+          ...bundle,
+          publicationNonce: "pub-01JZ8F3AJ2RG8NTG2RZ5QH1KZZ",
+        },
+        claims: {
+          ...claims,
+          jti: "token-01JZ8F4KSCX4TKE37WKBNPN4ZZ",
+        },
+        policy,
+        replayStore,
+        now,
+      }),
+    ).rejects.toThrow("replayed or duplicate publication");
+  });
+
   it.each([
     ["issuer", { iss: "https://issuer.attacker.example" }],
     ["subject", { sub: "repo:attacker/example:environment:a11y-synthetic" }],

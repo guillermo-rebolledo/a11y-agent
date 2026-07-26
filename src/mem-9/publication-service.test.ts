@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import type { EvidenceBundle } from "../mem-22/evidence-bundle.js";
 import {
@@ -15,6 +15,7 @@ import {
   InMemoryPrivateEvidenceStore,
   publishEvidence,
 } from "./publication-service.js";
+import { R2PrivateEvidenceStore } from "./r2-private-evidence-store.js";
 
 const now = new Date("2026-07-26T04:05:00.000Z");
 const commit = "abcdef0123456789abcdef0123456789abcdef01";
@@ -94,6 +95,14 @@ const policy: PublicationPolicy = {
   revoked: false,
 };
 
+const evidencePolicy = {
+  auditRunId: bundle.auditRunId,
+  journeyId: bundle.journeyId,
+  provenance: bundle.provenance,
+  assertionIds: ["invitation-status-visible"],
+  findingRuleIds: [],
+} as const;
+
 function createDependencies() {
   return {
     replayStore: new InMemoryPublicationReplayStore(),
@@ -111,6 +120,7 @@ describe("MEM-9 trusted evidence publication", () => {
       source: JSON.stringify(bundle),
       claims,
       policy,
+      evidencePolicy,
       tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
       projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
       sensitiveValues: [],
@@ -146,6 +156,40 @@ describe("MEM-9 trusted evidence publication", () => {
     ]);
   });
 
+  it("composes trusted publication directly with the Cloudflare R2 adapter", async () => {
+    const bucket = {
+      put: vi.fn().mockResolvedValue(undefined),
+      delete: vi.fn().mockResolvedValue(undefined),
+    };
+    const dependencies = createDependencies();
+    const objectStore = new R2PrivateEvidenceStore(bucket, vi.fn());
+
+    await publishEvidence({
+      source: JSON.stringify(bundle),
+      claims,
+      policy,
+      evidencePolicy,
+      tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
+      projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
+      sensitiveValues: [],
+      now,
+      ...dependencies,
+      objectStore,
+    });
+
+    expect(bucket.put).toHaveBeenCalledOnce();
+    expect(bucket.put).toHaveBeenCalledWith(
+      expect.stringMatching(/^evidence\/[0-9a-f]{64}\.json$/),
+      JSON.stringify(bundle),
+      expect.objectContaining({
+        httpMetadata: {
+          contentType: "application/json",
+          cacheControl: "private, no-store",
+        },
+      }),
+    );
+  });
+
   it.each([
     ["email", "mem9-email-canary@example.invalid"],
     ["phone", "+1 (415) 555-0199"],
@@ -164,6 +208,7 @@ describe("MEM-9 trusted evidence publication", () => {
         source,
         claims,
         policy,
+        evidencePolicy,
         tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
         projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
         sensitiveValues: ["mem9-cookie-canary", "mem9-secret-canary"],
@@ -195,6 +240,7 @@ describe("MEM-9 trusted evidence publication", () => {
         source,
         claims,
         policy,
+        evidencePolicy,
         tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
         projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
         sensitiveValues: [],
@@ -203,6 +249,38 @@ describe("MEM-9 trusted evidence publication", () => {
       }),
     ).rejects.toBeInstanceOf(EvidenceSuppressedError);
     expect(dependencies.objectStore.objects).toEqual([]);
+  });
+
+  it("rejects page content smuggled through a structurally permitted field", async () => {
+    const dependencies = createDependencies();
+
+    await expect(
+      publishEvidence({
+        source: JSON.stringify({
+          ...bundle,
+          provenance: {
+            ...bundle.provenance,
+            auditEngine: "Private account balance 1234",
+          },
+        }),
+        claims,
+        policy,
+        evidencePolicy,
+        tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
+        projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
+        sensitiveValues: [],
+        now,
+        ...dependencies,
+      }),
+    ).rejects.toThrow("server-owned evidence policy");
+
+    expect(dependencies.objectStore.objects).toEqual([]);
+    expect(dependencies.auditLog.events).toEqual([
+      expect.objectContaining({
+        type: "evidence.publication.rejected",
+        reason: "content-policy",
+      }),
+    ]);
   });
 
   it("rejects malformed, oversized, unsupported, duplicate, and replayed input before another write", async () => {
@@ -219,6 +297,7 @@ describe("MEM-9 trusted evidence publication", () => {
           source,
           claims,
           policy,
+          evidencePolicy,
           tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
           projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
           sensitiveValues: [],
@@ -234,6 +313,7 @@ describe("MEM-9 trusted evidence publication", () => {
       source: JSON.stringify(bundle),
       claims,
       policy,
+      evidencePolicy,
       tenantId: "tenant-01JZ8H7EM00A1Y8TGXQW3M8KTT",
       projectId: "project-01JZ8H8Y04R5RXW8YE1T0J5DVQ",
       sensitiveValues: [],

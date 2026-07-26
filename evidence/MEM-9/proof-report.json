@@ -25,6 +25,9 @@
       "id": "email-phone-token-cookie-secret-suppression",
       "status": "passed",
       "evidence": [
+        "src/mem-22/browser-canaries.ts",
+        "src/mem-22/cli.ts",
+        "src/mem-9/browser-canary-flow.test.ts",
         "src/mem-9/publication-service.ts",
         "src/mem-9/publication-service.test.ts"
       ]
@@ -34,6 +37,7 @@
       "status": "passed",
       "evidence": [
         "src/mem-9/publication-service.test.ts",
+        "src/mem-22/publication.ts",
         "src/mem-22/publication.test.ts"
       ]
     },
@@ -66,6 +70,8 @@
       "id": "private-cloudflare-r2-storage",
       "status": "passed",
       "evidence": [
+        "src/mem-9/publication-service.ts",
+        "src/mem-9/publication-service.test.ts",
         "src/mem-9/r2-private-evidence-store.ts",
         "src/mem-9/r2-private-evidence-store.test.ts",
         "docs/deployment.md"

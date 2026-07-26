@@ -9,8 +9,9 @@ import {
 import {
   deleteProjectEvidence,
   deleteRunEvidence,
+  EVIDENCE_RETENTION_CRON,
   issueEvidenceAccess,
-  reconcileEvidenceRetention,
+  runScheduledEvidenceRetention,
 } from "./evidence-lifecycle.js";
 
 const now = new Date("2026-07-26T05:00:00.000Z");
@@ -98,6 +99,11 @@ describe("MEM-9 private evidence lifecycle", () => {
         auditLog,
       }),
     ).rejects.toThrow("Evidence access denied");
+    expect(auditLog.events.at(-1)).toMatchObject({
+      type: "evidence.access.denied",
+      actorId: "user-attacker",
+      reason: "authorization",
+    });
     await expect(
       issueEvidenceAccess({
         actor: {
@@ -167,8 +173,9 @@ describe("MEM-9 private evidence lifecycle", () => {
     );
     await seed(catalog, objectStore, record("audit-retained"));
 
-    const result = await reconcileEvidenceRetention({
-      now,
+    const result = await runScheduledEvidenceRetention({
+      schedule: EVIDENCE_RETENTION_CRON,
+      scheduledAt: now.toISOString(),
       catalog,
       objectStore,
       auditLog,
