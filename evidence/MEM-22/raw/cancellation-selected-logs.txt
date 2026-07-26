@@ -1,0 +1,33 @@
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:36:06.7113004Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:36:06.7116263Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:36:06.7126412Z Secret source: Actions
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:14.7876861Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:14.7880014Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:14.7890945Z Secret source: Actions
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:15.7374113Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:15.8654626Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:36:18.5650323Z ##[error]The operation was canceled.
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.2946321Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.2947892Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.2955490Z Secret source: Actions
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.6914661Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.8063356Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.5512252Z ##[error]The operation was canceled.
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:14.8473157Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:14.8476632Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:14.8489406Z Secret source: Actions
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:16.8605431Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:17.0036606Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:36:18.6313762Z ##[error]The operation was canceled.
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:14.5742479Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:14.5745302Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:14.5756091Z Secret source: Actions
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:15.5184792Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:15.6525969Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:36:18.6521649Z ##[error]The operation was canceled.
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:14.9302187Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:14.9303424Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:14.9309647Z Secret source: Actions
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:16.1095497Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:16.3325456Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:36:18.6790966Z ##[error]The operation was canceled.

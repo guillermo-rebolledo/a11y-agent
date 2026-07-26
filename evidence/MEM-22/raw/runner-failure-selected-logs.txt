@@ -1,0 +1,26 @@
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:23.1800838Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:23.1802196Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:23.1808632Z Secret source: Actions
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:23.2250384Z   scenario: runner-failure
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:23.3861430Z   SCENARIO: runner-failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.0401789Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.0403574Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.0411406Z Secret source: Actions
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.0014314Z   scenario: runner-failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.2603846Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.3500672Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.1041967Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.1049229Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.1151223Z ##[command]/usr/bin/docker create --name 0925f71492f44c0982d61ee1c361cb9b_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_aa6513 --label 56dea1 --workdir /__w/a11y-demo/a11y-demo --network github_network_3d147ecef88f4cbe95bec9ea3a038b63 --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.3987373Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.4334157Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.4334744Z   scenario: runner-failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.0185875Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.0188569Z + playwright 1.61.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.2761685Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.2763238Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.2770728Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:19.2771141Z   A11Y_PROOF_SCENARIO: runner-failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:20.6979398Z     throw new Error("Deliberate MEM-22 runner failure");
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:20.6980769Z Error: Deliberate MEM-22 runner failure
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:20.7397752Z Stop and remove container: 0925f71492f44c0982d61ee1c361cb9b_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_aa6513

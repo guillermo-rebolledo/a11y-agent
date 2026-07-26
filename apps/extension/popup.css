@@ -1,0 +1,84 @@
+:root {
+  color-scheme: light dark;
+  font: 15px/1.4 system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 380px;
+}
+
+main {
+  padding: 1rem;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 1.35rem;
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+form,
+section {
+  border-top: 1px solid CanvasText;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+label,
+input,
+button {
+  display: block;
+}
+
+input {
+  box-sizing: border-box;
+  margin: 0.35rem 0 0.6rem;
+  min-height: 2.5rem;
+  width: 100%;
+}
+
+button {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid Highlight;
+  outline-offset: 2px;
+}
+
+.controls {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.status {
+  border: 2px solid currentColor;
+  font-weight: 700;
+  padding: 0.65rem;
+}
+
+ol,
+ul {
+  padding-left: 1.5rem;
+}
+
+li + li {
+  margin-top: 0.5rem;
+}
+
+li button {
+  margin-top: 0.25rem;
+}

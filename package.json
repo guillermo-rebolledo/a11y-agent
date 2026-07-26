@@ -8,20 +8,29 @@
   },
   "packageManager": "pnpm@10.29.2",
   "scripts": {
-    "test": "vitest run",
+    "test": "pnpm build:extension && vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p apps/extension/tsconfig.json --noEmit",
+    "build:extension": "node apps/extension/scripts/clean.mjs && tsc -p apps/extension/tsconfig.json && node apps/extension/scripts/assemble.mjs",
+    "package:extension": "pnpm build:extension && node apps/extension/scripts/package.mjs",
     "proof:mem-7": "tsx src/mem-7/cli.ts run",
     "proof:mem-7:verify": "tsx src/mem-7/cli.ts verify"
   },
   "dependencies": {
-    "@vercel/sandbox": "2.9.0"
+    "@vercel/sandbox": "2.9.0",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
     "@types/async-retry": "1.4.9",
+    "@types/chrome": "0.1.32",
     "@types/node": "24.10.1",
+    "jose": "6.1.0",
+    "playwright": "1.61.1",
     "tsx": "4.20.6",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.10",
+    "yaml": "2.8.1"
   }
 }

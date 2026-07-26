@@ -1,0 +1,26 @@
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:26.0867988Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:26.0869977Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:26.0877839Z Secret source: Actions
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:26.1331662Z   scenario: timeout
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:35:26.3278417Z   SCENARIO: timeout
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.7585559Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.7587231Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:49.7595023Z Secret source: Actions
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.5492355Z   scenario: timeout
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.7829879Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:35:50.9426434Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.8520887Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.8528590Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:15.8613129Z ##[command]/usr/bin/docker create --name fc8ec7c6fec94ebf9083ecf7120af7f1_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_6df055 --label aec707 --workdir /__w/a11y-demo/a11y-demo --network github_network_79c9cd8695554e1b8ae356b0c6a3e77e --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.1732912Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.2062576Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:16.2063156Z   scenario: timeout
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.4270269Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.4271756Z + playwright 1.61.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.6617955Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.6619349Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.6625595Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:18.6625949Z   A11Y_PROOF_SCENARIO: timeout
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:49.4216824Z context canceled
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:49.4350595Z ##[error]The operation was canceled.
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:36:49.4441471Z Stop and remove container: fc8ec7c6fec94ebf9083ecf7120af7f1_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_6df055

@@ -2,26 +2,32 @@
 
 Status: Pre-implementation operator guide
 
-Scope: Local development and the centrally hosted SaaS
+Scope: Local development, the centrally hosted control plane, the Extension
+Recorder, and the approved customer GitHub Actions workflow
 
-Out of scope: Customer self-hosting and customer-hosted runners
+Out of scope: Non-GitHub CI providers, Kubernetes runners, and persistent or
+shared self-hosted runners
 
 The application has not been scaffolded. Commands that depend on application
-packages are intentionally deferred to the scaffolding ticket. This guide defines
-the provider resources, security boundaries, configuration contract, deployment
-sequence, verification, and teardown that implementation must satisfy.
+packages are intentionally deferred to the scaffolding ticket. This guide
+defines the provider resources, security boundaries, configuration contract,
+deployment sequence, verification, and teardown that implementation must
+satisfy.
 
 ## Provider inventory
 
 | Provider | Purpose | Minimum environment separation |
 | --- | --- | --- |
-| Vercel | Next.js, Fastify, Sandbox orchestration | preview and production |
+| Vercel | Next.js dashboard and Fastify control plane | preview and production |
 | Neon | PostgreSQL | development and production |
-| Redis Cloud | BullMQ | development and production |
-| Cloudflare R2 | redacted evidence | development and production buckets |
-| Google Cloud | KMS and audit logs | non-production and production key rings |
-| GitHub | App installation and checks | development and production Apps |
-| OpenAI | optional AI Reviewer | disabled unless explicitly configured |
+| Redis Cloud | Control-plane BullMQ coordination | development and production |
+| Cloudflare R2 | Redacted evidence | development and production buckets |
+| GitHub | App, workflow execution, OIDC publication, and checks | development and production Apps |
+| Chrome extension distribution | Extension Recorder | development and pilot release channels |
+| OpenAI | Optional AI Reviewer | disabled unless explicitly configured |
+
+The service does not provision browser compute. Playwright and Chromium execute
+inside the customer's GitHub Actions workflow.
 
 Keep provider adapters portable. Do not embed provider resource names in domain
 records when an internal identifier is sufficient.
@@ -29,7 +35,7 @@ records when an internal identifier is sufficient.
 ## Environment contract
 
 Use a checked-in `.env.example` after application scaffolding. Never commit
-values. Expected categories:
+values. Expected control-plane categories:
 
 ```text
 # Application
@@ -44,31 +50,36 @@ GITHUB_APP_SLUG
 GITHUB_WEBHOOK_SECRET
 GITHUB_PRIVATE_KEY
 
+# GitHub Actions publication
+GITHUB_OIDC_ISSUER=https://token.actions.githubusercontent.com
+GITHUB_OIDC_AUDIENCE
+GITHUB_OIDC_ALLOWED_ORGANIZATION_ID
+GITHUB_OIDC_REPLAY_TTL_SECONDS
+
 # R2
 EVIDENCE_BUCKET
 EVIDENCE_ENDPOINT
 EVIDENCE_ACCESS_KEY_ID
 EVIDENCE_SECRET_ACCESS_KEY
 
-# GCP identity and KMS resource identifiers
-GCP_PROJECT_ID
-GCP_PROJECT_NUMBER
-GCP_WORKLOAD_IDENTITY_POOL_ID
-GCP_WORKLOAD_IDENTITY_PROVIDER_ID
-GCP_KMS_LOCATION
-GCP_KMS_KEY_RING
-
 # Optional AI
 AI_REVIEW_ENABLED_DEFAULT=false
 ```
 
+Customer workflow authentication is configured in a protected GitHub
+Environment or an approved external secret manager. The service does not define
+or receive the secret values.
+
 Restrictions:
 
-- Browser sessions are never environment variables.
-- Project DEKs are never environment variables.
-- Redis jobs contain identifiers, not secrets or page content.
+- Browser cookies, `storageState`, and login credentials never enter
+  control-plane environment variables.
+- No long-lived platform upload token is stored in the customer repository.
+- GitHub workflow inputs contain opaque identifiers, not credentials or page
+  content.
+- Redis jobs contain opaque identifiers, not credentials, page content, or
+  Evidence Bundles.
 - The OpenAI key is absent when AI review is disabled.
-- Vercel uses OIDC to reach GCP; no GCP service-account JSON key is stored.
 
 ## 1. Prepare accounts and regions
 
@@ -76,10 +87,12 @@ Restrictions:
 2. Enable MFA for every human administrator.
 3. Use organization/team ownership rather than personal ownership.
 4. Select one primary operating region close to the design partners.
-5. Keep Vercel Functions, Neon, Redis Cloud, R2 jurisdiction, and GCP KMS region
-   aligned as closely as provider support permits.
-6. Record any cross-region transfer or residency in the threat model.
+5. Keep Vercel Functions, Neon, Redis Cloud, and R2 jurisdiction aligned as
+   closely as provider support permits.
+6. Record cross-region transfer or residency in the threat model.
 7. Configure billing alerts before provisioning production resources.
+8. Create a dedicated GitHub organization or repositories for development
+   fixtures and OIDC testing.
 
 Do not reuse production resources for local development.
 
@@ -89,30 +102,16 @@ Do not reuse production resources for local development.
 2. Require MFA and limit administrative membership.
 3. Create separate Vercel projects for the future web and API deployments, or
    document why a single project is sufficient after scaffolding.
-4. Enable team-scoped OIDC issuer mode.
-5. Configure production and preview environments separately.
-6. Do not expose production secrets to preview deployments.
-7. Enable spend management and alerts.
-8. Verify Vercel Sandbox availability and concurrency for the selected plan.
-9. Configure Sandbox network policy as deny-by-default.
-10. Permit Sandbox ports only for the authenticated recorder/control channel.
+4. Configure production and preview environments separately.
+5. Do not expose production secrets to preview deployments.
+6. Enable spend management and alerts.
+7. Verify Vercel Functions cannot receive customer CI login credentials through
+   any API schema.
+8. Verify no control-plane route launches Playwright or Chromium.
 
-The Fastify API runs as a Vercel Function. Playwright runs only in Vercel
-Sandbox, never inside a Function.
-
-### Vercel Sandbox image
-
-During Phase 0:
-
-1. Build a Playwright OCI image from a pinned browser base.
-2. Pin OS packages, Node, Playwright, Chromium, and Axe versions.
-3. Remove package managers and build tooling from the final runtime layer where
-   practical.
-4. Run as a non-root process inside the Sandbox even though the microVM offers
-   stronger isolation.
-5. Push to the approved registry.
-6. Record and deploy by immutable digest.
-7. Verify the image contains no credentials or test sessions.
+The Fastify API runs as a Vercel Function. It dispatches or observes trusted
+GitHub workflows, verifies OIDC publication, stores normalized results, and
+publishes GitHub checks.
 
 ## 3. Configure Neon PostgreSQL
 
@@ -124,15 +123,16 @@ During Phase 0:
 6. Require TLS.
 7. Configure backups and recovery appropriate to the pilot.
 8. Prevent database logs from recording sensitive values.
-9. Confirm encrypted session ciphertext and wrapped DEK metadata are stored in
-   separate logical fields.
-10. Test restore without exposing plaintext session data.
+9. Store trusted workflow identity, approved runner class, artifact digest,
+   runner provenance, and OIDC publication metadata in bounded fields.
+10. Prohibit columns for browser cookies, `storageState`, and customer login
+    credentials.
 
 Expected role separation:
 
 - Migration role: schema changes only during controlled deployment.
 - Runtime role: application CRUD within the service schema.
-- Read-only operator role: metadata diagnostics without session ciphertext
+- Read-only operator role: metadata diagnostics without Evidence Bundle object
   access when practical.
 
 ## 4. Configure Redis Cloud and BullMQ
@@ -140,15 +140,16 @@ Expected role separation:
 1. Provision separate development and production databases.
 2. Require TLS.
 3. Restrict network access as supported by the selected plan.
-4. Configure persistence appropriate for a job queue.
+4. Configure persistence appropriate for control-plane coordination.
 5. Configure BullMQ prefixes per environment.
 6. Set bounded retry, backoff, and completed-job retention.
 7. Enforce a job schema that permits opaque identifiers only.
 8. Configure queue depth and stalled-job alerts.
 9. Test safe drain behavior.
 
-Never place sessions, page text, accessible names, DOM, screenshots, or AI
-prompts in Redis.
+BullMQ does not execute or schedule browser work directly. Never place
+credentials, page text, accessible names, DOM, screenshots, Evidence Bundles,
+or AI prompts in Redis.
 
 ## 5. Configure private Cloudflare R2
 
@@ -156,100 +157,103 @@ prompts in Redis.
 2. Disable public development URLs.
 3. Create service credentials restricted to the required bucket.
 4. Keep bucket credentials only in the production control plane.
-5. Use opaque tenant/Project/Run object keys.
-6. Serve evidence only through authorization-checked short-lived presigned URLs.
+5. Use opaque tenant, Project, and Run object keys.
+6. Serve evidence only through authorization-checked short-lived presigned
+   URLs.
 7. Apply application-enforced 30-day deletion.
 8. Run a reconciliation job that deletes overdue objects and reports drift.
 9. Test immediate deletion by Run, Project, and tenant.
 10. Configure storage and operation budget alerts.
 
-R2 contains only permitted redacted Evidence Bundles. Raw artifacts remain inside
-the Sandbox and are destroyed.
+R2 contains only permitted redacted Evidence Bundles. Raw artifacts remain in
+the customer browser job and are destroyed when the job ends.
 
-## 6. Configure Google Cloud KMS
+## 6. Configure the Extension Recorder
 
-### 6.1 Create the GCP projects
+1. Create separate development and private-pilot extension identities.
+2. Use Manifest V3 and a restrictive Content Security Policy.
+3. Require an explicit user gesture before attaching to a selected tab.
+4. Request only the minimum host access for the selected configured Project
+   origin.
+5. Do not request cookie, proxy, history, downloads, or debugger permissions
+   unless a later ADR approves a demonstrated need.
+6. Capture semantic actions without entered secret values.
+7. Sign release artifacts and record source commit, build provenance, extension
+   ID, and version.
+8. Document update, rollback, revocation, and uninstall procedures.
+9. Test keyboard-only and screen-reader use of the recorder controls.
 
-1. Create separate non-production and production GCP projects.
-2. Attach billing.
-3. Enable Cloud KMS, IAM, Security Token Service, and Cloud Audit Logs as
-   required.
-4. Restrict project administration to a small operator group.
-5. Configure budget alerts.
+The extension sends Journey drafts through an authenticated control-plane API.
+The schema rejects browser state, credential, network-body, raw DOM, and
+unbounded text fields.
 
-### 6.2 Create key rings
-
-1. Select the approved KMS region.
-2. Create one key ring per environment.
-3. Do not share production and non-production key rings.
-4. Configure software-protected symmetric AES-256 keys unless the threat model
-   later requires HSM protection.
-5. Create one KEK per pilot tenant.
-6. Set a documented rotation schedule.
-7. Configure a destruction waiting period that supports emergency recovery
-   without defeating cryptographic deletion policy.
-
-Each Project receives a random application-generated DEK. The tenant KEK wraps
-the Project DEK; the Project DEK encrypts session state.
-
-### 6.3 Configure Vercel OIDC federation
-
-1. In Vercel, use team-scoped OIDC issuer mode.
-2. In GCP, create one Workload Identity Pool for the Vercel production
-   environment.
-3. Add an OIDC provider using the Vercel team issuer.
-4. Map only the claims required to identify the Vercel team, project, and
-   environment.
-5. Add attribute conditions that allow the production API project only.
-6. Do not authorize preview deployments.
-7. Grant the federated production principal only the minimal encrypt/decrypt
-   permissions for the applicable tenant keys.
-8. Prefer direct resource access or tightly scoped service-account impersonation;
-   do not create a service-account key.
-9. Verify token audience and issuer.
-10. Test that development, preview, and an unrelated Vercel project are denied.
-
-### 6.4 Configure KMS monitoring
-
-1. Enable data-access audit logs for KMS.
-2. Alert on IAM changes.
-3. Alert on key disablement or destruction scheduling.
-4. Alert on abnormal decrypt volume.
-5. Ensure logs contain resource metadata but never plaintext or DEKs.
-6. Exercise rotation, rewrap, revocation, and destruction.
-
-### Local development
-
-Developers use their own short-lived Google identity through Application Default
-Credentials or a dedicated non-production federation path. Do not download a
-production service-account key.
-
-## 7. Configure the GitHub Apps
+## 7. Configure the GitHub App and Actions workflow
 
 Create separate development and production GitHub Apps.
 
-Requested access is limited to:
+Base GitHub App access is limited to:
 
 - Installation and repository metadata.
 - Pull-request metadata.
 - Deployment/check metadata needed to discover main and preview deployments.
-- Write access to the Copilot's own check runs.
+- Write access to the product's own check runs.
+
+Workflow dispatch and cancellation permissions are requested only if the pilot
+uses platform-triggered Actions. Customer-triggered mode must remain usable
+without those permissions.
 
 Do not request:
 
-- Repository contents.
-- Issues.
-- Workflows.
-- Repository secrets.
+- Repository contents for the control plane.
+- Repository or organization secrets.
 - Administration unrelated to installation management.
 
-Required webhook handling:
+### Trusted workflow
 
-1. Validate the signature before parsing trusted fields.
-2. Record delivery IDs and reject replay.
-3. Bind deployments to repository, commit, and trusted provider.
-4. Complete checks using `success` or `neutral` only.
-5. Handle installation suspension and deletion immediately.
+1. Trigger authenticated auditing from a workflow definition on a trusted
+   default-branch ref.
+2. Do not use `pull_request_target` to check out or execute pull-request code.
+3. Pin reusable workflows and third-party Actions to immutable commit SHAs.
+4. Pin the Playwright runner image by digest.
+5. Pass only opaque Project, Journey Version, Audit Run, deployment, and commit
+   identifiers as inputs.
+6. Never accept credentials or arbitrary target URLs as workflow-dispatch
+   inputs.
+7. Use a protected GitHub Environment for authenticated execution and required
+   approvals.
+8. Deny automatic authenticated execution for forks.
+
+### Browser job
+
+1. Set minimum GitHub permissions and omit `id-token: write`.
+2. Do not check out or execute pull-request repository code.
+3. Resolve the approved deployment through trusted metadata.
+4. Establish the synthetic login from customer-controlled protected secrets.
+5. Run one Journey in the digest-pinned container.
+6. Produce only the bounded redacted Evidence Bundle.
+7. Upload the artifact with short retention and a content-free name.
+8. Delete working files and close Chromium on every terminal path.
+
+### Publisher job
+
+1. Run after the browser job and do not receive its login secret.
+2. Do not launch a browser or execute repository, pull-request, or artifact
+   code.
+3. Parse the artifact only through the bounded schema validator.
+4. Verify the expected artifact and runner provenance.
+5. Request `id-token: write` only in this job.
+6. Request a GitHub OIDC token with the configured audience.
+7. Upload the validated result to the control plane.
+8. Delete the workflow artifact after confirmed publication when supported.
+
+### Control-plane OIDC verification
+
+1. Verify issuer, audience, signature, and time claims.
+2. Bind organization, repository, workflow, trusted ref, environment, and
+   commit claims to the Project and Audit Run.
+3. Require a one-time Audit Run publication nonce or equivalent replay key.
+4. Reject wrong, expired, duplicate, replayed, or revoked identities.
+5. Record content-free publication security events.
 
 ## 8. Optional OpenAI configuration
 
@@ -258,11 +262,11 @@ AI review remains off by default.
 When enabled:
 
 1. Store the API credential only in the production control plane.
-2. Do not expose it to preview deployments or Sandboxes.
+2. Do not expose it to preview deployments, extensions, or Actions jobs.
 3. Send only minimized redacted Finding bundles.
 4. Record model and prompt-template versions.
 5. Set request timeouts and cost limits.
-6. Treat AI failure as explanation unavailable, never audit failure.
+6. Treat AI failure as explanation unavailable, never Audit Run failure.
 7. Support deleting generated explanations independently.
 
 ## 9. Deployment sequence
@@ -270,16 +274,17 @@ When enabled:
 After the application scaffold exists:
 
 1. Run formatting, linting, type checks, unit tests, and security schema tests.
-2. Build the pinned runner image.
-3. Verify its digest and provenance.
-4. Apply database migrations with the migration role.
-5. Deploy the Fastify control plane.
-6. Deploy the Next.js dashboard.
-7. Register the runner image digest in production configuration.
-8. Run provider connectivity checks without customer data.
-9. Run the Phase 0 smoke Journey using synthetic fixtures.
-10. Verify GitHub check completion.
-11. Verify evidence deletion.
+2. Build and sign the Extension Recorder.
+3. Build the pinned runner image and verify its digest and provenance.
+4. Pin the reusable workflow and Action release.
+5. Apply database migrations with the migration role.
+6. Deploy the Fastify control plane.
+7. Deploy the Next.js dashboard.
+8. Register allowed extension, workflow, Action, image, runner, and OIDC
+   identities in production configuration.
+9. Run provider connectivity checks without customer data.
+10. Run the Phase 0 smoke Journey using synthetic fixtures.
+11. Verify GitHub check completion and evidence deletion.
 12. Enable pilot tenant access manually.
 
 Production enablement is a separate explicit action after deployment.
@@ -288,61 +293,66 @@ Production enablement is a separate explicit action after deployment.
 
 The deployment smoke test must:
 
-1. Receive a signed GitHub test event.
-2. Resolve a trusted synthetic main and preview deployment.
-3. Create a BullMQ job containing identifiers only.
-4. Launch a Vercel Sandbox.
-5. Apply a restrictive egress allowlist.
-6. Decrypt a synthetic session through GCP KMS using Vercel OIDC.
-7. Deliver it directly to the Sandbox.
-8. Run a small control and keyboard Journey.
-9. Produce one seeded Axe Finding.
-10. Redact the Evidence Bundle.
-11. Persist it to private R2.
-12. Publish a `neutral` check.
-13. Delete raw artifacts and destroy the Sandbox.
-14. Delete the persisted test evidence.
+1. Record one semantic Journey in the development extension without exporting
+   browser session material.
+2. Receive a signed GitHub test event.
+3. Resolve a trusted synthetic main and preview deployment.
+4. Dispatch or start the trusted workflow from its approved ref.
+5. Launch the digest-pinned image in an unprivileged browser job.
+6. Establish the synthetic login inside that job.
+7. Run a small Control Replay and Keyboard Replay.
+8. Produce one seeded Axe Finding and a bounded redacted Evidence Bundle.
+9. Prove the browser job cannot request the publisher identity.
+10. Validate the artifact in the separate publisher job.
+11. Publish through short-lived GitHub OIDC.
+12. Persist permitted evidence to private R2.
+13. Publish a `neutral` GitHub check.
+14. Delete raw and persisted test artifacts.
 
 ## 11. Rollback
 
-1. Activate the global new-run kill switch.
-2. Drain queued jobs without execution.
-3. Terminate active Sandboxes if the release affects isolation or secrets.
-4. Roll back Vercel web and API deployments.
-5. Roll back the runner digest separately.
-6. Do not reverse a database migration until compatibility is understood.
-7. Revoke sessions or rotate keys if exposure is suspected.
-8. Verify GitHub checks reach a terminal neutral state.
-9. Record the incident or deployment failure.
+1. Activate the global new-dispatch kill switch.
+2. Suspend result intake if identity or artifact validation is affected.
+3. Drain control-plane queues without dispatch or publication.
+4. Cancel active platform-dispatched workflows.
+5. Revoke the affected workflow, Action, image, extension, or OIDC trust.
+6. Roll back Vercel web and API deployments.
+7. Do not reverse a database migration until compatibility is understood.
+8. Ask affected customers to rotate CI credentials if exposure is suspected.
+9. Verify GitHub checks reach a terminal neutral state.
+10. Record the incident or deployment failure.
 
 ## 12. Teardown
 
 For a complete environment teardown:
 
-1. Disable new Runs.
-2. Terminate Sandboxes.
-3. Drain queues.
-4. Remove GitHub App installations.
-5. Revoke sessions.
+1. Disable new dispatch and result intake.
+2. Cancel platform-dispatched workflows.
+3. Drain control-plane queues.
+4. Revoke Extension Recorder and GitHub OIDC trust.
+5. Remove GitHub App installations.
 6. Delete R2 objects and verify deletion.
-7. Destroy tenant KMS keys according to the approved waiting period.
-8. Delete Redis and Neon resources after required metadata export.
-9. Remove Vercel projects and OIDC trust.
-10. Confirm billing resources no longer accrue cost.
-11. Preserve only the security audit records required by policy.
+7. Delete Redis and Neon resources after required metadata export.
+8. Remove Vercel projects.
+9. Confirm billing resources no longer accrue cost.
+10. Preserve only the security audit records required by policy.
+11. Provide customers with Action removal and CI credential-rotation steps.
 
 ## 13. Operator verification checklist
 
 - [ ] Provider ownership and MFA verified.
 - [ ] Region and residency recorded.
-- [ ] Production secrets absent from preview.
-- [ ] GitHub App has no contents permission.
-- [ ] Vercel OIDC reaches GCP without persistent keys.
-- [ ] KMS denies preview and Sandbox identities.
+- [ ] Production secrets absent from Vercel previews.
+- [ ] GitHub App has no repository contents or secrets permission.
+- [ ] Extension permissions and release provenance pass review.
+- [ ] Workflow, Action, image, and runner identities are immutable and approved.
+- [ ] Browser job has no publisher identity.
+- [ ] OIDC claims, freshness, revocation, and replay protection pass.
+- [ ] Browser sessions and CI credentials never enter the service.
 - [ ] R2 is private and evidence access is authorized.
 - [ ] Redis contains identifiers only.
-- [ ] Sandbox egress and destruction tests pass.
-- [ ] Retention reconciliation passes.
-- [ ] Kill switch and rollback drill pass.
+- [ ] Artifact validation and retention reconciliation pass.
+- [ ] Kill switch, cancellation, result-intake suspension, and rollback drills
+  pass.
 - [ ] Product accessibility smoke test passes.
 - [ ] Phase 0 decision record is approved.

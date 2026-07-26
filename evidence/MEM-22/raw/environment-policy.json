@@ -1,0 +1,112 @@
+{
+  "capturedAt": "2026-07-26T04:37:38Z",
+  "environments": [
+    {
+      "id": 18757673545,
+      "node_id": "EN_kwDOLSt8hc8AAAAEXgtiSQ",
+      "name": "a11y-publication",
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/environments/a11y-publication",
+      "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/deployments/activity_log?environments_filter=a11y-publication",
+      "created_at": "2026-07-26T03:46:11Z",
+      "updated_at": "2026-07-26T03:46:11Z",
+      "can_admins_bypass": true,
+      "protection_rules": [],
+      "deployment_branch_policy": null
+    },
+    {
+      "id": 18757673396,
+      "node_id": "EN_kwDOLSt8hc8AAAAEXgthtA",
+      "name": "a11y-synthetic",
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/environments/a11y-synthetic",
+      "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/deployments/activity_log?environments_filter=a11y-synthetic",
+      "created_at": "2026-07-26T03:46:10Z",
+      "updated_at": "2026-07-26T03:46:10Z",
+      "can_admins_bypass": true,
+      "protection_rules": [
+        {
+          "id": 60916974,
+          "node_id": "GA_kwDOLSt8hc4DoYTu",
+          "type": "required_reviewers",
+          "prevent_self_review": false,
+          "reviewers": [
+            {
+              "type": "User",
+              "reviewer": {
+                "login": "guillermo-rebolledo",
+                "id": 47798232,
+                "node_id": "MDQ6VXNlcjQ3Nzk4MjMy",
+                "avatar_url": "https://avatars.githubusercontent.com/u/47798232?v=4",
+                "gravatar_id": "",
+                "url": "https://api.github.com/users/guillermo-rebolledo",
+                "html_url": "https://github.com/guillermo-rebolledo",
+                "followers_url": "https://api.github.com/users/guillermo-rebolledo/followers",
+                "following_url": "https://api.github.com/users/guillermo-rebolledo/following{/other_user}",
+                "gists_url": "https://api.github.com/users/guillermo-rebolledo/gists{/gist_id}",
+                "starred_url": "https://api.github.com/users/guillermo-rebolledo/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/guillermo-rebolledo/subscriptions",
+                "organizations_url": "https://api.github.com/users/guillermo-rebolledo/orgs",
+                "repos_url": "https://api.github.com/users/guillermo-rebolledo/repos",
+                "events_url": "https://api.github.com/users/guillermo-rebolledo/events{/privacy}",
+                "received_events_url": "https://api.github.com/users/guillermo-rebolledo/received_events",
+                "type": "User",
+                "user_view_type": "public",
+                "site_admin": false
+              }
+            }
+          ]
+        }
+      ],
+      "deployment_branch_policy": null
+    },
+    {
+      "id": 2278405044,
+      "node_id": "EN_kwDOLSt8hc6HzbO0",
+      "name": "Production",
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/environments/Production",
+      "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/deployments/activity_log?environments_filter=Production",
+      "created_at": "2024-02-15T04:03:22Z",
+      "updated_at": "2024-02-15T04:03:22Z",
+      "can_admins_bypass": true,
+      "protection_rules": [],
+      "deployment_branch_policy": null
+    },
+    {
+      "id": 2278417962,
+      "node_id": "EN_kwDOLSt8hc6HzeYq",
+      "name": "Production – a11y-demo",
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/environments/Production – a11y-demo",
+      "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/deployments/activity_log?environments_filter=Production+%E2%80%93+a11y-demo",
+      "created_at": "2024-02-15T04:05:40Z",
+      "updated_at": "2024-02-15T04:05:40Z",
+      "can_admins_bypass": true,
+      "protection_rules": [],
+      "deployment_branch_policy": null
+    },
+    {
+      "id": 2278423278,
+      "node_id": "EN_kwDOLSt8hc6Hzfru",
+      "name": "Production – a11y-demo-zcds",
+      "url": "https://api.github.com/repos/guillermo-rebolledo/a11y-demo/environments/Production – a11y-demo-zcds",
+      "html_url": "https://github.com/guillermo-rebolledo/a11y-demo/deployments/activity_log?environments_filter=Production+%E2%80%93+a11y-demo-zcds",
+      "created_at": "2024-02-15T04:06:37Z",
+      "updated_at": "2024-02-15T04:06:37Z",
+      "can_admins_bypass": true,
+      "protection_rules": [],
+      "deployment_branch_policy": null
+    }
+  ],
+  "publicationEnvironmentVariables": [
+    {
+      "name": "A11Y_EXPECTED_COMMIT_SHA",
+      "value": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+      "created_at": "2026-07-26T04:33:29Z",
+      "updated_at": "2026-07-26T04:33:29Z"
+    },
+    {
+      "name": "A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA",
+      "value": "0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+      "created_at": "2026-07-26T04:33:28Z",
+      "updated_at": "2026-07-26T04:33:28Z"
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://a11y-agent.example/schemas/journey-draft-v1.json",
+  "title": "Accessibility Journey draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "name",
+    "approvedOrigin",
+    "steps",
+    "expect",
+    "measurements"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "approvedOrigin": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 2048
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": { "$ref": "#/$defs/action" }
+    },
+    "expect": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "text"],
+        "properties": {
+          "kind": { "const": "text-visible" },
+          "text": { "type": "string", "minLength": 1, "maxLength": 120 }
+        }
+      }
+    },
+    "measurements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "firstActionLatencyMs",
+        "reconnectCount",
+        "recordingDurationMs"
+      ],
+      "properties": {
+        "firstActionLatencyMs": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        },
+        "reconnectCount": { "type": "integer", "minimum": 0 },
+        "recordingDurationMs": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "locator": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["strategy", "role", "name"],
+          "properties": {
+            "strategy": { "const": "role" },
+            "role": { "type": "string", "minLength": 1, "maxLength": 120 },
+            "name": { "type": "string", "minLength": 1, "maxLength": 120 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["strategy", "testId"],
+          "properties": {
+            "strategy": { "const": "test-id" },
+            "testId": { "type": "string", "minLength": 1, "maxLength": 120 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["strategy", "selector", "lastResort"],
+          "properties": {
+            "strategy": { "const": "css" },
+            "selector": { "type": "string", "minLength": 1, "maxLength": 500 },
+            "lastResort": { "const": true }
+          }
+        }
+      ]
+    },
+    "action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "locator"],
+          "properties": {
+            "kind": { "const": "click" },
+            "locator": { "$ref": "#/$defs/locator" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "locator", "input"],
+          "properties": {
+            "kind": { "const": "fill" },
+            "locator": { "$ref": "#/$defs/locator" },
+            "input": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source", "inputType"],
+              "properties": {
+                "source": { "const": "runtime-variable" },
+                "inputType": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 40
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

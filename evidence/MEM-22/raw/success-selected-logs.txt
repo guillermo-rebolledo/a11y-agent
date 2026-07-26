@@ -1,0 +1,376 @@
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:33:45.8139132Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:33:45.8140705Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Gate authenticated execution	UNKNOWN STEP	2026-07-26T04:33:45.8147730Z Secret source: Actions
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:33:54.6398611Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:33:54.6401403Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:33:54.6412383Z Secret source: Actions
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:33:57.1280849Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:33:57.2398884Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:21.8282865Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:21.8284625Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:21.8358430Z ##[command]/usr/bin/docker create --name 794b2a9cf16848829f83ee04f194e885_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_b5f70d --label 953f7e --workdir /__w/a11y-demo/a11y-demo --network github_network_2b302af50ad1432dbd13d6fad9cd113a --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.335.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:22.0870924Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:22.1193237Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:24.4768170Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:24.4770132Z + playwright 1.61.1
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:24.7027411Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:24.7029499Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:24.7039297Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.3878355Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.3880979Z   name: evidence-3
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.3881237Z   path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.9875939Z Artifact evidence-3.zip successfully finalized. Artifact ID 8627624367
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.9877099Z Artifact evidence-3 has been successfully uploaded! Final size is 1651 bytes. Artifact ID is 8627624367
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:27.9879934Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627624367
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:28.0050894Z Stop and remove container: 794b2a9cf16848829f83ee04f194e885_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_b5f70d
+audit / Browser Journey 3	UNKNOWN STEP	2026-07-26T04:34:28.3554259Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:33:54.7397422Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:33:54.7399018Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:33:54.7406831Z Secret source: Actions
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:33:55.9115081Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:33:56.0375520Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:20.4723659Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:20.4733003Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:20.4815858Z ##[command]/usr/bin/docker create --name 8916565f672c45c5b5d2bdc28079efe8_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_0fc40f --label 2e10ac --workdir /__w/a11y-demo/a11y-demo --network github_network_30bf005be7d84b09a3f1d0cbc927b83e --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:20.7213767Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:20.7552613Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:28.6831074Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:28.6833244Z + playwright 1.61.1
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:28.9322626Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:28.9323927Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:28.9330109Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:31.5943716Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:31.5946310Z   name: evidence-2
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:31.5946571Z   path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:32.3671112Z Artifact evidence-2.zip successfully finalized. Artifact ID 8627624931
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:32.3672535Z Artifact evidence-2 has been successfully uploaded! Final size is 1651 bytes. Artifact ID is 8627624931
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:32.3679457Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627624931
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:32.3856988Z Stop and remove container: 8916565f672c45c5b5d2bdc28079efe8_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_0fc40f
+audit / Browser Journey 2	UNKNOWN STEP	2026-07-26T04:34:32.7174034Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:33:55.2637127Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:33:55.2638653Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:33:55.2646773Z Secret source: Actions
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:33:56.6576765Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:33:56.7571792Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:22.9151206Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:22.9160997Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:22.9248955Z ##[command]/usr/bin/docker create --name d6296b15ed0d4f94af27279b4ff308ce_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_7a1ac2 --label f41929 --workdir /__w/a11y-demo/a11y-demo --network github_network_f8d7eaac8ac4479084f5893d186354f3 --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:23.2278994Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:23.2630811Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:25.7382606Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:25.7384481Z + playwright 1.61.1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:25.9695535Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:25.9696880Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:25.9702827Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:28.7372052Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:28.7374730Z   name: evidence-1
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:28.7375270Z   path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:29.9521515Z Artifact evidence-1.zip successfully finalized. Artifact ID 8627624644
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:29.9523161Z Artifact evidence-1 has been successfully uploaded! Final size is 1650 bytes. Artifact ID is 8627624644
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:29.9528530Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627624644
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:29.9707330Z Stop and remove container: d6296b15ed0d4f94af27279b4ff308ce_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_7a1ac2
+audit / Browser Journey 1	UNKNOWN STEP	2026-07-26T04:34:30.3336646Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:33:54.9939725Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:33:54.9941139Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:33:54.9948057Z Secret source: Actions
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:33:56.3769992Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:33:56.6310352Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:19.0413336Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:19.0421943Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:19.0503241Z ##[command]/usr/bin/docker create --name 392f223bde384759828aa2e31e96070a_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_db3872 --label 28be17 --workdir /__w/a11y-demo/a11y-demo --network github_network_22aad9e3f6eb4607a7fd146fe4ae14ff --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:19.2730972Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:19.3055239Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:21.4424112Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:21.4425815Z + playwright 1.61.1
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:21.6893262Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:21.6894552Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:21.6900554Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:24.2133968Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:24.2136419Z   name: evidence-4
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:24.2136669Z   path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:25.2697146Z Artifact evidence-4.zip successfully finalized. Artifact ID 8627624057
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:25.2698460Z Artifact evidence-4 has been successfully uploaded! Final size is 1651 bytes. Artifact ID is 8627624057
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:25.2703573Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627624057
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:25.2858295Z Stop and remove container: 392f223bde384759828aa2e31e96070a_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_db3872
+audit / Browser Journey 4	UNKNOWN STEP	2026-07-26T04:34:25.5669137Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:33:54.8140810Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:33:54.8142492Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:33:54.8150324Z Secret source: Actions
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:33:55.9765528Z ##[command]/usr/bin/docker pull mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:33:56.0960759Z mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48: Pulling from playwright
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:20.6207818Z Status: Downloaded newer image for mcr.microsoft.com/playwright@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:20.6212569Z mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:20.6298359Z ##[command]/usr/bin/docker create --name 1fb62dff826f45dbae5f994f49f66295_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_1f7a61 --label 5a24d7 --workdir /__w/a11y-demo/a11y-demo --network github_network_bd530646750d4eefa9882105d9a6c65b --user 1001:1001 --security-opt no-new-privileges -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48 "-f" "/dev/null"
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:20.8998430Z PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:20.9348791Z   output-path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:23.6796211Z + @axe-core/playwright 4.12.1
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:23.6800478Z + playwright 1.61.1
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:23.9052111Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:23.9053369Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:23.9059267Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:26.7190405Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:26.7193212Z   name: evidence-5
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:26.7193479Z   path: /home/runner/work/_temp/evidence/bundle.json
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:27.3499813Z Artifact evidence-5.zip successfully finalized. Artifact ID 8627624282
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:27.3501797Z Artifact evidence-5 has been successfully uploaded! Final size is 1651 bytes. Artifact ID is 8627624282
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:27.3508659Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627624282
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:27.3686241Z Stop and remove container: 1fb62dff826f45dbae5f994f49f66295_mcrmicrosoftcomplaywrightv1611noblesha2565b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48_1f7a61
+audit / Browser Journey 5	UNKNOWN STEP	2026-07-26T04:34:27.7278164Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Validate and publish	UNKNOWN STEP	﻿2026-07-26T04:34:39.1597419Z Current runner version: '2.336.0'
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1625448Z ##[group]Runner Image Provisioner
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1626458Z Hosted Compute Agent
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1627083Z Version: 20260707.563
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1627783Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1628508Z Build Date: 2026-07-07T19:33:50Z
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1629160Z Worker ID: {0a1ad665-7bc6-40e5-bea7-a3f02228ba27}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1629916Z Azure Region: westus
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1630511Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1632067Z ##[group]Operating System
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1632767Z Ubuntu
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1633561Z 24.04.4
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1634127Z LTS
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1634631Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1635181Z ##[group]Runner Image
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1635831Z Image: ubuntu-24.04
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1636380Z Version: 20260720.247.2
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1638150Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1639719Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1640735Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1641726Z ##[group]GITHUB_TOKEN Permissions
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1644506Z Metadata: read
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1645136Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1647478Z Secret source: Actions
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.1648686Z Prepare workflow directory
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.2024012Z Prepare all required actions
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.2074177Z Getting action download info
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:39.5679607Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.2260990Z Download action repository 'guillermo-rebolledo/a11y-agent@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76' (SHA:76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.5094809Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7697108Z Uses: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7703403Z ##[group] Inputs
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7704482Z   audit-run-id: audit-30187979088
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7705627Z   journey-id: journey-invite-member
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7706900Z   commit-sha: 590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7708483Z   trusted-workflow-sha: 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7709899Z   scenario: success
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7710798Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.7711771Z Complete job name: audit / Validate and publish
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8785355Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8798040Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8799848Z with:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8800688Z   pattern: evidence-*
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8801774Z   path: /home/runner/work/_temp/untrusted-evidence
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8803754Z   merge-multiple: false
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8805207Z   repository: guillermo-rebolledo/a11y-demo
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8807045Z   run-id: 30187979088
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:40.8808393Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.0721361Z (node:2130) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.0726346Z (Use `node --trace-deprecation ...` to show where the warning was created)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3441131Z Found 5 artifact(s)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3444003Z Filtering artifacts by pattern 'evidence-*'
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3464161Z Preparing to download the following artifacts:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3467042Z - evidence-2 (ID: 8627624931, Size: 1651, Expected Digest: sha256:4599519723cb43553bd093b47da3eba2b76a8e4659fafa5cec49862257bbe5b8)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3472330Z - evidence-1 (ID: 8627624644, Size: 1650, Expected Digest: sha256:bbe7db16528343ac0006670b6ed3981272ebc08212a8dc929dea081419287958)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3476819Z - evidence-3 (ID: 8627624367, Size: 1651, Expected Digest: sha256:ad711b0e4c8a3ccc5f90b8ffb26bf9fb3692a16a64e5679bf3f73a9a2de73ac6)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3482103Z - evidence-5 (ID: 8627624282, Size: 1651, Expected Digest: sha256:a6f9106c0452a280dd78751f0db9e85fd6444555e9e30aabf416919ea83639c4)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.3486739Z - evidence-4 (ID: 8627624057, Size: 1651, Expected Digest: sha256:a84e59f4e76a44f08afec21aefecb1d5255e79aa6567f45d10735342fff94b92)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.5693317Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/f12ca6db-19db-4832-b4fb-8831684a51fd/workflow-job-run-c0578230-8704-5a8e-9d2b-a9178e281242/artifacts/13f80b3e0251ce805c391300144bd1cb71d919b40f505a82c2e0bb7e602988af.zip
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.5699457Z Starting download of artifact to: /home/runner/work/_temp/untrusted-evidence/evidence-3
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.6997121Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/f12ca6db-19db-4832-b4fb-8831684a51fd/workflow-job-run-b5d42617-694e-5e68-85bb-0cee03a3b7f4/artifacts/2d493f25558c40ad587a79b276fa7cd7804aba795e2db16f13e979cb3cf3b1eb.zip
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7006238Z Starting download of artifact to: /home/runner/work/_temp/untrusted-evidence/evidence-4
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7088601Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/f12ca6db-19db-4832-b4fb-8831684a51fd/workflow-job-run-d517b47b-fd37-5e73-98a3-deb581211b8d/artifacts/5108deb71ee1d00d8e14ad48f2ddee3dca264528a5ae802ac5a682ee11ecc0d7.zip
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7094723Z Starting download of artifact to: /home/runner/work/_temp/untrusted-evidence/evidence-1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7219493Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/f12ca6db-19db-4832-b4fb-8831684a51fd/workflow-job-run-5220171b-87d7-54b5-b6c2-5497f06a11c8/artifacts/fce153950ced26bb8fb13e9b6c8212fc720fedf231615f9a5c3ce2e2cde90451.zip
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7226200Z Starting download of artifact to: /home/runner/work/_temp/untrusted-evidence/evidence-2
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7329743Z Redirecting to blob download url: https://productionresultssa12.blob.core.windows.net/actions-results/f12ca6db-19db-4832-b4fb-8831684a51fd/workflow-job-run-e1ee374b-8013-5fbe-b224-b03dbe3c0d47/artifacts/237e9fee742dd844d231df29595848fe5308b9b86035e9e39027c2ae9e482c05.zip
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.7338012Z Starting download of artifact to: /home/runner/work/_temp/untrusted-evidence/evidence-5
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.8421221Z (node:2130) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.8467537Z SHA256 digest of downloaded artifact is ad711b0e4c8a3ccc5f90b8ffb26bf9fb3692a16a64e5679bf3f73a9a2de73ac6
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.8469862Z Artifact download completed successfully.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9704145Z SHA256 digest of downloaded artifact is a84e59f4e76a44f08afec21aefecb1d5255e79aa6567f45d10735342fff94b92
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9705915Z Artifact download completed successfully.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9845330Z SHA256 digest of downloaded artifact is bbe7db16528343ac0006670b6ed3981272ebc08212a8dc929dea081419287958
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9846215Z Artifact download completed successfully.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9935730Z SHA256 digest of downloaded artifact is 4599519723cb43553bd093b47da3eba2b76a8e4659fafa5cec49862257bbe5b8
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:41.9936620Z Artifact download completed successfully.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0218857Z SHA256 digest of downloaded artifact is a6f9106c0452a280dd78751f0db9e85fd6444555e9e30aabf416919ea83639c4
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0220817Z Artifact download completed successfully.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0222504Z Total of 5 artifact(s) downloaded
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0226227Z Download artifact has finished successfully
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0501230Z ##[group]Run guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0501990Z with:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0502330Z   mode: control-plane
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0503199Z   output-path: /home/runner/work/_temp/control-plane-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0503878Z   scenario: success
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0504222Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0504678Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0505360Z   A11Y_CONTROL_PLANE_PID_PATH: /home/runner/work/_temp/control-plane.pid
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0506011Z   A11Y_REPLAY_STORE_PATH: /home/runner/work/_temp/publication-replay
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0506671Z   A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA: 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0507333Z   A11Y_EXPECTED_COMMIT_SHA: 590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0507859Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0616282Z ##[group]Run set -euo pipefail
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0616933Z [36;1mset -euo pipefail[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0617455Z [36;1munset SYNTHETIC_LOGIN_EMAIL SYNTHETIC_LOGIN_PASSWORD[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0618186Z [36;1mcorepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0674057Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0674679Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0675241Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0675995Z   A11Y_CONTROL_PLANE_PID_PATH: /home/runner/work/_temp/control-plane.pid
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0759065Z   A11Y_REPLAY_STORE_PATH: /home/runner/work/_temp/publication-replay
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0760527Z   A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA: 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0761708Z   A11Y_EXPECTED_COMMIT_SHA: 590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:42.0762461Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:43.9717698Z  WARN  Unsupported engine: wanted: {"node":">=24 <27"} (current: {"node":"v22.23.1","pnpm":"10.29.2"})
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:44.0005610Z Lockfile is up to date, resolution step is skipped
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:44.0243399Z Progress: resolved 1, reused 0, downloaded 0, added 0
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:44.0503965Z Packages: +91
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:44.0505063Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.0256701Z Progress: resolved 91, reused 0, downloaded 91, added 90
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.0726545Z Progress: resolved 91, reused 0, downloaded 91, added 91, done
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3751675Z
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3757112Z dependencies:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3757553Z + @vercel/sandbox 2.9.0
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3757852Z + ajv 8.17.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3758129Z + ajv-formats 3.0.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3758312Z
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3758449Z devDependencies:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3758862Z + @axe-core/playwright 4.12.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3759248Z + @types/async-retry 1.4.9
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3759669Z + @types/chrome 0.1.32
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3760585Z + @types/node 24.10.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3772668Z + jose 6.1.0
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3773855Z + playwright 1.61.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3774620Z + tsx 4.20.6
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3775205Z + typescript 7.0.2
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3775642Z + vitest 4.1.10
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3776062Z + yaml 2.8.1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3776298Z
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3911064Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3913280Z │                                                                              │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3918306Z │   Ignored build scripts: esbuild@0.25.12.                                    │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3925482Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3930506Z │   to run scripts.                                                            │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3934174Z │                                                                              │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.3936402Z ╰──────────────────────────────────────────────────────────────────────────────╯
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4015331Z Done in 2s using pnpm v10.29.2
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4330820Z ##[group]Run set -euo pipefail
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4331222Z [36;1mset -euo pipefail[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4331574Z [36;1mif [[ "$A11Y_ACTION_MODE" == "control-plane" ]]; then[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4332127Z [36;1m  nohup corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts \[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4333310Z [36;1m    > "$RUNNER_TEMP/mem22-control-plane.log" 2>&1 &[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4334156Z [36;1m  echo "$!" > "$A11Y_CONTROL_PLANE_PID_PATH"[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4335166Z [36;1m  for attempt in {1..20}; do[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4335903Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4336655Z [36;1m      exit 0[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4337069Z [36;1m    fi[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4337679Z [36;1m    sleep 0.25[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4338158Z [36;1m  done[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4338717Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4339363Z [36;1m  exit 1[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4339740Z [36;1mfi[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4340385Z [36;1mcorepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4402143Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4403138Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4403670Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4404449Z   A11Y_CONTROL_PLANE_PID_PATH: /home/runner/work/_temp/control-plane.pid
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4405225Z   A11Y_REPLAY_STORE_PATH: /home/runner/work/_temp/publication-replay
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4406084Z   A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA: 0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4406962Z   A11Y_EXPECTED_COMMIT_SHA: 590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4407818Z   A11Y_ACTION_MODE: control-plane
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4408503Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/control-plane-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4409220Z   A11Y_PROOF_SCENARIO: success
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:45.4409668Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0976377Z ##[group]Run guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0976961Z with:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0977181Z   mode: publisher
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0977504Z   output-path: /home/runner/work/_temp/untrusted-evidence
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0977865Z   scenario: success
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0978097Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0978417Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0978912Z   A11Y_PUBLICATION_ENDPOINT: http://127.0.0.1:8787/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0979419Z   A11Y_RECEIPTS_PATH: /home/runner/work/_temp/publication-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.0979815Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1000051Z ##[group]Run set -euo pipefail
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1000408Z [36;1mset -euo pipefail[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1000760Z [36;1munset SYNTHETIC_LOGIN_EMAIL SYNTHETIC_LOGIN_PASSWORD[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1001336Z [36;1mcorepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1045982Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1046371Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1046715Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1047215Z   A11Y_PUBLICATION_ENDPOINT: http://127.0.0.1:8787/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1047723Z   A11Y_RECEIPTS_PATH: /home/runner/work/_temp/publication-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.1048118Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.4269008Z  WARN  Unsupported engine: wanted: {"node":">=24 <27"} (current: {"node":"v22.23.1","pnpm":"10.29.2"})
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.4719920Z Lockfile is up to date, resolution step is skipped
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.5103991Z Already up to date
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6685997Z
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6799027Z ╭ Warning ─────────────────────────────────────────────────────────────────────╮
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6800146Z │                                                                              │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6801270Z │   Ignored build scripts: esbuild@0.25.12.                                    │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6802190Z │   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6803472Z │   to run scripts.                                                            │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6804126Z │                                                                              │
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6804778Z ╰──────────────────────────────────────────────────────────────────────────────╯
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6848210Z Done in 515ms using pnpm v10.29.2
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6977644Z ##[group]Run set -euo pipefail
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6978050Z [36;1mset -euo pipefail[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6978450Z [36;1mif [[ "$A11Y_ACTION_MODE" == "control-plane" ]]; then[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6979144Z [36;1m  nohup corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts \[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6979805Z [36;1m    > "$RUNNER_TEMP/mem22-control-plane.log" 2>&1 &[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6980281Z [36;1m  echo "$!" > "$A11Y_CONTROL_PLANE_PID_PATH"[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6980626Z [36;1m  for attempt in {1..20}; do[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6981072Z [36;1m    if curl --fail --silent http://127.0.0.1:8787/health >/dev/null; then[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6981529Z [36;1m      exit 0[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6981771Z [36;1m    fi[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6982006Z [36;1m    sleep 0.25[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6982257Z [36;1m  done[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6982580Z [36;1m  echo "Control-plane verifier did not become ready" >&2[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6983490Z [36;1m  exit 1[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6983848Z [36;1mfi[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.6984265Z [36;1mcorepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7028838Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7029254Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7029602Z   A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7030437Z   A11Y_PUBLICATION_ENDPOINT: http://127.0.0.1:8787/publications
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7030982Z   A11Y_RECEIPTS_PATH: /home/runner/work/_temp/publication-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7031426Z   A11Y_ACTION_MODE: publisher
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7031785Z   A11Y_OUTPUT_PATH: /home/runner/work/_temp/untrusted-evidence
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7032174Z   A11Y_PROOF_SCENARIO: success
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:47.7032481Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0996073Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0998298Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0998753Z with:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0998993Z   name: publication-receipts
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0999359Z   path: /home/runner/work/_temp/publication-receipts.json
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.0999741Z   if-no-files-found: error
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.1000020Z   retention-days: 1
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.1000276Z   compression-level: 6
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.1000530Z   overwrite: false
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.1000788Z   include-hidden-files: false
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.1001070Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.2754740Z (node:2282) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.2755670Z (Use `node --trace-deprecation ...` to show where the warning was created)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.2810010Z With the provided path, there will be 1 file uploaded
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.2816081Z Artifact name is valid!
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.2816990Z Root directory input is valid!
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.6060226Z Beginning upload of artifact content to blob storage
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.6264539Z (node:2282) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.9003563Z Uploaded bytes 573
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.9793697Z Finished uploading artifact content to blob storage!
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.9794782Z SHA256 digest of uploaded artifact zip is 1e5b44714599ef6297ddf2a3cf69ad188ad45d40aef387fa9af1a10b7a90bf41
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:50.9796268Z Finalizing artifact upload
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.1901358Z Artifact publication-receipts.zip successfully finalized. Artifact ID 8627627186
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.1903750Z Artifact publication-receipts has been successfully uploaded! Final size is 573 bytes. Artifact ID is 8627627186
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.1910806Z Artifact download URL: https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088/artifacts/8627627186
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2064033Z ##[group]Run if [[ -f "$PID_PATH" ]]; then
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2064470Z [36;1mif [[ -f "$PID_PATH" ]]; then[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2064826Z [36;1m  kill "$(cat "$PID_PATH")" 2>/dev/null || true[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2065167Z [36;1mfi[0m
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2109886Z shell: /usr/bin/bash -e {0}
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2110217Z env:
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2110544Z   PID_PATH: /home/runner/work/_temp/control-plane.pid
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2110935Z ##[endgroup]
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2280517Z Cleaning up orphan processes
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2823278Z Terminate orphan process: pid (2180) (node)
+audit / Validate and publish	UNKNOWN STEP	2026-07-26T04:34:51.2902415Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

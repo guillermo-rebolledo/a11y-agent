@@ -2,31 +2,40 @@
 
 ## Decision summary
 
-The MVP is a modular TypeScript monorepo with deterministic orchestration and
-isolated browser execution. It is not a multi-agent system.
+The MVP is a modular TypeScript monorepo with deterministic orchestration,
+local semantic recording, and customer-executed browser automation. It is not a
+multi-agent system.
 
 ```text
-GitHub webhook
+Local Chrome tab
       |
       v
+Extension Recorder ----> Journey draft/version ----> Fastify control plane
+                                                       |
+GitHub event -------------------------------------------+
+      |
+      v
+Customer GitHub Actions workflow
+      |
+      +----> unprivileged browser job
+      |      - digest-pinned Chromium image
+      |      - customer-controlled synthetic login
+      |      - control + keyboard replay
+      |      - Axe + in-job redaction
+      |      - no platform publisher identity
+      |
+      +----> untrusted bounded Evidence Bundle
+      |
+      +----> publisher job
+             - no browser or PR code
+             - schema/provenance validation
+             - short-lived GitHub OIDC
+                        |
+                        v
 Fastify control plane ----> Neon PostgreSQL
       |                           |
-      |                           v
-      +----> Redis Cloud / BullMQ job
-                        |
-                        v
-              Vercel Sandbox microVM
-              - pinned Chromium image
-              - control replay
-              - keyboard replay
-              - Axe checkpoints
-              - in-worker redaction
-                        |
-                        v
-             redacted Evidence Bundle
-                        |
-                        v
-                  Cloudflare R2
+      +----> Cloudflare R2        +----> Redis Cloud / BullMQ
+             redacted evidence          control-plane coordination only
 
 Deterministic Finding ----> optional AI Reviewer
                         |
@@ -41,9 +50,11 @@ initial structure.
 
 ```text
 apps/
+  extension/  Manifest V3 semantic Journey recorder
   web/        Next.js dashboard
   api/        Fastify API and GitHub webhooks
 packages/
+  action/     GitHub Action and workflow integration
   domain/     Journey, Audit Run, Finding, and Baseline types
   schemas/    Runtime validation and serialized contracts
   engine/     Deterministic audit orchestration
@@ -108,29 +119,30 @@ Provider access lives behind narrow adapters:
 
 - `ObjectStore`: Cloudflare R2 initially; S3-compatible alternatives remain
   possible.
-- `KeyManager`: Google Cloud KMS initially.
 - `Queue`: BullMQ over Redis Cloud.
 - `RelationalStore`: PostgreSQL via Neon.
-- `Runner`: provider-neutral; MEM-7 rejected Vercel Sandbox for authenticated
-  Audit Runs.
+- `RunPublisher`: verifies GitHub OIDC identity, provenance, replay protection,
+  and the bounded Evidence Bundle.
 - `SourceHost`: GitHub App.
 - `AIReviewProvider`: OpenAI Responses API when enabled.
 
 Domain records store provider-neutral identifiers rather than provider URLs or
 resource names wherever practical.
 
-## Vercel deployment shape
+## Execution shape
 
 - Next.js dashboard on Vercel.
 - Fastify API deployed as Vercel Functions with Fluid Compute.
-- A disposable runner is created per recorder session and audit execution.
-- Runner OCI images are pinned by digest.
-- Runner egress is denied by default and opened only for the approved Project
-  allowlist.
-- The runner is stopped and destroyed at terminal completion.
+- Recording occurs in a user-selected local Chrome tab through the extension.
+- Automated execution occurs in customer GitHub Actions.
+- A fresh isolated browser job and digest-pinned OCI image are used per Journey.
+- The browser job receives customer-controlled synthetic authentication but no
+  platform publishing identity.
+- A separate publisher job validates and uploads the redacted result using
+  GitHub OIDC.
 
-Vercel Functions do not run Playwright directly. The control plane must
-orchestrate a disposable runner selected by a later ADR.
+Vercel Functions do not run Playwright and the service does not store or
+transport browser cookies, `storageState`, or login credentials.
 
 ## Data ownership
 
@@ -139,7 +151,7 @@ PostgreSQL stores:
 - Installation and repository metadata.
 - Project configuration.
 - Journey drafts and immutable published versions.
-- Encrypted session references and wrapped key metadata.
+- Trusted workflow identity and runner provenance.
 - Audit Run state.
 - Normalized Findings.
 - Suppression records.
@@ -153,11 +165,12 @@ R2 stores only:
 Redis stores only:
 
 - Opaque job identifiers.
-- Scheduling and retry state.
+- Control-plane scheduling and retry state.
 - Short-lived coordination metadata.
 
-Redis job payloads must not contain browser sessions, page content, screenshots,
-DOM, accessible names, or secrets.
+Redis does not schedule browser execution. Queue payloads must not contain
+browser sessions, page content, screenshots, DOM, accessible names, credentials,
+or Evidence Bundles.
 
 ## Baseline compatibility
 
@@ -167,6 +180,8 @@ A Baseline key includes:
 - Journey Version.
 - Audit Engine version.
 - Browser version.
+- Runner image digest.
+- Approved runner class.
 - approved environment class.
 - test-data contract version.
 
@@ -176,8 +191,8 @@ establish a new compatible Baseline.
 ## Concurrency and time limits
 
 - Maximum five active Journeys per Project.
-- Journeys may run concurrently within a configured tenant quota.
-- One Sandbox contains one isolated Journey execution.
+- Journeys run through a bounded GitHub Actions matrix.
+- One isolated browser job contains one Journey execution.
 - Median project target: less than 10 minutes.
 - Project hard stop: 20 minutes.
 - Failed confirmation reruns do not erase the original attempt.
@@ -198,9 +213,11 @@ keyboard interaction.
 These are Phase 0 or implementation questions, not unresolved product scope:
 
 - Exact Playwright OCI image and snapshot strategy.
-- Remote visual-stream protocol and measured latency.
+- Extension distribution, update, and permission-review process.
+- Exact reusable-workflow and Action pinning strategy.
+- GitHub OIDC claim contract and replay store.
+- Ephemeral self-hosted runner support decision.
 - Exact Redis Cloud plan and BullMQ persistence configuration.
 - Neon connection pooling configuration.
-- GCP KMS region aligned with production data residency.
 - Detailed Finding fingerprint algorithm.
 - Production observability vendor, subject to metadata-only restrictions.

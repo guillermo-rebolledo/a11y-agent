@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "issue": "MEM-22",
+  "result": "passed",
+  "capturedAt": "2026-07-26T04:37:37.000Z",
+  "customerRepository": "guillermo-rebolledo/a11y-demo",
+  "provenance": {
+    "auditEngine": "0.0.0+mem22",
+    "playwright": "1.61.1",
+    "chromium": "149.0.7827.55",
+    "axe": "4.12.1",
+    "image": "mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48",
+    "action": "guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76",
+    "workflow": "guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0f1968a9a72e52ab1c1abdb1d23c4f4a6b0cdd52",
+    "customerWorkflowCommit": "590d95f3009cb4d096a2c6bfb1f0709b06fa7cdf",
+    "runner": "GitHub-hosted ubuntu-24.04 X64"
+  },
+  "runs": [
+    {
+      "scenario": "success",
+      "runId": 30187979088,
+      "conclusion": "success",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30187979088"
+    },
+    {
+      "scenario": "runner-failure",
+      "runId": 30188021307,
+      "conclusion": "failure",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188021307"
+    },
+    {
+      "scenario": "timeout",
+      "runId": 30188022838,
+      "conclusion": "cancelled",
+      "auditOutcome": "hard-job-timeout",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188022838"
+    },
+    {
+      "scenario": "malformed-artifact",
+      "runId": 30188024075,
+      "conclusion": "failure",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188024075"
+    },
+    {
+      "scenario": "publisher-failure",
+      "runId": 30188025305,
+      "conclusion": "failure",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188025305"
+    },
+    {
+      "scenario": "oidc-revoked",
+      "runId": 30188026590,
+      "conclusion": "failure",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188026590"
+    },
+    {
+      "scenario": "cancellation",
+      "runId": 30188040421,
+      "conclusion": "cancelled",
+      "url": "https://github.com/guillermo-rebolledo/a11y-demo/actions/runs/30188040421"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "trusted-immutable-refs",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/customer-workflow.yml",
+        "evidence/MEM-22/raw/success-selected-logs.txt"
+      ]
+    },
+    {
+      "id": "complete-runner-provenance",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/raw/success/evidence-1/bundle.json",
+        "evidence/MEM-22/raw/artifact-metadata.json"
+      ]
+    },
+    {
+      "id": "unprivileged-browser-minimum-permissions",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/success-selected-logs.txt"
+      ]
+    },
+    {
+      "id": "customer-controlled-synthetic-authentication",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/raw/environment-policy.json",
+        "evidence/MEM-22/raw/success/evidence-1/bundle.json",
+        "evidence/MEM-22/raw/success-selected-logs.txt"
+      ]
+    },
+    {
+      "id": "browser-session-custody",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/raw/success/evidence-1/bundle.json",
+        "evidence/MEM-22/raw/success-selected-logs.txt",
+        "src/mem-22/evidence-bundle.test.ts"
+      ]
+    },
+    {
+      "id": "bounded-redacted-evidence-bundle",
+      "status": "passed",
+      "evidence": [
+        "packages/action/evidence-bundle.schema.json",
+        "src/mem-22/evidence-bundle.test.ts",
+        "evidence/MEM-22/raw/malformed-artifact-selected-logs.txt"
+      ]
+    },
+    {
+      "id": "separate-oidc-publisher",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/success-selected-logs.txt",
+        "evidence/MEM-22/raw/success/publication-receipts/publication-receipts.json"
+      ]
+    },
+    {
+      "id": "identity-freshness-revocation-and-replay",
+      "status": "passed",
+      "evidence": [
+        "src/mem-22/publication.test.ts",
+        "evidence/MEM-22/raw/publication-policy-test-transcript.txt",
+        "evidence/MEM-22/raw/oidc-revoked-selected-logs.txt",
+        "evidence/MEM-22/raw/success/publication-receipts/publication-receipts.json",
+        "src/mem-22/publication.ts"
+      ]
+    },
+    {
+      "id": "fork-and-untrusted-contributor-gating",
+      "status": "passed",
+      "evidence": [
+        ".github/workflows/customer-audit.yml",
+        "evidence/MEM-22/raw/environment-policy.json",
+        "evidence/MEM-22/raw/run-metadata.json"
+      ]
+    },
+    {
+      "id": "explicit-terminal-outcomes",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/raw/run-metadata.json",
+        "evidence/MEM-22/raw/runner-failure-selected-logs.txt",
+        "evidence/MEM-22/raw/malformed-artifact-selected-logs.txt",
+        "evidence/MEM-22/raw/publisher-failure-selected-logs.txt",
+        "evidence/MEM-22/raw/oidc-revoked-selected-logs.txt",
+        "evidence/MEM-22/raw/timeout-selected-logs.txt",
+        "evidence/MEM-22/raw/cancellation-selected-logs.txt"
+      ]
+    },
+    {
+      "id": "five-isolated-concurrent-journeys",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/raw/run-metadata.json",
+        "evidence/MEM-22/raw/success/evidence-1/bundle.json",
+        "evidence/MEM-22/raw/success/evidence-2/bundle.json",
+        "evidence/MEM-22/raw/success/evidence-3/bundle.json",
+        "evidence/MEM-22/raw/success/evidence-4/bundle.json",
+        "evidence/MEM-22/raw/success/evidence-5/bundle.json"
+      ]
+    },
+    {
+      "id": "self-hosted-runner-scope",
+      "status": "passed",
+      "decision": "Persistent, shared, and self-hosted runners are outside the MVP; only ephemeral GitHub-hosted runners are supported.",
+      "evidence": [
+        "packages/action/README.md",
+        "docs/adr/0004-record-locally-and-audit-in-github-actions.md"
+      ]
+    },
+    {
+      "id": "reproducible-raw-evidence",
+      "status": "passed",
+      "evidence": [
+        "evidence/MEM-22/CHECKSUMS.sha256",
+        "evidence/MEM-22/raw/run-metadata.json",
+        "evidence/MEM-22/raw/artifact-metadata.json"
+      ]
+    }
+  ],
+  "measurements": {
+    "successElapsedSeconds": 73,
+    "githubQueueDelaySeconds": 12,
+    "browserJobDurationSeconds": {
+      "minimum": 33,
+      "maximum": 40
+    },
+    "chromiumStartupMs": [164, 152, 162, 142, 169],
+    "journeyRuntimeMs": [1259, 1219, 1225, 1155, 1284],
+    "journeyActionMinutes": [0.021, 0.0203, 0.0204, 0.0193, 0.0214],
+    "allocatedRunnerMinutes": 3.32,
+    "artifactBytes": 8827,
+    "customerSetup": {
+      "observedMinutes": 2,
+      "steps": [
+        "create protected synthetic browser environment",
+        "create separate publication environment",
+        "set two customer-owned synthetic login secrets",
+        "commit the immutable caller workflow"
+      ]
+    }
+  },
+  "scope": {
+    "controlPlane": "An independent HTTP verifier fixture ran in the publisher job with trust values configured separately in the protected publication environment to prove the OIDC protocol, claim policy, and atomic replay persistence across verifier-process restarts. Production deployment, server-owned policy storage, and a shared replay store across workflow runs belong to MEM-9.",
+    "selfHostedRunners": "Outside the MVP."
+  }
+}

@@ -1,0 +1,165 @@
+name: Trusted customer accessibility audit
+
+on:
+  workflow_call:
+    inputs:
+      audit-run-id:
+        type: string
+        required: true
+      journey-id:
+        type: string
+        required: true
+      commit-sha:
+        type: string
+        required: true
+      trusted-workflow-sha:
+        type: string
+        required: true
+      scenario:
+        type: string
+        required: false
+        default: success
+    secrets:
+      synthetic-login-email:
+        required: true
+      synthetic-login-password:
+        required: true
+  workflow_dispatch:
+    inputs:
+      audit-run-id:
+        type: string
+        required: true
+      journey-id:
+        type: string
+        required: true
+      commit-sha:
+        type: string
+        required: true
+      trusted-workflow-sha:
+        type: string
+        required: true
+      scenario:
+        type: choice
+        required: true
+        default: success
+        options:
+          - success
+          - runner-failure
+          - timeout
+          - malformed-artifact
+          - publisher-failure
+          - oidc-revoked
+
+permissions: {}
+
+jobs:
+  gate:
+    name: Gate authenticated execution
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false }}
+    runs-on: ubuntu-24.04
+    permissions: {}
+    outputs:
+      matrix: ${{ steps.matrix.outputs.value }}
+    steps:
+      - id: matrix
+        name: Select isolated Journey jobs
+        env:
+          SCENARIO: ${{ inputs.scenario }}
+        run: |
+          if [[ "$SCENARIO" == "success" ]]; then
+            echo 'value={"journey-index":[1,2,3,4,5]}' >> "$GITHUB_OUTPUT"
+          else
+            echo 'value={"journey-index":[1]}' >> "$GITHUB_OUTPUT"
+          fi
+
+  browser:
+    name: Browser Journey ${{ matrix.journey-index }}
+    needs: gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: ${{ inputs.scenario == 'timeout' && 1 || 5 }}
+    permissions: {}
+    environment: a11y-synthetic
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.gate.outputs.matrix) }}
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble@sha256:5b8f294aff9041b7191c34a4bab3ac270157a28774d4b0660e9743297b697e48
+      options: --user 1001:1001 --security-opt no-new-privileges
+    steps:
+      - name: Run trusted browser Action
+        uses: guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+        with:
+          mode: browser
+          output-path: ${{ runner.temp }}/evidence/bundle.json
+          scenario: ${{ inputs.scenario }}
+        env:
+          SYNTHETIC_LOGIN_EMAIL: ${{ secrets['synthetic-login-email'] || secrets.SYNTHETIC_LOGIN_EMAIL }}
+          SYNTHETIC_LOGIN_PASSWORD: ${{ secrets['synthetic-login-password'] || secrets.SYNTHETIC_LOGIN_PASSWORD }}
+          A11Y_AUDIT_RUN_ID: ${{ inputs.audit-run-id }}
+          A11Y_JOURNEY_ID: ${{ inputs.journey-id }}-${{ matrix.journey-index }}
+          A11Y_JOURNEY_INDEX: ${{ matrix.journey-index }}
+          A11Y_COMMIT_SHA: ${{ inputs.commit-sha }}
+          A11Y_ACTION_REF: guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+          A11Y_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@${{ inputs.trusted-workflow-sha }}
+      - name: Upload bounded Evidence Bundle
+        if: ${{ inputs.scenario != 'runner-failure' }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: evidence-${{ matrix.journey-index }}
+          path: ${{ runner.temp }}/evidence/bundle.json
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
+
+  publisher:
+    name: Validate and publish
+    needs: [gate, browser]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      id-token: write
+    environment: a11y-publication
+    steps:
+      - name: Download untrusted browser artifacts
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          pattern: evidence-*
+          path: ${{ runner.temp }}/untrusted-evidence
+      - name: Start independent control-plane verifier
+        uses: guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+        with:
+          mode: control-plane
+          output-path: ${{ runner.temp }}/control-plane-receipts.json
+          scenario: ${{ inputs.scenario }}
+        env:
+          A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+          A11Y_CONTROL_PLANE_PID_PATH: ${{ runner.temp }}/control-plane.pid
+          A11Y_REPLAY_STORE_PATH: ${{ runner.temp }}/publication-replay
+          A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA: ${{ vars.A11Y_EXPECTED_TRUSTED_WORKFLOW_SHA }}
+          A11Y_EXPECTED_COMMIT_SHA: ${{ vars.A11Y_EXPECTED_COMMIT_SHA }}
+      - name: Validate and publish through GitHub OIDC
+        uses: guillermo-rebolledo/a11y-agent/packages/action@76a12cdfbcea4ab5eb1cf1d4d7763f4449c14d76
+        with:
+          mode: publisher
+          output-path: ${{ runner.temp }}/untrusted-evidence
+          scenario: ${{ inputs.scenario }}
+        env:
+          A11Y_OIDC_AUDIENCE: https://api.a11y-agent.example/publications
+          A11Y_PUBLICATION_ENDPOINT: http://127.0.0.1:8787/publications
+          A11Y_RECEIPTS_PATH: ${{ runner.temp }}/publication-receipts.json
+      - name: Upload content-free proof receipts
+        if: ${{ success() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: publication-receipts
+          path: ${{ runner.temp }}/publication-receipts.json
+          if-no-files-found: error
+          retention-days: 1
+      - name: Stop control-plane verifier
+        if: ${{ always() }}
+        env:
+          PID_PATH: ${{ runner.temp }}/control-plane.pid
+        run: |
+          if [[ -f "$PID_PATH" ]]; then
+            kill "$(cat "$PID_PATH")" 2>/dev/null || true
+          fi

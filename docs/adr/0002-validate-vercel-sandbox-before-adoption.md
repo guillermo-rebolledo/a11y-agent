@@ -25,3 +25,6 @@ The machine-verifiable evidence is in
 must not receive authenticated customer sessions unless a later decision
 documents and proves a provider-side or proxy-based boundary that closes these
 failures.
+
+ADR-0004 adopts a local Extension Recorder and customer-executed GitHub Action
+instead of selecting another hosted browser provider.
