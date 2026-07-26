@@ -4,6 +4,7 @@ import {
   createProject,
   GITHUB_APP_PERMISSIONS,
   runtimeGate,
+  validatePublisherIdentity,
   type ProjectInput,
 } from "./index.js";
 
@@ -52,6 +53,45 @@ describe("Project onboarding contract", () => {
         },
       }),
     ).toThrow("approved HTTPS origin");
+  });
+
+  it("rejects Project trust that does not match its repository and environments", () => {
+    expect(() =>
+      createProject({
+        ...input,
+        trustedWorkflow: {
+          ...input.trustedWorkflow,
+          repository: "attacker/example",
+        },
+      }),
+    ).toThrow("must match the Project");
+
+    expect(() =>
+      createProject({
+        ...input,
+        mainDeployment: { ...input.mainDeployment, environment: "preview" },
+      }),
+    ).toThrow("main environment");
+  });
+
+  it("validates every publisher identity field against Project trust", () => {
+    const project = createProject(input);
+    const identity = {
+      repository: input.trustedWorkflow.repository,
+      workflow: input.trustedWorkflow.workflow,
+      ref: input.trustedWorkflow.ref,
+      environment: input.trustedWorkflow.environment,
+      audience: input.trustedWorkflow.audience,
+      commit: input.trustedWorkflow.commit,
+    };
+
+    expect(validatePublisherIdentity(identity, project)).toBe(true);
+    expect(() =>
+      validatePublisherIdentity(
+        { ...identity, audience: "https://attacker.example" },
+        project,
+      ),
+    ).toThrow("audience");
   });
 
   it("keeps authenticated execution and pilot provisioning disabled", () => {

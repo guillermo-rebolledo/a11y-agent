@@ -1,15 +1,22 @@
 import { NextResponse } from "next/server";
 
+import { FIXTURE_SESSION_COOKIE, fixtureAuthEnabled } from "@/lib/fixture-auth";
+
 export function GET(request: Request) {
   const url = new URL(request.url);
-  if (process.env.APP_ENV === "production") {
+  if (!fixtureAuthEnabled()) {
     return NextResponse.json(
-      { error: "GitHub authentication is disabled pending qualification" },
+      { error: "GitHub fixture authentication is disabled by default" },
       { status: 503 },
     );
   }
 
-  return NextResponse.redirect(
-    new URL("/onboarding?provider=github-fixture", url),
-  );
+  const response = NextResponse.redirect(new URL("/auth/github/install", url));
+  response.cookies.set(FIXTURE_SESSION_COOKIE, "fixture-session", {
+    httpOnly: true,
+    sameSite: "strict",
+    secure: url.protocol === "https:",
+    path: "/",
+  });
+  return response;
 }

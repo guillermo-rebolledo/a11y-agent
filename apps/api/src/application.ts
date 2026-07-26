@@ -10,8 +10,11 @@ import { InMemoryProjectStore, type ProjectStore } from "./project-store.js";
 
 type FixtureSession = {
   token: string;
-  actor: string;
-  installationIds: number[];
+  repositories: Array<{
+    installationId: number;
+    repositoryId: number;
+    repository: string;
+  }>;
 };
 
 type BuildAppOptions = {
@@ -19,8 +22,10 @@ type BuildAppOptions = {
   fixtureSession?: FixtureSession;
 };
 
-export function buildApp(options: BuildAppOptions = {}) {
-  const app = Fastify({ logger: process.env.NODE_ENV !== "test" });
+export function buildApp(
+  options: BuildAppOptions = {},
+  app = Fastify({ logger: process.env.NODE_ENV !== "test" }),
+) {
   const store = options.store ?? new InMemoryProjectStore();
 
   app.get("/health", async () => ({ status: "ok" }));
@@ -42,7 +47,7 @@ export function buildApp(options: BuildAppOptions = {}) {
       const project = createProject(
         request.body as Parameters<typeof createProject>[0],
       );
-      if (!session.installationIds.includes(project.installationId)) {
+      if (!sessionCanAccessProject(session, project)) {
         return reply.code(403).send({
           error: "repository is outside the approved GitHub App installation",
         });
@@ -59,5 +64,40 @@ export function buildApp(options: BuildAppOptions = {}) {
     }
   });
 
+  app.get<{ Params: { id: string } }>(
+    "/projects/:id",
+    async (request, reply) => {
+      const token = request.headers.authorization?.replace(/^Bearer /u, "");
+      const session = options.fixtureSession;
+      if (!session || token !== session.token) {
+        return reply
+          .code(401)
+          .send({ error: "GitHub authentication required" });
+      }
+
+      const project = await store.get(request.params.id);
+      if (!project || !sessionCanAccessProject(session, project)) {
+        return reply.code(404).send({ error: "Project not found" });
+      }
+      return project;
+    },
+  );
+
   return app;
+}
+
+function sessionCanAccessProject(
+  session: FixtureSession,
+  project: {
+    installationId: number;
+    repositoryId: number;
+    repository: string;
+  },
+) {
+  return session.repositories.some(
+    (allowed) =>
+      allowed.installationId === project.installationId &&
+      allowed.repositoryId === project.repositoryId &&
+      allowed.repository === project.repository,
+  );
 }

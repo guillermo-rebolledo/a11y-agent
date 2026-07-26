@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm --filter @a11y-agent/domain build && next build",
-    "dev": "next dev",
-    "lint": "oxlint app tests playwright.config.ts next.config.ts",
+    "build": "node scripts/clean-next.mjs && pnpm --filter @a11y-agent/domain build && next build",
+    "dev": "pnpm --filter @a11y-agent/domain build && next dev",
+    "lint": "oxlint app lib scripts tests playwright.config.ts next.config.ts",
     "start": "next start",
     "test:a11y": "playwright test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "node scripts/clean-next.mjs && next typegen && tsc --noEmit"
   },
   "dependencies": {
     "@a11y-agent/domain": "workspace:*",

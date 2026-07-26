@@ -10,8 +10,8 @@
   "scripts": {
     "build": "pnpm build:extension && pnpm -r --if-present build",
     "dev": "pnpm --parallel --filter @a11y-agent/web --filter @a11y-agent/api dev",
-    "format": "prettier --check package.json pnpm-workspace.yaml .env.example vercel.json apps/api apps/web packages/domain packages/ui docs/customer-github-configuration.md",
-    "format:write": "prettier --write package.json pnpm-workspace.yaml .env.example vercel.json apps/api apps/web packages/domain packages/ui docs/customer-github-configuration.md",
+    "format": "prettier --check package.json pnpm-workspace.yaml vercel.json .github/workflows/ci.yml apps/api apps/web packages/domain packages/ui docs/customer-github-configuration.md",
+    "format:write": "prettier --write package.json pnpm-workspace.yaml vercel.json .github/workflows/ci.yml apps/api apps/web packages/domain packages/ui docs/customer-github-configuration.md",
     "lint": "pnpm -r --if-present lint",
     "test": "pnpm --filter @a11y-agent/domain build && pnpm build:extension && vitest run",
     "test:a11y": "pnpm --filter @a11y-agent/web test:a11y",

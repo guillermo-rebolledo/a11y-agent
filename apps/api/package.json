@@ -8,9 +8,9 @@
   },
   "scripts": {
     "build": "pnpm --filter @a11y-agent/domain build && tsc -p tsconfig.build.json",
-    "dev": "tsx watch src/server.ts",
+    "dev": "pnpm --filter @a11y-agent/domain build && tsx watch src/server.ts",
     "lint": "oxlint src",
-    "start": "tsx src/server.ts",
+    "start": "pnpm --filter @a11y-agent/domain build && tsx src/server.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },

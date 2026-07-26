@@ -52,8 +52,13 @@ describe("control-plane onboarding API", () => {
     const app = buildApp({
       fixtureSession: {
         token: "fixture-session",
-        installationIds: [24680],
-        actor: "fixture-admin",
+        repositories: [
+          {
+            installationId: 24680,
+            repositoryId: 13579,
+            repository: "memoji-inc/example",
+          },
+        ],
       },
     });
     apps.push(app);
@@ -71,14 +76,29 @@ describe("control-plane onboarding API", () => {
       repository: "memoji-inc/example",
       executionState: "disabled-pending-authenticated-enablement",
     });
+
+    const persisted = await app.inject({
+      method: "GET",
+      url: "/projects/project-13579",
+      headers: { authorization: "Bearer fixture-session" },
+    });
+    expect(persisted.json()).toMatchObject({
+      repository: "memoji-inc/example",
+      mainDeployment: { originPattern: "https://example.test" },
+    });
   });
 
   it("rejects a repository outside the GitHub App installation", async () => {
     const app = buildApp({
       fixtureSession: {
         token: "fixture-session",
-        installationIds: [99999],
-        actor: "fixture-admin",
+        repositories: [
+          {
+            installationId: 99999,
+            repositoryId: 11111,
+            repository: "other/example",
+          },
+        ],
       },
     });
     apps.push(app);
