@@ -18,11 +18,11 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        corepack pnpm --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile
+        corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." install --frozen-lockfile
     - name: Execute trusted Action mode
       shell: bash
       env:
         A11Y_ACTION_MODE: ${{ inputs.mode }}
         A11Y_OUTPUT_PATH: ${{ inputs.output-path }}
         A11Y_PROOF_SCENARIO: ${{ inputs.scenario }}
-      run: corepack pnpm --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts
+      run: corepack pnpm@10.29.2 --dir "$GITHUB_ACTION_PATH/../.." exec tsx src/mem-22/cli.ts

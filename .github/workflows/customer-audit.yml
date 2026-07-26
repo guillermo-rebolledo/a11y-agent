@@ -12,6 +12,9 @@ on:
       commit-sha:
         type: string
         required: true
+      trusted-workflow-sha:
+        type: string
+        required: true
       scenario:
         type: string
         required: false
@@ -30,6 +33,9 @@ on:
         type: string
         required: true
       commit-sha:
+        type: string
+        required: true
+      trusted-workflow-sha:
         type: string
         required: true
       scenario:
@@ -94,7 +100,7 @@ jobs:
           A11Y_JOURNEY_INDEX: ${{ matrix.journey-index }}
           A11Y_COMMIT_SHA: ${{ inputs.commit-sha }}
           A11Y_ACTION_REF: guillermo-rebolledo/a11y-agent/packages/action@0a7ebce88506cfe9f8104b3340c8f11b564c5e07
-          A11Y_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0a7ebce88506cfe9f8104b3340c8f11b564c5e07
+          A11Y_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@${{ inputs.trusted-workflow-sha }}
       - name: Upload bounded Evidence Bundle
         if: ${{ inputs.scenario != 'runner-failure' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -131,8 +137,8 @@ jobs:
           A11Y_EXPECTED_REPOSITORY_ID: ${{ github.repository_id }}
           A11Y_EXPECTED_OWNER_ID: ${{ github.repository_owner_id }}
           A11Y_EXPECTED_CALLER_WORKFLOW_REF: ${{ github.workflow_ref }}
-          A11Y_EXPECTED_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@0a7ebce88506cfe9f8104b3340c8f11b564c5e07
-          A11Y_EXPECTED_WORKFLOW_SHA: 0a7ebce88506cfe9f8104b3340c8f11b564c5e07
+          A11Y_EXPECTED_WORKFLOW_REF: guillermo-rebolledo/a11y-agent/.github/workflows/customer-audit.yml@${{ inputs.trusted-workflow-sha }}
+          A11Y_EXPECTED_WORKFLOW_SHA: ${{ inputs.trusted-workflow-sha }}
           A11Y_EXPECTED_REF: ${{ github.ref }}
           A11Y_EXPECTED_ENVIRONMENT: a11y-publication
           A11Y_EXPECTED_COMMIT: ${{ inputs.commit-sha }}
